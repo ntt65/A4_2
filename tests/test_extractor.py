@@ -35,6 +35,9 @@ class ExtractorTests(unittest.TestCase):
             ("1.5만원과 $49.9", [49, 15000]),
             ("0원, 0만원", [0]),
             ("3천원", [3000]),
+            ("3천5백만원", [35000000]),
+            ("1억2천3백만원", [123000000]),
+            ("1억2천3백4십5만원", [123450000]),
         ):
             with self.subTest(text=text):
                 self.assertEqual(extract_information(text)["amounts"], expected)

@@ -59,14 +59,14 @@ KOR_AMOUNT_PATTERN = re.compile(
     rf"(?:{_AMOUNT_NUMBER}[ \t]*원|원)?{_AMOUNT_END}"
 )
 
-# 복합 금액의 구성 요소: 긴 단위를 먼저 매칭한다. 전체 문자열의 연속 소비는 함수에서 검사한다.
+# 복합 금액의 구성 요소: 천·백·십을 모아 만·억 앞에서 묶는다.
+# '2천만'의 만처럼 숫자 없는 큰 단위도 소비하며, 빈 매칭은 허용하지 않는다.
 _KOR_COMPONENT_PATTERN = re.compile(
-    rf"(?P<value>{_AMOUNT_NUMBER})(?P<unit>억|천만|백만|십만|만|천|백|십)"
+    rf"(?P<value>{_AMOUNT_NUMBER})?(?P<unit>억|만|천|백|십)"
 )
 
 _KOR_UNITS = {
-    "억": 100_000_000, "천만": 10_000_000, "백만": 1_000_000, "십만": 100_000,
-    "만": 10_000, "천": 1_000, "백": 100, "십": 10,
+    "억": 100_000_000, "만": 10_000, "천": 1_000, "백": 100, "십": 10,
 }
 
 # URL: http(s), 호스트, 포트와 선택적 경로/쿼리/fragment. 슬래시 없는 ?query도 허용한다.
@@ -123,16 +123,27 @@ def _normalize_korean_amount(raw: str) -> int | None:
     if value.endswith("원"):
         value = value[:-1]
     total = Decimal(0)
+    section = Decimal(0)
     position = 0
     try:
         for match in _KOR_COMPONENT_PATTERN.finditer(value):
             if match.start() != position:
                 return None
-            total += Decimal(match["value"]) * _KOR_UNITS[match["unit"]]
+            number = Decimal(match["value"]) if match["value"] is not None else None
+            unit = _KOR_UNITS[match["unit"]]
+            if unit >= 10_000:
+                # 3천5백만은 (3000 + 500) × 10000이다. 명시적 0만은 0을 유지한다.
+                coefficient = section + (number if number is not None else Decimal(0))
+                if number is None and not section:
+                    coefficient = Decimal(1)
+                total += coefficient * unit
+                section = Decimal(0)
+            else:
+                section += (number if number is not None else Decimal(1)) * unit
             position = match.end()
         if value[position:]:
-            total += Decimal(value[position:])
-        return int(total) if position else None
+            section += Decimal(value[position:])
+        return int(total + section) if position else None
     except (InvalidOperation, ValueError):
         return None
 
