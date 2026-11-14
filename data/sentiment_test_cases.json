@@ -1,0 +1,466 @@
+[
+  {
+    "text": "서비스가 좋다",
+    "label": "positive"
+  },
+  {
+    "text": "상담이 친절하다",
+    "label": "positive"
+  },
+  {
+    "text": "배송빠르다 정말 만족하다",
+    "label": "positive"
+  },
+  {
+    "text": "품질좋다 매우 훌륭하다",
+    "label": "positive"
+  },
+  {
+    "text": "가성비좋다 진짜 최고다",
+    "label": "positive"
+  },
+  {
+    "text": "응대좋다 재구매의사 있다",
+    "label": "positive"
+  },
+  {
+    "text": "포장꼼꼼 해서 기쁘다",
+    "label": "positive"
+  },
+  {
+    "text": "문의해결 되어 안심된다",
+    "label": "positive"
+  },
+  {
+    "text": "환불신속 해서 만족스럽다",
+    "label": "positive"
+  },
+  {
+    "text": "사용편함 너무 좋다",
+    "label": "positive"
+  },
+  {
+    "text": "서비스가 좋다",
+    "label": "positive"
+  },
+  {
+    "text": "상담이 친절하다",
+    "label": "positive"
+  },
+  {
+    "text": "배송빠르다 정말 만족하다",
+    "label": "positive"
+  },
+  {
+    "text": "품질좋다 매우 훌륭하다",
+    "label": "positive"
+  },
+  {
+    "text": "가성비좋다 진짜 최고다",
+    "label": "positive"
+  },
+  {
+    "text": "응대좋다 재구매의사 있다",
+    "label": "positive"
+  },
+  {
+    "text": "포장꼼꼼 해서 기쁘다",
+    "label": "positive"
+  },
+  {
+    "text": "문의해결 되어 안심된다",
+    "label": "positive"
+  },
+  {
+    "text": "환불신속 해서 만족스럽다",
+    "label": "positive"
+  },
+  {
+    "text": "사용편함 너무 좋다",
+    "label": "positive"
+  },
+  {
+    "text": "서비스가 좋다",
+    "label": "positive"
+  },
+  {
+    "text": "상담이 친절하다",
+    "label": "positive"
+  },
+  {
+    "text": "배송빠르다 정말 만족하다",
+    "label": "positive"
+  },
+  {
+    "text": "품질좋다 매우 훌륭하다",
+    "label": "positive"
+  },
+  {
+    "text": "가성비좋다 진짜 최고다",
+    "label": "positive"
+  },
+  {
+    "text": "응대좋다 재구매의사 있다",
+    "label": "positive"
+  },
+  {
+    "text": "포장꼼꼼 해서 기쁘다",
+    "label": "positive"
+  },
+  {
+    "text": "문의해결 되어 안심된다",
+    "label": "positive"
+  },
+  {
+    "text": "환불신속 해서 만족스럽다",
+    "label": "positive"
+  },
+  {
+    "text": "사용편함 너무 좋다",
+    "label": "positive"
+  },
+  {
+    "text": "서비스가 좋다",
+    "label": "positive"
+  },
+  {
+    "text": "상담이 친절하다",
+    "label": "positive"
+  },
+  {
+    "text": "배송빠르다 정말 만족하다",
+    "label": "positive"
+  },
+  {
+    "text": "품질좋다 매우 훌륭하다",
+    "label": "positive"
+  },
+  {
+    "text": "가성비좋다 진짜 최고다",
+    "label": "positive"
+  },
+  {
+    "text": "응대좋다 재구매의사 있다",
+    "label": "positive"
+  },
+  {
+    "text": "포장꼼꼼 해서 기쁘다",
+    "label": "positive"
+  },
+  {
+    "text": "문의해결 되어 안심된다",
+    "label": "positive"
+  },
+  {
+    "text": "환불신속 해서 만족스럽다",
+    "label": "positive"
+  },
+  {
+    "text": "사용편함 너무 좋다",
+    "label": "positive"
+  },
+  {
+    "text": "서비스가 좋다",
+    "label": "positive"
+  },
+  {
+    "text": "상담이 친절하다",
+    "label": "positive"
+  },
+  {
+    "text": "배송빠르다 정말 만족하다",
+    "label": "positive"
+  },
+  {
+    "text": "품질좋다 매우 훌륭하다",
+    "label": "positive"
+  },
+  {
+    "text": "가성비좋다 진짜 최고다",
+    "label": "positive"
+  },
+  {
+    "text": "서비스가 나쁘다",
+    "label": "negative"
+  },
+  {
+    "text": "상담이 불친절하다",
+    "label": "negative"
+  },
+  {
+    "text": "배송지연 으로 짜증나다",
+    "label": "negative"
+  },
+  {
+    "text": "품질불량 이라 실망하다",
+    "label": "negative"
+  },
+  {
+    "text": "가성비가 나쁘다",
+    "label": "negative"
+  },
+  {
+    "text": "응대불친절 해서 화난다",
+    "label": "negative"
+  },
+  {
+    "text": "파손배송 때문에 최악이다",
+    "label": "negative"
+  },
+  {
+    "text": "문의미해결 이라 답답하다",
+    "label": "negative"
+  },
+  {
+    "text": "환불지연 으로 불만족하다",
+    "label": "negative"
+  },
+  {
+    "text": "사용불편 해서 별로다",
+    "label": "negative"
+  },
+  {
+    "text": "서비스가 나쁘다",
+    "label": "negative"
+  },
+  {
+    "text": "상담이 불친절하다",
+    "label": "negative"
+  },
+  {
+    "text": "배송지연 으로 짜증나다",
+    "label": "negative"
+  },
+  {
+    "text": "품질불량 이라 실망하다",
+    "label": "negative"
+  },
+  {
+    "text": "가성비가 나쁘다",
+    "label": "negative"
+  },
+  {
+    "text": "응대불친절 해서 화난다",
+    "label": "negative"
+  },
+  {
+    "text": "파손배송 때문에 최악이다",
+    "label": "negative"
+  },
+  {
+    "text": "문의미해결 이라 답답하다",
+    "label": "negative"
+  },
+  {
+    "text": "환불지연 으로 불만족하다",
+    "label": "negative"
+  },
+  {
+    "text": "사용불편 해서 별로다",
+    "label": "negative"
+  },
+  {
+    "text": "서비스가 나쁘다",
+    "label": "negative"
+  },
+  {
+    "text": "상담이 불친절하다",
+    "label": "negative"
+  },
+  {
+    "text": "배송지연 으로 짜증나다",
+    "label": "negative"
+  },
+  {
+    "text": "품질불량 이라 실망하다",
+    "label": "negative"
+  },
+  {
+    "text": "가성비가 나쁘다",
+    "label": "negative"
+  },
+  {
+    "text": "응대불친절 해서 화난다",
+    "label": "negative"
+  },
+  {
+    "text": "파손배송 때문에 최악이다",
+    "label": "negative"
+  },
+  {
+    "text": "문의미해결 이라 답답하다",
+    "label": "negative"
+  },
+  {
+    "text": "환불지연 으로 불만족하다",
+    "label": "negative"
+  },
+  {
+    "text": "사용불편 해서 별로다",
+    "label": "negative"
+  },
+  {
+    "text": "서비스가 나쁘다",
+    "label": "negative"
+  },
+  {
+    "text": "상담이 불친절하다",
+    "label": "negative"
+  },
+  {
+    "text": "배송지연 으로 짜증나다",
+    "label": "negative"
+  },
+  {
+    "text": "품질불량 이라 실망하다",
+    "label": "negative"
+  },
+  {
+    "text": "가성비가 나쁘다",
+    "label": "negative"
+  },
+  {
+    "text": "응대불친절 해서 화난다",
+    "label": "negative"
+  },
+  {
+    "text": "파손배송 때문에 최악이다",
+    "label": "negative"
+  },
+  {
+    "text": "문의미해결 이라 답답하다",
+    "label": "negative"
+  },
+  {
+    "text": "환불지연 으로 불만족하다",
+    "label": "negative"
+  },
+  {
+    "text": "사용불편 해서 별로다",
+    "label": "negative"
+  },
+  {
+    "text": "서비스가 나쁘다",
+    "label": "negative"
+  },
+  {
+    "text": "상담이 불친절하다",
+    "label": "negative"
+  },
+  {
+    "text": "배송지연 으로 짜증나다",
+    "label": "negative"
+  },
+  {
+    "text": "품질불량 이라 실망하다",
+    "label": "negative"
+  },
+  {
+    "text": "가성비가 나쁘다",
+    "label": "negative"
+  },
+  {
+    "text": "오늘 상품을 받았다",
+    "label": "neutral"
+  },
+  {
+    "text": "문의 내용을 확인했다",
+    "label": "neutral"
+  },
+  {
+    "text": "배송 상태를 조회했다",
+    "label": "neutral"
+  },
+  {
+    "text": "가격 정보를 확인했다",
+    "label": "neutral"
+  },
+  {
+    "text": "서비스 정책을 읽었다",
+    "label": "neutral"
+  },
+  {
+    "text": "오늘 상품을 받았다",
+    "label": "neutral"
+  },
+  {
+    "text": "문의 내용을 확인했다",
+    "label": "neutral"
+  },
+  {
+    "text": "배송 상태를 조회했다",
+    "label": "neutral"
+  },
+  {
+    "text": "가격 정보를 확인했다",
+    "label": "neutral"
+  },
+  {
+    "text": "서비스 정책을 읽었다",
+    "label": "neutral"
+  },
+  {
+    "text": "오늘 상품을 받았다",
+    "label": "neutral"
+  },
+  {
+    "text": "문의 내용을 확인했다",
+    "label": "neutral"
+  },
+  {
+    "text": "배송 상태를 조회했다",
+    "label": "neutral"
+  },
+  {
+    "text": "가격 정보를 확인했다",
+    "label": "neutral"
+  },
+  {
+    "text": "서비스 정책을 읽었다",
+    "label": "neutral"
+  },
+  {
+    "text": "오늘 상품을 받았다",
+    "label": "neutral"
+  },
+  {
+    "text": "문의 내용을 확인했다",
+    "label": "neutral"
+  },
+  {
+    "text": "배송 상태를 조회했다",
+    "label": "neutral"
+  },
+  {
+    "text": "가격 정보를 확인했다",
+    "label": "neutral"
+  },
+  {
+    "text": "서비스 정책을 읽었다",
+    "label": "neutral"
+  },
+  {
+    "text": "배송이 나쁘지 않다",
+    "label": "positive"
+  },
+  {
+    "text": "응대가 싫지 않다",
+    "label": "positive"
+  },
+  {
+    "text": "품질이 좋다 않다",
+    "label": "negative"
+  },
+  {
+    "text": "안 좋다",
+    "label": "negative"
+  },
+  {
+    "text": "정말 좋다",
+    "label": "positive"
+  },
+  {
+    "text": "너무 나쁘다",
+    "label": "negative"
+  }
+]
