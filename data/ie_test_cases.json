@@ -1,0 +1,604 @@
+[
+  {
+    "text": "문의는 user@domain.com 으로 주세요.",
+    "labels": {
+      "emails": [
+        "user@domain.com"
+      ],
+      "phones": [],
+      "dates": [],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "담당자 메일은 USER.NAME@Sub.Domain.co.kr 입니다.",
+    "labels": {
+      "emails": [
+        "user.name@sub.domain.co.kr"
+      ],
+      "phones": [],
+      "dates": [],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "연락처: hello123@test.co.kr, 예비: support@service.com",
+    "labels": {
+      "emails": [
+        "hello123@test.co.kr",
+        "support@service.com"
+      ],
+      "phones": [],
+      "dates": [],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "신규 주소 abc-def@mail.net 확인 부탁.",
+    "labels": {
+      "emails": [
+        "abc-def@mail.net"
+      ],
+      "phones": [],
+      "dates": [],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "test.user+event@sample.org 로 회신 바랍니다.",
+    "labels": {
+      "emails": [
+        "test.user+event@sample.org"
+      ],
+      "phones": [],
+      "dates": [],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "bad@domain 은 무시하고 good@domain.com 만 유효",
+    "labels": {
+      "emails": [
+        "good@domain.com"
+      ],
+      "phones": [],
+      "dates": [],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "다중 메일 first@a.com / second@b.co.kr",
+    "labels": {
+      "emails": [
+        "first@a.com",
+        "second@b.co.kr"
+      ],
+      "phones": [],
+      "dates": [],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "문의창구 cs_team@shop.kr 입니다",
+    "labels": {
+      "emails": [
+        "cs_team@shop.kr"
+      ],
+      "phones": [],
+      "dates": [],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "임시 이메일 TEMP@EXAMPLE.COM",
+    "labels": {
+      "emails": [
+        "temp@example.com"
+      ],
+      "phones": [],
+      "dates": [],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "별칭 포함: user.name+vip@abc.co.kr",
+    "labels": {
+      "emails": [
+        "user.name+vip@abc.co.kr"
+      ],
+      "phones": [],
+      "dates": [],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "연락처는 010-1234-5678 입니다.",
+    "labels": {
+      "emails": [],
+      "phones": [
+        "010-1234-5678"
+      ],
+      "dates": [],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "대표번호 02-123-4567 로 연락.",
+    "labels": {
+      "emails": [],
+      "phones": [
+        "02-123-4567"
+      ],
+      "dates": [],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "지점 번호 031.1234.5678",
+    "labels": {
+      "emails": [],
+      "phones": [
+        "031-1234-5678"
+      ],
+      "dates": [],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "휴대폰 010 1234 5678",
+    "labels": {
+      "emails": [],
+      "phones": [
+        "010-1234-5678"
+      ],
+      "dates": [],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "콜센터 051-123-4567",
+    "labels": {
+      "emails": [],
+      "phones": [
+        "051-123-4567"
+      ],
+      "dates": [],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "비상연락망: 01099998888",
+    "labels": {
+      "emails": [],
+      "phones": [
+        "010-9999-8888"
+      ],
+      "dates": [],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "사무실 042 123 4567",
+    "labels": {
+      "emails": [],
+      "phones": [
+        "042-123-4567"
+      ],
+      "dates": [],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "고객센터 070-1234-9999",
+    "labels": {
+      "emails": [],
+      "phones": [
+        "070-1234-9999"
+      ],
+      "dates": [],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "서울 대표번호는 02 1234 5678",
+    "labels": {
+      "emails": [],
+      "phones": [
+        "02-1234-5678"
+      ],
+      "dates": [],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "문의 010.8888.7777",
+    "labels": {
+      "emails": [],
+      "phones": [
+        "010-8888-7777"
+      ],
+      "dates": [],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "계약일은 2024년 1월 15일 입니다.",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [
+        "2024-01-15"
+      ],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "납기일: 2024/01/15",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [
+        "2024-01-15"
+      ],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "출고일 2024-01-15 확인",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [
+        "2024-01-15"
+      ],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "기준일 24.01.15 로 표기",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [
+        "2024-01-15"
+      ],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "테스트일 2023.12.01",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [
+        "2023-12-01"
+      ],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "예약일은 2025년 11월 3일",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [
+        "2025-11-03"
+      ],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "청구일 2026/6/9",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [
+        "2026-06-09"
+      ],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "수정일 2024-7-1",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [
+        "2024-07-01"
+      ],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "점검일 99.01.02",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [
+        "1999-01-02"
+      ],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "발표일 00-12-31",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [
+        "2000-12-31"
+      ],
+      "amounts": [],
+      "urls": []
+    }
+  },
+  {
+    "text": "총액은 10,000원 입니다.",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [],
+      "amounts": [
+        10000
+      ],
+      "urls": []
+    }
+  },
+  {
+    "text": "결제금액 50000원",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [],
+      "amounts": [
+        50000
+      ],
+      "urls": []
+    }
+  },
+  {
+    "text": "프로모션가 3만원",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [],
+      "amounts": [
+        30000
+      ],
+      "urls": []
+    }
+  },
+  {
+    "text": "대형 계약 1억 2천만원",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [],
+      "amounts": [
+        120000000
+      ],
+      "urls": []
+    }
+  },
+  {
+    "text": "외화 결제 $100",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [],
+      "amounts": [
+        100
+      ],
+      "urls": []
+    }
+  },
+  {
+    "text": "옵션 추가 12,345원",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [],
+      "amounts": [
+        12345
+      ],
+      "urls": []
+    }
+  },
+  {
+    "text": "예산은 2억",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [],
+      "amounts": [
+        200000000
+      ],
+      "urls": []
+    }
+  },
+  {
+    "text": "소액 결제 9,900원",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [],
+      "amounts": [
+        9900
+      ],
+      "urls": []
+    }
+  },
+  {
+    "text": "단가 1.5만원",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [],
+      "amounts": [
+        15000
+      ],
+      "urls": []
+    }
+  },
+  {
+    "text": "쿠폰 적용 후 $49.9",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [],
+      "amounts": [
+        49
+      ],
+      "urls": []
+    }
+  },
+  {
+    "text": "홈페이지는 https://www.example.com/path?query=value 입니다.",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [],
+      "amounts": [],
+      "urls": [
+        "https://www.example.com/path?query=value"
+      ]
+    }
+  },
+  {
+    "text": "보조 주소 http://example.co.kr",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [],
+      "amounts": [],
+      "urls": [
+        "http://example.co.kr"
+      ]
+    }
+  },
+  {
+    "text": "문서 링크 https://docs.sample.io/api/v1",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [],
+      "amounts": [],
+      "urls": [
+        "https://docs.sample.io/api/v1"
+      ]
+    }
+  },
+  {
+    "text": "테스트 https://EXAMPLE.COM/UPPER",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [],
+      "amounts": [],
+      "urls": [
+        "https://example.com/UPPER"
+      ]
+    }
+  },
+  {
+    "text": "포트 포함 http://localhost.example.com:8080/test",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [],
+      "amounts": [],
+      "urls": [
+        "http://localhost.example.com:8080/test"
+      ]
+    }
+  },
+  {
+    "text": "중첩 경로 https://a.b.co.kr/a/b/c",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [],
+      "amounts": [],
+      "urls": [
+        "https://a.b.co.kr/a/b/c"
+      ]
+    }
+  },
+  {
+    "text": "쿼리 포함 http://service.kr?a=1&b=2",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [],
+      "amounts": [],
+      "urls": [
+        "http://service.kr?a=1&b=2"
+      ]
+    }
+  },
+  {
+    "text": "보안 링크 https://secure.site.net",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [],
+      "amounts": [],
+      "urls": [
+        "https://secure.site.net"
+      ]
+    }
+  },
+  {
+    "text": "호출 주소 https://api.company.co.kr/v2/items?id=3",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [],
+      "amounts": [],
+      "urls": [
+        "https://api.company.co.kr/v2/items?id=3"
+      ]
+    }
+  },
+  {
+    "text": "공지 URL http://notice.example.org/index.html",
+    "labels": {
+      "emails": [],
+      "phones": [],
+      "dates": [],
+      "amounts": [],
+      "urls": [
+        "http://notice.example.org/index.html"
+      ]
+    }
+  }
+]
