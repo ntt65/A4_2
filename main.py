@@ -17,8 +17,13 @@ def main() -> None:
     args = parser.parse_args()
 
     if args.text:
+        extracted = extract_information(args.text)
         text = mask_personal_info(args.text) if args.mask else args.text
-        extracted = extract_information(text)
+        if args.mask:
+            extracted = {
+                key: [mask_personal_info(value) if isinstance(value, str) else value for value in values]
+                for key, values in extracted.items()
+            }
         sentiment_result = analyze_sentiment(text, use_rules=True)
 
         print("[정보 추출 결과]")

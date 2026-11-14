@@ -44,7 +44,7 @@ uv pip sync --python .venv --allow-empty-requirements requirements.txt
 uv run --python .venv python -B -X utf8 main.py --text "문의는 USER@EXAMPLE.COM, 연락처는 010 1234 5678, 서비스는 정말 좋다"
 ```
 
-### 2) 개인정보 마스킹 후 분석
+### 2) 정보 추출 후 출력 마스킹
 ```bash
 uv run --python .venv python -B -X utf8 main.py --text "주민번호 900101-1234567, 카드 1234-5678-9012-3456" --mask
 ```
@@ -82,8 +82,9 @@ uv run --python .venv python -B -X utf8 -m unittest discover -s tests -v
 - 이메일: 소문자 정규화
 - 전화번호: 다양한 구분자를 `-` 형식으로 통일
 - 날짜: `YYYY-MM-DD`(ISO 8601)로 변환
-- 금액: 숫자형 정수 값으로 정규화 (`1억 2천만원`, `$100` 포함)
-- URL: scheme/host 소문자 정규화
+- 금액: 명시적인 통화·금액 단위를 정수로 정규화 (`1억 2천만원`, `$100` 포함), 일반 숫자와 URL 내부 숫자 제외
+- URL: scheme/host 소문자 정규화, 경로·쿼리·fragment 보존
+- 마스킹: 원문에서 추출한 뒤 표시할 값과 분석 문장을 가림 (서울 9자리 전화 포함)
 
 ### 감성 분석 (`src/sentiment.py`)
 - 기본: 토큰화 후 감성 사전 점수 합산
@@ -94,7 +95,7 @@ uv run --python .venv python -B -X utf8 -m unittest discover -s tests -v
 
 ## 현재 평가 결과
 
-기능 기준 커밋 `2f34b49`, Python 3.11.4, 2026-11-15 실행 결과입니다. IE는 50문장, 감성은 116행을 사용합니다. 감성 F1은 긍정·부정·중립 3개 클래스의 Macro F1입니다.
+정보 추출은 #3 변경 후 기존 정답 50문장으로 측정한 값입니다. 감성은 기준 커밋 `2f34b49`의 기존 116행 결과이며 #4 통합 후 갱신합니다. 환경은 Python 3.11.4, 2026-11-15입니다. 감성 F1은 긍정·부정·중립 3개 클래스의 Macro F1입니다.
 
 ```text
 [정보 추출 평가]
@@ -103,8 +104,8 @@ pattern     | precision | recall
 emails      | 1.000     | 1.000
 phones      | 1.000     | 1.000
 dates       | 1.000     | 1.000
-amounts     | 0.184     | 0.700
-urls        | 0.900     | 0.900
+amounts     | 1.000     | 1.000
+urls        | 1.000     | 1.000
 
 [감성 분석 평가]
 phase  | accuracy | f1
@@ -117,9 +118,9 @@ after  | 1.000    | 1.000
 
 ## 실패 사례 분석
 
-현재 확인한 사례: `연락처는 010-1234-5678 입니다.` → 기대 금액 `[]`, 실제 금액 `[10]` → 통화 단위가 선택 사항인 패턴이 전화번호 일부를 금액으로 잡습니다. 금액·URL 경계와 마스킹 수정은 [#3](https://github.com/ntt65/A4_2/issues/3)에서 진행합니다.
+[정보 추출 분석](docs/extraction.md)에 수정 전 실제 실패 5건의 입력·기대값·실제값·원인과 수정 후 결과를 기록했습니다. 기존 50문장의 불일치는 22건에서 0건으로 줄었습니다.
 
-IE 실패 5건 이상과 감성 오분류 10건 이상의 유형·원인 분석은 [#5](https://github.com/ntt65/A4_2/issues/5)의 완료 조건입니다. 현재 감성 점수는 고유 문장 31개의 반복을 포함하므로, [#4](https://github.com/ntt65/A4_2/issues/4)의 데이터 개선 후 다시 분석합니다.
+감성 오분류 10건 이상의 분석과 최종 요구사항 점검은 [#4](https://github.com/ntt65/A4_2/issues/4)·[#5](https://github.com/ntt65/A4_2/issues/5)에서 통합합니다.
 
 ## 한계점 분석
 
