@@ -1,4 +1,4 @@
-# Rule-based NLP Pipeline (Python 3.10+)
+# Rule-based NLP Pipeline (Python 3.11)
 
 규칙 기반 자연어 처리 파이프라인으로 **정보 추출(IE)** 과 **감성 분석**을 통합 실행합니다.
 
@@ -17,6 +17,7 @@ data/
   sentiment_test_cases.json   # 라벨 포함 100개+
 
 main.py
+.python-version
 requirements.txt
 tests/test_pipeline_smoke.py
 .github/workflows/ci.yml
@@ -27,14 +28,14 @@ README.md
 
 ## 설치 (uv)
 
-Python 3.10 이상과 [uv](https://docs.astral.sh/uv/)가 필요합니다. 로컬 검증은 Python 3.11.4와 uv 0.13.7을 사용합니다. 저장소 루트에서 다음 명령을 실행합니다. Windows PowerShell과 Linux 셸에서 가상환경 활성화 없이 사용할 수 있습니다.
+Python 3.11과 [uv](https://docs.astral.sh/uv/)가 필요합니다. 프로젝트의 `.python-version`에 `3.11`을 지정하고 uv와 CI가 같은 파일을 읽습니다. 평가 기준은 iMac의 macOS·Python 3.11입니다. 저장소 루트에서 다음 명령을 실행하며 가상환경 활성화는 필요하지 않습니다.
 
 ```shell
-uv venv --python 3.11 --no-python-downloads .venv
+uv venv --no-python-downloads .venv
 uv pip sync --python .venv --allow-empty-requirements requirements.txt
 ```
 
-`requirements.txt`는 미션 제출물이며 현재 실행 코드와 테스트는 Python 표준 라이브러리만 사용합니다. `--allow-empty-requirements`는 이 빈 의존성 목록에 맞춰 프로젝트 `.venv`를 동기화합니다. Python 버전은 이미 설치된 3.10 이상 버전으로 지정합니다.
+`requirements.txt`는 미션 제출물이며 현재 실행 코드와 테스트는 Python 표준 라이브러리만 사용합니다. `--allow-empty-requirements`는 이 빈 의존성 목록에 맞춰 프로젝트 `.venv`를 동기화합니다. Python 3.11이 설치되어 있어야 합니다. 미션의 최소 조건인 Python 3.10 이상에 맞춰, 프로젝트 실행·검증 버전은 3.11로 통일합니다.
 
 ## 실행
 
@@ -61,7 +62,7 @@ uv run --python .venv python -B -X utf8 main.py --evaluate-all
 uv run --python .venv python -B -X utf8 -m unittest discover -s tests -v
 ```
 
-8개 테스트가 CLI, 개인정보 마스킹, 감성 규칙의 근거, 평가 지표와 빈 데이터 처리를 검증합니다. CI는 `main`/`develop` 대상 PR과 해당 브랜치의 push에서 Windows/Linux 및 Python 3.10/3.11 조합을 검사합니다. 환경 구성과 검증 범위는 [DevOps 문서](docs/devops.md)에 기록합니다.
+8개 테스트가 CLI, 개인정보 마스킹, 감성 규칙의 근거, 평가 지표와 빈 데이터 처리를 검증합니다. CI는 `main`/`develop` 대상 PR과 해당 브랜치의 push에서 macOS·Python 3.11 단일 job을 실행합니다. 환경 구성과 검증 범위는 [DevOps 문서](docs/devops.md)에 기록합니다.
 
 ## 데이터 구성
 

@@ -3,7 +3,8 @@
 프로젝트 경로: ./ (A4_2)
 목표와 미션 문서: docs/A4_2_mission.pdf (규칙 기반 자연어 처리: 정규표현식 정보 추출 및 감성 사전 기반 감성 분석 파이프라인 구축)
 저장소와 이슈: https://github.com/ntt65/A4_2
-개발 환경: Python 3.10+ (내장 `re` 모듈 필수, uv로 가상환경과 `requirements.txt` 기반 의존성 관리)
+개발 환경: Python 3.11 (`.python-version` 기준; 미션 최소 조건은 Python 3.10 이상, 내장 `re` 모듈 필수, uv로 가상환경과 `requirements.txt` 기반 의존성 관리)
+평가 및 CI 환경: iMac 평가에 맞춰 macOS에서 Python 3.11 단일 환경 검증
 합의한 브랜치 흐름: main → develop → 이슈별 feature 브랜치 → develop 통합 → 최종 main 반영
 
 ## 1. 사용자 지시와 권한

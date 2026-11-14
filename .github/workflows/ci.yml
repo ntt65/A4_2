@@ -16,14 +16,9 @@ concurrency:
 
 jobs:
   checks:
-    name: checks (${{ matrix.os }}, Python ${{ matrix.python-version }})
-    runs-on: ${{ matrix.os }}
+    name: checks (macOS, Python 3.11)
+    runs-on: macos-latest
     timeout-minutes: 10
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-        python-version: ["3.10", "3.11"]
     env:
       UV_PYTHON_DOWNLOADS: never
       UV_NO_CACHE: "true"
@@ -37,14 +32,14 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version-file: .python-version
       - name: Set up uv
         uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
         with:
           version: "0.13.7"
           enable-cache: false
       - name: Create project environment
-        run: uv venv --python ${{ matrix.python-version }} --no-python-downloads .venv
+        run: uv venv --no-python-downloads .venv
       - name: Sync requirements
         run: uv pip sync --python .venv --allow-empty-requirements requirements.txt
       - name: Run unittest checks
