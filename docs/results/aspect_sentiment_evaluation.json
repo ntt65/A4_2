@@ -1,0 +1,3456 @@
+{
+  "metadata": {
+    "measured_at_utc": "2026-11-15T06:39:30.188447+00:00",
+    "base_commit": "3ba7b85adcb3e35ebcbff15abd43c89e7b86992f",
+    "source_state": "approved Aspect implementation working tree before local commit",
+    "python": "3.11.4",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "entry_point": "src.evaluator.evaluate_aspect_sentiment",
+    "reproduce_metrics": "uv --no-cache run --python .venv python -B -X utf8 main.py --evaluate-aspect",
+    "elapsed_seconds": 0.13493400000152178,
+    "sha256_lf": {
+      "src/aspect_sentiment.py": "d5987e6f82a97356eaf0fee1b6ca86953461df16c5af3cf8143b6ef759622f8f",
+      "src/evaluator.py": "c6a00ab3bc2d1b3d159a5f2d65b98150624e9ac4becacf86d03af98f865da841",
+      "src/sentiment.py": "6ce06d89810f63ff6fffb555b17b23ac340caec86cc13c2fe066a12a098b422f",
+      "main.py": "93c9bccf4247e8fde8cf8ae4acf11891ba1a02583e6c4c9308b05634ba1d2ae0",
+      "data/aspect_sentiment_test_cases.json": "77843d403e532b19f9b59913840e594950803a81f2ce49ffd44a24a2bc292ac6",
+      "data/sentiment_lexicon.json": "269e2e6c8809a8eecf6d9225a1db6feeb4d66b9e42c9f4d677a94b92a0d3f0c6",
+      "data/sentiment_test_cases.json": "bf417f66b571c779792ef1784d4a1f93b9f6893eeb8881a4257f09f962bb0816",
+      "data/ie_test_cases.json": "beabbb082d437046b7abb5c4f3bf1de2997baa94ac8c52fed24ee816b0e19665"
+    },
+    "dataset_note": "36 self-authored development examples including 6 known challenge cases; not an independent benchmark",
+    "test_validation": {
+      "integration": {
+        "cases": 69,
+        "passed": 68,
+        "failed": 1,
+        "elapsed_seconds": 3.254,
+        "failure": "test expected 1.5 instead of lexicon-defined 1.2 for 불편하지 않다"
+      },
+      "after_test_expectation_correction": {
+        "cases": 15,
+        "passed": 15,
+        "elapsed_seconds": 0.114
+      }
+    }
+  },
+  "case_count": 36,
+  "counts": {
+    "aspect_tp": 57,
+    "pair_tp": 52,
+    "gold": 59,
+    "predicted": 57,
+    "exact": 30
+  },
+  "aspect_detection": {
+    "precision": 1.0,
+    "recall": 0.9661016949152542,
+    "f1": 0.9827586206896551
+  },
+  "aspect_sentiment": {
+    "precision": 0.9122807017543859,
+    "recall": 0.8813559322033898,
+    "f1": 0.8965517241379309
+  },
+  "exact_match_accuracy": 0.8333333333333334,
+  "sentiment_accuracy_on_detected": 0.9122807017543859,
+  "sentiment_macro_f1": 0.8750680827886711,
+  "predictions": [
+    {
+      "text": "음식은 맛있는데 가격이 비싸요",
+      "category": "mission",
+      "expected": {
+        "음식": "positive",
+        "가격": "negative"
+      },
+      "predicted": {
+        "음식": "positive",
+        "가격": "negative"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "음식은 맛있는데 가격이 비싸요",
+        "aspects": [
+          {
+            "aspect": "음식",
+            "mentions": [
+              {
+                "text": "음식은",
+                "span": [
+                  0,
+                  3
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "음식은 맛있는데",
+                "span": [
+                  0,
+                  8
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "맛있는데",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "맛있는데",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  0,
+                  8
+                ]
+              }
+            ],
+            "final_score": 1.0,
+            "label": "positive"
+          },
+          {
+            "aspect": "가격",
+            "mentions": [
+              {
+                "text": "가격이",
+                "span": [
+                  9,
+                  12
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "가격이 비싸요",
+                "span": [
+                  9,
+                  16
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "비싸요",
+                    "base_score": -1.0,
+                    "weight": 1.0,
+                    "weighted_score": -1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": -1.0,
+                "label": "negative"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "비싸요",
+                "base_score": -1.0,
+                "weight": 1.0,
+                "weighted_score": -1.0,
+                "rules": [],
+                "segment_span": [
+                  9,
+                  16
+                ]
+              }
+            ],
+            "final_score": -1.0,
+            "label": "negative"
+          }
+        ]
+      }
+    },
+    {
+      "text": "음식은 안 맛있지만 가격은 저렴하다",
+      "category": "negation",
+      "expected": {
+        "음식": "negative",
+        "가격": "positive"
+      },
+      "predicted": {
+        "음식": "negative",
+        "가격": "positive"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "음식은 안 맛있지만 가격은 저렴하다",
+        "aspects": [
+          {
+            "aspect": "음식",
+            "mentions": [
+              {
+                "text": "음식은",
+                "span": [
+                  0,
+                  3
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "음식은 안 맛있지만",
+                "span": [
+                  0,
+                  10
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "맛있지만",
+                    "base_score": 1.0,
+                    "weight": -1.0,
+                    "weighted_score": -1.0,
+                    "rules": [
+                      "negation:안"
+                    ]
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": -1.0,
+                "label": "negative"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "맛있지만",
+                "base_score": 1.0,
+                "weight": -1.0,
+                "weighted_score": -1.0,
+                "rules": [
+                  "negation:안"
+                ],
+                "segment_span": [
+                  0,
+                  10
+                ]
+              }
+            ],
+            "final_score": -1.0,
+            "label": "negative"
+          },
+          {
+            "aspect": "가격",
+            "mentions": [
+              {
+                "text": "가격은",
+                "span": [
+                  11,
+                  14
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "가격은 저렴하다",
+                "span": [
+                  11,
+                  19
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "저렴하다",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "저렴하다",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  11,
+                  19
+                ]
+              }
+            ],
+            "final_score": 1.0,
+            "label": "positive"
+          }
+        ]
+      }
+    },
+    {
+      "text": "서비스는 친절하다. 배송은 느리다",
+      "category": "punctuation",
+      "expected": {
+        "서비스": "positive",
+        "배송": "negative"
+      },
+      "predicted": {
+        "서비스": "positive",
+        "배송": "negative"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "서비스는 친절하다. 배송은 느리다",
+        "aspects": [
+          {
+            "aspect": "서비스",
+            "mentions": [
+              {
+                "text": "서비스는",
+                "span": [
+                  0,
+                  4
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "서비스는 친절하다",
+                "span": [
+                  0,
+                  9
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "친절하다",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "친절하다",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  0,
+                  9
+                ]
+              }
+            ],
+            "final_score": 1.0,
+            "label": "positive"
+          },
+          {
+            "aspect": "배송",
+            "mentions": [
+              {
+                "text": "배송은",
+                "span": [
+                  11,
+                  14
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "배송은 느리다",
+                "span": [
+                  11,
+                  18
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "느리다",
+                    "base_score": -1.0,
+                    "weight": 1.0,
+                    "weighted_score": -1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": -1.0,
+                "label": "negative"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "느리다",
+                "base_score": -1.0,
+                "weight": 1.0,
+                "weighted_score": -1.0,
+                "rules": [],
+                "segment_span": [
+                  11,
+                  18
+                ]
+              }
+            ],
+            "final_score": -1.0,
+            "label": "negative"
+          }
+        ]
+      }
+    },
+    {
+      "text": "품질은 좋지만 가격은 비싸다",
+      "category": "contrast",
+      "expected": {
+        "품질": "positive",
+        "가격": "negative"
+      },
+      "predicted": {
+        "품질": "positive",
+        "가격": "negative"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "품질은 좋지만 가격은 비싸다",
+        "aspects": [
+          {
+            "aspect": "품질",
+            "mentions": [
+              {
+                "text": "품질은",
+                "span": [
+                  0,
+                  3
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "품질은 좋지만",
+                "span": [
+                  0,
+                  7
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "좋지만",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "좋지만",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  0,
+                  7
+                ]
+              }
+            ],
+            "final_score": 1.0,
+            "label": "positive"
+          },
+          {
+            "aspect": "가격",
+            "mentions": [
+              {
+                "text": "가격은",
+                "span": [
+                  8,
+                  11
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "가격은 비싸다",
+                "span": [
+                  8,
+                  15
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "비싸다",
+                    "base_score": -1.0,
+                    "weight": 1.0,
+                    "weighted_score": -1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": -1.0,
+                "label": "negative"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "비싸다",
+                "base_score": -1.0,
+                "weight": 1.0,
+                "weighted_score": -1.0,
+                "rules": [],
+                "segment_span": [
+                  8,
+                  15
+                ]
+              }
+            ],
+            "final_score": -1.0,
+            "label": "negative"
+          }
+        ]
+      }
+    },
+    {
+      "text": "음식은 정말 맛있다. 서비스는 안 친절하다",
+      "category": "intensifier",
+      "expected": {
+        "음식": "positive",
+        "서비스": "negative"
+      },
+      "predicted": {
+        "음식": "positive",
+        "서비스": "negative"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "음식은 정말 맛있다. 서비스는 안 친절하다",
+        "aspects": [
+          {
+            "aspect": "음식",
+            "mentions": [
+              {
+                "text": "음식은",
+                "span": [
+                  0,
+                  3
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "음식은 정말 맛있다",
+                "span": [
+                  0,
+                  10
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "맛있다",
+                    "base_score": 1.0,
+                    "weight": 1.5,
+                    "weighted_score": 1.5,
+                    "rules": [
+                      "intensifier:정말"
+                    ]
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.5,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "맛있다",
+                "base_score": 1.0,
+                "weight": 1.5,
+                "weighted_score": 1.5,
+                "rules": [
+                  "intensifier:정말"
+                ],
+                "segment_span": [
+                  0,
+                  10
+                ]
+              }
+            ],
+            "final_score": 1.5,
+            "label": "positive"
+          },
+          {
+            "aspect": "서비스",
+            "mentions": [
+              {
+                "text": "서비스는",
+                "span": [
+                  12,
+                  16
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "서비스는 안 친절하다",
+                "span": [
+                  12,
+                  23
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "친절하다",
+                    "base_score": 1.0,
+                    "weight": -1.0,
+                    "weighted_score": -1.0,
+                    "rules": [
+                      "negation:안"
+                    ]
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": -1.0,
+                "label": "negative"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "친절하다",
+                "base_score": 1.0,
+                "weight": -1.0,
+                "weighted_score": -1.0,
+                "rules": [
+                  "negation:안"
+                ],
+                "segment_span": [
+                  12,
+                  23
+                ]
+              }
+            ],
+            "final_score": -1.0,
+            "label": "negative"
+          }
+        ]
+      }
+    },
+    {
+      "text": "배송은 빠르다 가격은 저렴하다",
+      "category": "aspect_boundary",
+      "expected": {
+        "배송": "positive",
+        "가격": "positive"
+      },
+      "predicted": {
+        "배송": "positive",
+        "가격": "positive"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "배송은 빠르다 가격은 저렴하다",
+        "aspects": [
+          {
+            "aspect": "배송",
+            "mentions": [
+              {
+                "text": "배송은",
+                "span": [
+                  0,
+                  3
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "배송은 빠르다",
+                "span": [
+                  0,
+                  7
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "빠르다",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "빠르다",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  0,
+                  7
+                ]
+              }
+            ],
+            "final_score": 1.0,
+            "label": "positive"
+          },
+          {
+            "aspect": "가격",
+            "mentions": [
+              {
+                "text": "가격은",
+                "span": [
+                  8,
+                  11
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "가격은 저렴하다",
+                "span": [
+                  8,
+                  16
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "저렴하다",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "저렴하다",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  8,
+                  16
+                ]
+              }
+            ],
+            "final_score": 1.0,
+            "label": "positive"
+          }
+        ]
+      }
+    },
+    {
+      "text": "음식은 나쁘지 않다",
+      "category": "double_negation",
+      "expected": {
+        "음식": "positive"
+      },
+      "predicted": {
+        "음식": "positive"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "음식은 나쁘지 않다",
+        "aspects": [
+          {
+            "aspect": "음식",
+            "mentions": [
+              {
+                "text": "음식은",
+                "span": [
+                  0,
+                  3
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "음식은 나쁘지 않다",
+                "span": [
+                  0,
+                  10
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "나쁘지 않다",
+                    "base_score": 1.5,
+                    "weight": 1.0,
+                    "weighted_score": 1.5,
+                    "rules": [
+                      "double_negative:나쁘지 않다"
+                    ]
+                  }
+                ],
+                "rule_logs": [
+                  "double_negative:나쁘지 않다 => +1.5"
+                ],
+                "final_score": 1.5,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "나쁘지 않다",
+                "base_score": 1.5,
+                "weight": 1.0,
+                "weighted_score": 1.5,
+                "rules": [
+                  "double_negative:나쁘지 않다"
+                ],
+                "segment_span": [
+                  0,
+                  10
+                ]
+              }
+            ],
+            "final_score": 1.5,
+            "label": "positive"
+          }
+        ]
+      }
+    },
+    {
+      "text": "서비스는 친절하지 않다",
+      "category": "postposed_negation",
+      "expected": {
+        "서비스": "negative"
+      },
+      "predicted": {
+        "서비스": "negative"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "서비스는 친절하지 않다",
+        "aspects": [
+          {
+            "aspect": "서비스",
+            "mentions": [
+              {
+                "text": "서비스는",
+                "span": [
+                  0,
+                  4
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "서비스는 친절하지 않다",
+                "span": [
+                  0,
+                  12
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "친절하지",
+                    "base_score": 1.0,
+                    "weight": -1.0,
+                    "weighted_score": -1.0,
+                    "rules": [
+                      "negation:않다"
+                    ]
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": -1.0,
+                "label": "negative"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "친절하지",
+                "base_score": 1.0,
+                "weight": -1.0,
+                "weighted_score": -1.0,
+                "rules": [
+                  "negation:않다"
+                ],
+                "segment_span": [
+                  0,
+                  12
+                ]
+              }
+            ],
+            "final_score": -1.0,
+            "label": "negative"
+          }
+        ]
+      }
+    },
+    {
+      "text": "음식은 맛있지 않다. 배송은 느리지 않다",
+      "category": "postposed_negation",
+      "expected": {
+        "음식": "negative",
+        "배송": "positive"
+      },
+      "predicted": {
+        "음식": "negative",
+        "배송": "positive"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "음식은 맛있지 않다. 배송은 느리지 않다",
+        "aspects": [
+          {
+            "aspect": "음식",
+            "mentions": [
+              {
+                "text": "음식은",
+                "span": [
+                  0,
+                  3
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "음식은 맛있지 않다",
+                "span": [
+                  0,
+                  10
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "맛있지",
+                    "base_score": 1.0,
+                    "weight": -1.0,
+                    "weighted_score": -1.0,
+                    "rules": [
+                      "negation:않다"
+                    ]
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": -1.0,
+                "label": "negative"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "맛있지",
+                "base_score": 1.0,
+                "weight": -1.0,
+                "weighted_score": -1.0,
+                "rules": [
+                  "negation:않다"
+                ],
+                "segment_span": [
+                  0,
+                  10
+                ]
+              }
+            ],
+            "final_score": -1.0,
+            "label": "negative"
+          },
+          {
+            "aspect": "배송",
+            "mentions": [
+              {
+                "text": "배송은",
+                "span": [
+                  12,
+                  15
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "배송은 느리지 않다",
+                "span": [
+                  12,
+                  22
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "느리지",
+                    "base_score": -1.0,
+                    "weight": -1.0,
+                    "weighted_score": 1.0,
+                    "rules": [
+                      "negation:않다"
+                    ]
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "느리지",
+                "base_score": -1.0,
+                "weight": -1.0,
+                "weighted_score": 1.0,
+                "rules": [
+                  "negation:않다"
+                ],
+                "segment_span": [
+                  12,
+                  22
+                ]
+              }
+            ],
+            "final_score": 1.0,
+            "label": "positive"
+          }
+        ]
+      }
+    },
+    {
+      "text": "가격은 비싸지 않다",
+      "category": "postposed_negation",
+      "expected": {
+        "가격": "positive"
+      },
+      "predicted": {
+        "가격": "positive"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "가격은 비싸지 않다",
+        "aspects": [
+          {
+            "aspect": "가격",
+            "mentions": [
+              {
+                "text": "가격은",
+                "span": [
+                  0,
+                  3
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "가격은 비싸지 않다",
+                "span": [
+                  0,
+                  10
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "비싸지",
+                    "base_score": -1.0,
+                    "weight": -1.0,
+                    "weighted_score": 1.0,
+                    "rules": [
+                      "negation:않다"
+                    ]
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "비싸지",
+                "base_score": -1.0,
+                "weight": -1.0,
+                "weighted_score": 1.0,
+                "rules": [
+                  "negation:않다"
+                ],
+                "segment_span": [
+                  0,
+                  10
+                ]
+              }
+            ],
+            "final_score": 1.0,
+            "label": "positive"
+          }
+        ]
+      }
+    },
+    {
+      "text": "메뉴는 맛있다. 비용은 비싸다",
+      "category": "alias",
+      "expected": {
+        "음식": "positive",
+        "가격": "negative"
+      },
+      "predicted": {
+        "음식": "positive",
+        "가격": "negative"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "메뉴는 맛있다. 비용은 비싸다",
+        "aspects": [
+          {
+            "aspect": "음식",
+            "mentions": [
+              {
+                "text": "메뉴는",
+                "span": [
+                  0,
+                  3
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "메뉴는 맛있다",
+                "span": [
+                  0,
+                  7
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "맛있다",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "맛있다",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  0,
+                  7
+                ]
+              }
+            ],
+            "final_score": 1.0,
+            "label": "positive"
+          },
+          {
+            "aspect": "가격",
+            "mentions": [
+              {
+                "text": "비용은",
+                "span": [
+                  9,
+                  12
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "비용은 비싸다",
+                "span": [
+                  9,
+                  16
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "비싸다",
+                    "base_score": -1.0,
+                    "weight": 1.0,
+                    "weighted_score": -1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": -1.0,
+                "label": "negative"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "비싸다",
+                "base_score": -1.0,
+                "weight": 1.0,
+                "weighted_score": -1.0,
+                "rules": [],
+                "segment_span": [
+                  9,
+                  16
+                ]
+              }
+            ],
+            "final_score": -1.0,
+            "label": "negative"
+          }
+        ]
+      }
+    },
+    {
+      "text": "응대가 친절하다. 배달은 빠르다",
+      "category": "alias",
+      "expected": {
+        "서비스": "positive",
+        "배송": "positive"
+      },
+      "predicted": {
+        "서비스": "positive",
+        "배송": "positive"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "응대가 친절하다. 배달은 빠르다",
+        "aspects": [
+          {
+            "aspect": "서비스",
+            "mentions": [
+              {
+                "text": "응대가",
+                "span": [
+                  0,
+                  3
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "응대가 친절하다",
+                "span": [
+                  0,
+                  8
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "친절하다",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "친절하다",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  0,
+                  8
+                ]
+              }
+            ],
+            "final_score": 1.0,
+            "label": "positive"
+          },
+          {
+            "aspect": "배송",
+            "mentions": [
+              {
+                "text": "배달은",
+                "span": [
+                  10,
+                  13
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "배달은 빠르다",
+                "span": [
+                  10,
+                  17
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "빠르다",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "빠르다",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  10,
+                  17
+                ]
+              }
+            ],
+            "final_score": 1.0,
+            "label": "positive"
+          }
+        ]
+      }
+    },
+    {
+      "text": "성능은 좋다. 요금은 저렴하다",
+      "category": "alias",
+      "expected": {
+        "품질": "positive",
+        "가격": "positive"
+      },
+      "predicted": {
+        "품질": "positive",
+        "가격": "positive"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "성능은 좋다. 요금은 저렴하다",
+        "aspects": [
+          {
+            "aspect": "품질",
+            "mentions": [
+              {
+                "text": "성능은",
+                "span": [
+                  0,
+                  3
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "성능은 좋다",
+                "span": [
+                  0,
+                  6
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "좋다",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "좋다",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  0,
+                  6
+                ]
+              }
+            ],
+            "final_score": 1.0,
+            "label": "positive"
+          },
+          {
+            "aspect": "가격",
+            "mentions": [
+              {
+                "text": "요금은",
+                "span": [
+                  8,
+                  11
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "요금은 저렴하다",
+                "span": [
+                  8,
+                  16
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "저렴하다",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "저렴하다",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  8,
+                  16
+                ]
+              }
+            ],
+            "final_score": 1.0,
+            "label": "positive"
+          }
+        ]
+      }
+    },
+    {
+      "text": "내구성은 나쁘다. 택배가 느리다",
+      "category": "alias",
+      "expected": {
+        "품질": "negative",
+        "배송": "negative"
+      },
+      "predicted": {
+        "품질": "negative",
+        "배송": "negative"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "내구성은 나쁘다. 택배가 느리다",
+        "aspects": [
+          {
+            "aspect": "품질",
+            "mentions": [
+              {
+                "text": "내구성은",
+                "span": [
+                  0,
+                  4
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "내구성은 나쁘다",
+                "span": [
+                  0,
+                  8
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "나쁘다",
+                    "base_score": -1.0,
+                    "weight": 1.0,
+                    "weighted_score": -1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": -1.0,
+                "label": "negative"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "나쁘다",
+                "base_score": -1.0,
+                "weight": 1.0,
+                "weighted_score": -1.0,
+                "rules": [],
+                "segment_span": [
+                  0,
+                  8
+                ]
+              }
+            ],
+            "final_score": -1.0,
+            "label": "negative"
+          },
+          {
+            "aspect": "배송",
+            "mentions": [
+              {
+                "text": "택배가",
+                "span": [
+                  10,
+                  13
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "택배가 느리다",
+                "span": [
+                  10,
+                  17
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "느리다",
+                    "base_score": -1.0,
+                    "weight": 1.0,
+                    "weighted_score": -1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": -1.0,
+                "label": "negative"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "느리다",
+                "base_score": -1.0,
+                "weight": 1.0,
+                "weighted_score": -1.0,
+                "rules": [],
+                "segment_span": [
+                  10,
+                  17
+                ]
+              }
+            ],
+            "final_score": -1.0,
+            "label": "negative"
+          }
+        ]
+      }
+    },
+    {
+      "text": "직원은 불친절하다. 가성비는 좋다",
+      "category": "alias",
+      "expected": {
+        "서비스": "negative",
+        "가격": "positive"
+      },
+      "predicted": {
+        "서비스": "negative",
+        "가격": "positive"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "직원은 불친절하다. 가성비는 좋다",
+        "aspects": [
+          {
+            "aspect": "서비스",
+            "mentions": [
+              {
+                "text": "직원은",
+                "span": [
+                  0,
+                  3
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "직원은 불친절하다",
+                "span": [
+                  0,
+                  9
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "불친절하다",
+                    "base_score": -1.0,
+                    "weight": 1.0,
+                    "weighted_score": -1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": -1.0,
+                "label": "negative"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "불친절하다",
+                "base_score": -1.0,
+                "weight": 1.0,
+                "weighted_score": -1.0,
+                "rules": [],
+                "segment_span": [
+                  0,
+                  9
+                ]
+              }
+            ],
+            "final_score": -1.0,
+            "label": "negative"
+          },
+          {
+            "aspect": "가격",
+            "mentions": [
+              {
+                "text": "가성비는",
+                "span": [
+                  11,
+                  15
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "가성비는 좋다",
+                "span": [
+                  11,
+                  18
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "좋다",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "좋다",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  11,
+                  18
+                ]
+              }
+            ],
+            "final_score": 1.0,
+            "label": "positive"
+          }
+        ]
+      }
+    },
+    {
+      "text": "음식과 서비스가 좋다",
+      "category": "coordination",
+      "expected": {
+        "음식": "positive",
+        "서비스": "positive"
+      },
+      "predicted": {
+        "음식": "positive",
+        "서비스": "positive"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "음식과 서비스가 좋다",
+        "aspects": [
+          {
+            "aspect": "음식",
+            "mentions": [
+              {
+                "text": "음식과",
+                "span": [
+                  0,
+                  3
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "음식과 서비스가 좋다",
+                "span": [
+                  0,
+                  11
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "좋다",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "좋다",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  0,
+                  11
+                ]
+              }
+            ],
+            "final_score": 1.0,
+            "label": "positive"
+          },
+          {
+            "aspect": "서비스",
+            "mentions": [
+              {
+                "text": "서비스가",
+                "span": [
+                  4,
+                  8
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "음식과 서비스가 좋다",
+                "span": [
+                  0,
+                  11
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "좋다",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "좋다",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  0,
+                  11
+                ]
+              }
+            ],
+            "final_score": 1.0,
+            "label": "positive"
+          }
+        ]
+      }
+    },
+    {
+      "text": "배송 및 품질이 안 좋다",
+      "category": "coordination",
+      "expected": {
+        "배송": "negative",
+        "품질": "negative"
+      },
+      "predicted": {
+        "배송": "negative",
+        "품질": "negative"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "배송 및 품질이 안 좋다",
+        "aspects": [
+          {
+            "aspect": "배송",
+            "mentions": [
+              {
+                "text": "배송",
+                "span": [
+                  0,
+                  2
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "배송 및 품질이 안 좋다",
+                "span": [
+                  0,
+                  13
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "좋다",
+                    "base_score": 1.0,
+                    "weight": -1.0,
+                    "weighted_score": -1.0,
+                    "rules": [
+                      "negation:안"
+                    ]
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": -1.0,
+                "label": "negative"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "좋다",
+                "base_score": 1.0,
+                "weight": -1.0,
+                "weighted_score": -1.0,
+                "rules": [
+                  "negation:안"
+                ],
+                "segment_span": [
+                  0,
+                  13
+                ]
+              }
+            ],
+            "final_score": -1.0,
+            "label": "negative"
+          },
+          {
+            "aspect": "품질",
+            "mentions": [
+              {
+                "text": "품질이",
+                "span": [
+                  5,
+                  8
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "배송 및 품질이 안 좋다",
+                "span": [
+                  0,
+                  13
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "좋다",
+                    "base_score": 1.0,
+                    "weight": -1.0,
+                    "weighted_score": -1.0,
+                    "rules": [
+                      "negation:안"
+                    ]
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": -1.0,
+                "label": "negative"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "좋다",
+                "base_score": 1.0,
+                "weight": -1.0,
+                "weighted_score": -1.0,
+                "rules": [
+                  "negation:안"
+                ],
+                "segment_span": [
+                  0,
+                  13
+                ]
+              }
+            ],
+            "final_score": -1.0,
+            "label": "negative"
+          }
+        ]
+      }
+    },
+    {
+      "text": "가격과 품질과 서비스가 좋다",
+      "category": "coordination",
+      "expected": {
+        "가격": "positive",
+        "품질": "positive",
+        "서비스": "positive"
+      },
+      "predicted": {
+        "가격": "positive",
+        "품질": "positive",
+        "서비스": "positive"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "가격과 품질과 서비스가 좋다",
+        "aspects": [
+          {
+            "aspect": "가격",
+            "mentions": [
+              {
+                "text": "가격과",
+                "span": [
+                  0,
+                  3
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "가격과 품질과 서비스가 좋다",
+                "span": [
+                  0,
+                  15
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "좋다",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "좋다",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  0,
+                  15
+                ]
+              }
+            ],
+            "final_score": 1.0,
+            "label": "positive"
+          },
+          {
+            "aspect": "품질",
+            "mentions": [
+              {
+                "text": "품질과",
+                "span": [
+                  4,
+                  7
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "가격과 품질과 서비스가 좋다",
+                "span": [
+                  0,
+                  15
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "좋다",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "좋다",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  0,
+                  15
+                ]
+              }
+            ],
+            "final_score": 1.0,
+            "label": "positive"
+          },
+          {
+            "aspect": "서비스",
+            "mentions": [
+              {
+                "text": "서비스가",
+                "span": [
+                  8,
+                  12
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "가격과 품질과 서비스가 좋다",
+                "span": [
+                  0,
+                  15
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "좋다",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "좋다",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  0,
+                  15
+                ]
+              }
+            ],
+            "final_score": 1.0,
+            "label": "positive"
+          }
+        ]
+      }
+    },
+    {
+      "text": "서비스는 친절하고 가격은 비싸다",
+      "category": "aspect_boundary",
+      "expected": {
+        "서비스": "positive",
+        "가격": "negative"
+      },
+      "predicted": {
+        "서비스": "positive",
+        "가격": "negative"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "서비스는 친절하고 가격은 비싸다",
+        "aspects": [
+          {
+            "aspect": "서비스",
+            "mentions": [
+              {
+                "text": "서비스는",
+                "span": [
+                  0,
+                  4
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "서비스는 친절하고",
+                "span": [
+                  0,
+                  9
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "친절하고",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "친절하고",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  0,
+                  9
+                ]
+              }
+            ],
+            "final_score": 1.0,
+            "label": "positive"
+          },
+          {
+            "aspect": "가격",
+            "mentions": [
+              {
+                "text": "가격은",
+                "span": [
+                  10,
+                  13
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "가격은 비싸다",
+                "span": [
+                  10,
+                  17
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "비싸다",
+                    "base_score": -1.0,
+                    "weight": 1.0,
+                    "weighted_score": -1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": -1.0,
+                "label": "negative"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "비싸다",
+                "base_score": -1.0,
+                "weight": 1.0,
+                "weighted_score": -1.0,
+                "rules": [],
+                "segment_span": [
+                  10,
+                  17
+                ]
+              }
+            ],
+            "final_score": -1.0,
+            "label": "negative"
+          }
+        ]
+      }
+    },
+    {
+      "text": "음식은 좋다. 메뉴는 나쁘다",
+      "category": "repeated_aspect",
+      "expected": {
+        "음식": "neutral"
+      },
+      "predicted": {
+        "음식": "neutral"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "음식은 좋다. 메뉴는 나쁘다",
+        "aspects": [
+          {
+            "aspect": "음식",
+            "mentions": [
+              {
+                "text": "음식은",
+                "span": [
+                  0,
+                  3
+                ]
+              },
+              {
+                "text": "메뉴는",
+                "span": [
+                  8,
+                  11
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "음식은 좋다",
+                "span": [
+                  0,
+                  6
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "좋다",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              },
+              {
+                "text": "메뉴는 나쁘다",
+                "span": [
+                  8,
+                  15
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "나쁘다",
+                    "base_score": -1.0,
+                    "weight": 1.0,
+                    "weighted_score": -1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": -1.0,
+                "label": "negative"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "좋다",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  0,
+                  6
+                ]
+              },
+              {
+                "token": "나쁘다",
+                "base_score": -1.0,
+                "weight": 1.0,
+                "weighted_score": -1.0,
+                "rules": [],
+                "segment_span": [
+                  8,
+                  15
+                ]
+              }
+            ],
+            "final_score": 0.0,
+            "label": "neutral"
+          }
+        ]
+      }
+    },
+    {
+      "text": "배송은 빠르다. 택배는 좋다",
+      "category": "repeated_aspect",
+      "expected": {
+        "배송": "positive"
+      },
+      "predicted": {
+        "배송": "positive"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "배송은 빠르다. 택배는 좋다",
+        "aspects": [
+          {
+            "aspect": "배송",
+            "mentions": [
+              {
+                "text": "배송은",
+                "span": [
+                  0,
+                  3
+                ]
+              },
+              {
+                "text": "택배는",
+                "span": [
+                  9,
+                  12
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "배송은 빠르다",
+                "span": [
+                  0,
+                  7
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "빠르다",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              },
+              {
+                "text": "택배는 좋다",
+                "span": [
+                  9,
+                  15
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "좋다",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "빠르다",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  0,
+                  7
+                ]
+              },
+              {
+                "token": "좋다",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  9,
+                  15
+                ]
+              }
+            ],
+            "final_score": 2.0,
+            "label": "positive"
+          }
+        ]
+      }
+    },
+    {
+      "text": "음식은 주문했다. 가격은 확인했다",
+      "category": "neutral",
+      "expected": {
+        "음식": "neutral",
+        "가격": "neutral"
+      },
+      "predicted": {
+        "음식": "neutral",
+        "가격": "neutral"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "음식은 주문했다. 가격은 확인했다",
+        "aspects": [
+          {
+            "aspect": "음식",
+            "mentions": [
+              {
+                "text": "음식은",
+                "span": [
+                  0,
+                  3
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "음식은 주문했다",
+                "span": [
+                  0,
+                  8
+                ],
+                "detected_sentiments": [],
+                "rule_logs": [],
+                "final_score": 0.0,
+                "label": "neutral"
+              }
+            ],
+            "detected_sentiments": [],
+            "final_score": 0.0,
+            "label": "neutral"
+          },
+          {
+            "aspect": "가격",
+            "mentions": [
+              {
+                "text": "가격은",
+                "span": [
+                  10,
+                  13
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "가격은 확인했다",
+                "span": [
+                  10,
+                  18
+                ],
+                "detected_sentiments": [],
+                "rule_logs": [],
+                "final_score": 0.0,
+                "label": "neutral"
+              }
+            ],
+            "detected_sentiments": [],
+            "final_score": 0.0,
+            "label": "neutral"
+          }
+        ]
+      }
+    },
+    {
+      "text": "품질은 확인 중이다",
+      "category": "neutral",
+      "expected": {
+        "품질": "neutral"
+      },
+      "predicted": {
+        "품질": "neutral"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "품질은 확인 중이다",
+        "aspects": [
+          {
+            "aspect": "품질",
+            "mentions": [
+              {
+                "text": "품질은",
+                "span": [
+                  0,
+                  3
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "품질은 확인 중이다",
+                "span": [
+                  0,
+                  10
+                ],
+                "detected_sentiments": [],
+                "rule_logs": [],
+                "final_score": 0.0,
+                "label": "neutral"
+              }
+            ],
+            "detected_sentiments": [],
+            "final_score": 0.0,
+            "label": "neutral"
+          }
+        ]
+      }
+    },
+    {
+      "text": "음식은 안 정말 맛있다. 서비스는 정말 친절하다",
+      "category": "intensifier",
+      "expected": {
+        "음식": "negative",
+        "서비스": "positive"
+      },
+      "predicted": {
+        "음식": "negative",
+        "서비스": "positive"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "음식은 안 정말 맛있다. 서비스는 정말 친절하다",
+        "aspects": [
+          {
+            "aspect": "음식",
+            "mentions": [
+              {
+                "text": "음식은",
+                "span": [
+                  0,
+                  3
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "음식은 안 정말 맛있다",
+                "span": [
+                  0,
+                  12
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "맛있다",
+                    "base_score": 1.0,
+                    "weight": -1.5,
+                    "weighted_score": -1.5,
+                    "rules": [
+                      "intensifier:정말",
+                      "negation:안"
+                    ]
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": -1.5,
+                "label": "negative"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "맛있다",
+                "base_score": 1.0,
+                "weight": -1.5,
+                "weighted_score": -1.5,
+                "rules": [
+                  "intensifier:정말",
+                  "negation:안"
+                ],
+                "segment_span": [
+                  0,
+                  12
+                ]
+              }
+            ],
+            "final_score": -1.5,
+            "label": "negative"
+          },
+          {
+            "aspect": "서비스",
+            "mentions": [
+              {
+                "text": "서비스는",
+                "span": [
+                  14,
+                  18
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "서비스는 정말 친절하다",
+                "span": [
+                  14,
+                  26
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "친절하다",
+                    "base_score": 1.0,
+                    "weight": 1.5,
+                    "weighted_score": 1.5,
+                    "rules": [
+                      "intensifier:정말"
+                    ]
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.5,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "친절하다",
+                "base_score": 1.0,
+                "weight": 1.5,
+                "weighted_score": 1.5,
+                "rules": [
+                  "intensifier:정말"
+                ],
+                "segment_span": [
+                  14,
+                  26
+                ]
+              }
+            ],
+            "final_score": 1.5,
+            "label": "positive"
+          }
+        ]
+      }
+    },
+    {
+      "text": "음식점은 좋다. 가격표는 비싸다. 배송지는 확인했다",
+      "category": "noun_boundary",
+      "expected": {},
+      "predicted": {},
+      "exact_match": true,
+      "analysis": {
+        "text": "음식점은 좋다. 가격표는 비싸다. 배송지는 확인했다",
+        "aspects": []
+      }
+    },
+    {
+      "text": "주차는 좋다",
+      "category": "unsupported_aspect",
+      "expected": {},
+      "predicted": {},
+      "exact_match": true,
+      "analysis": {
+        "text": "주차는 좋다",
+        "aspects": []
+      }
+    },
+    {
+      "text": "음식과 메뉴가 좋다",
+      "category": "duplicate_alias",
+      "expected": {
+        "음식": "positive"
+      },
+      "predicted": {
+        "음식": "positive"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "음식과 메뉴가 좋다",
+        "aspects": [
+          {
+            "aspect": "음식",
+            "mentions": [
+              {
+                "text": "음식과",
+                "span": [
+                  0,
+                  3
+                ]
+              },
+              {
+                "text": "메뉴가",
+                "span": [
+                  4,
+                  7
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "음식과 메뉴가 좋다",
+                "span": [
+                  0,
+                  10
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "좋다",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "좋다",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  0,
+                  10
+                ]
+              }
+            ],
+            "final_score": 1.0,
+            "label": "positive"
+          }
+        ]
+      }
+    },
+    {
+      "text": "음식은 맛있다\n가격은 비싸다",
+      "category": "punctuation",
+      "expected": {
+        "음식": "positive",
+        "가격": "negative"
+      },
+      "predicted": {
+        "음식": "positive",
+        "가격": "negative"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "음식은 맛있다\n가격은 비싸다",
+        "aspects": [
+          {
+            "aspect": "음식",
+            "mentions": [
+              {
+                "text": "음식은",
+                "span": [
+                  0,
+                  3
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "음식은 맛있다",
+                "span": [
+                  0,
+                  7
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "맛있다",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "맛있다",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  0,
+                  7
+                ]
+              }
+            ],
+            "final_score": 1.0,
+            "label": "positive"
+          },
+          {
+            "aspect": "가격",
+            "mentions": [
+              {
+                "text": "가격은",
+                "span": [
+                  8,
+                  11
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "가격은 비싸다",
+                "span": [
+                  8,
+                  15
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "비싸다",
+                    "base_score": -1.0,
+                    "weight": 1.0,
+                    "weighted_score": -1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": -1.0,
+                "label": "negative"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "비싸다",
+                "base_score": -1.0,
+                "weight": 1.0,
+                "weighted_score": -1.0,
+                "rules": [],
+                "segment_span": [
+                  8,
+                  15
+                ]
+              }
+            ],
+            "final_score": -1.0,
+            "label": "negative"
+          }
+        ]
+      }
+    },
+    {
+      "text": "맛있지만 비싸다",
+      "category": "challenge_implicit_aspect",
+      "expected": {
+        "음식": "positive",
+        "가격": "negative"
+      },
+      "predicted": {},
+      "exact_match": false,
+      "analysis": {
+        "text": "맛있지만 비싸다",
+        "aspects": []
+      }
+    },
+    {
+      "text": "배송은 빠르다. 그것은 느리다",
+      "category": "challenge_coreference",
+      "expected": {
+        "배송": "neutral"
+      },
+      "predicted": {
+        "배송": "positive"
+      },
+      "exact_match": false,
+      "analysis": {
+        "text": "배송은 빠르다. 그것은 느리다",
+        "aspects": [
+          {
+            "aspect": "배송",
+            "mentions": [
+              {
+                "text": "배송은",
+                "span": [
+                  0,
+                  3
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "배송은 빠르다",
+                "span": [
+                  0,
+                  7
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "빠르다",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "빠르다",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  0,
+                  7
+                ]
+              }
+            ],
+            "final_score": 1.0,
+            "label": "positive"
+          }
+        ]
+      }
+    },
+    {
+      "text": "음식, 서비스가 좋다",
+      "category": "challenge_comma_coordination",
+      "expected": {
+        "음식": "positive",
+        "서비스": "positive"
+      },
+      "predicted": {
+        "음식": "neutral",
+        "서비스": "positive"
+      },
+      "exact_match": false,
+      "analysis": {
+        "text": "음식, 서비스가 좋다",
+        "aspects": [
+          {
+            "aspect": "음식",
+            "mentions": [
+              {
+                "text": "음식",
+                "span": [
+                  0,
+                  2
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "음식",
+                "span": [
+                  0,
+                  2
+                ],
+                "detected_sentiments": [],
+                "rule_logs": [],
+                "final_score": 0.0,
+                "label": "neutral"
+              }
+            ],
+            "detected_sentiments": [],
+            "final_score": 0.0,
+            "label": "neutral"
+          },
+          {
+            "aspect": "서비스",
+            "mentions": [
+              {
+                "text": "서비스가",
+                "span": [
+                  4,
+                  8
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "서비스가 좋다",
+                "span": [
+                  4,
+                  11
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "좋다",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "좋다",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  4,
+                  11
+                ]
+              }
+            ],
+            "final_score": 1.0,
+            "label": "positive"
+          }
+        ]
+      }
+    },
+    {
+      "text": "맛있는 음식과 친절한 서비스",
+      "category": "challenge_preposed_sentiment",
+      "expected": {
+        "음식": "positive",
+        "서비스": "positive"
+      },
+      "predicted": {
+        "음식": "positive",
+        "서비스": "neutral"
+      },
+      "exact_match": false,
+      "analysis": {
+        "text": "맛있는 음식과 친절한 서비스",
+        "aspects": [
+          {
+            "aspect": "음식",
+            "mentions": [
+              {
+                "text": "음식과",
+                "span": [
+                  4,
+                  7
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "음식과 친절한",
+                "span": [
+                  4,
+                  11
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "친절한",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "친절한",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  4,
+                  11
+                ]
+              }
+            ],
+            "final_score": 1.0,
+            "label": "positive"
+          },
+          {
+            "aspect": "서비스",
+            "mentions": [
+              {
+                "text": "서비스",
+                "span": [
+                  12,
+                  15
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "서비스",
+                "span": [
+                  12,
+                  15
+                ],
+                "detected_sentiments": [],
+                "rule_logs": [],
+                "final_score": 0.0,
+                "label": "neutral"
+              }
+            ],
+            "detected_sentiments": [],
+            "final_score": 0.0,
+            "label": "neutral"
+          }
+        ]
+      }
+    },
+    {
+      "text": "서비스는 참 친절하다, 두 시간을 기다리게 하다니",
+      "category": "challenge_sarcasm",
+      "expected": {
+        "서비스": "negative"
+      },
+      "predicted": {
+        "서비스": "positive"
+      },
+      "exact_match": false,
+      "analysis": {
+        "text": "서비스는 참 친절하다, 두 시간을 기다리게 하다니",
+        "aspects": [
+          {
+            "aspect": "서비스",
+            "mentions": [
+              {
+                "text": "서비스는",
+                "span": [
+                  0,
+                  4
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "서비스는 참 친절하다",
+                "span": [
+                  0,
+                  11
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "친절하다",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "친절하다",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  0,
+                  11
+                ]
+              }
+            ],
+            "final_score": 1.0,
+            "label": "positive"
+          }
+        ]
+      }
+    },
+    {
+      "text": "음식은 좋고 주차는 나쁘다",
+      "category": "challenge_unknown_subject",
+      "expected": {
+        "음식": "positive"
+      },
+      "predicted": {
+        "음식": "neutral"
+      },
+      "exact_match": false,
+      "analysis": {
+        "text": "음식은 좋고 주차는 나쁘다",
+        "aspects": [
+          {
+            "aspect": "음식",
+            "mentions": [
+              {
+                "text": "음식은",
+                "span": [
+                  0,
+                  3
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "음식은 좋고 주차는 나쁘다",
+                "span": [
+                  0,
+                  14
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "좋고",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  },
+                  {
+                    "token": "나쁘다",
+                    "base_score": -1.0,
+                    "weight": 1.0,
+                    "weighted_score": -1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 0.0,
+                "label": "neutral"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "좋고",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  0,
+                  14
+                ]
+              },
+              {
+                "token": "나쁘다",
+                "base_score": -1.0,
+                "weight": 1.0,
+                "weighted_score": -1.0,
+                "rules": [],
+                "segment_span": [
+                  0,
+                  14
+                ]
+              }
+            ],
+            "final_score": 0.0,
+            "label": "neutral"
+          }
+        ]
+      }
+    },
+    {
+      "text": "가격은 확인했다. 음식은 주문했다",
+      "category": "neutral",
+      "expected": {
+        "가격": "neutral",
+        "음식": "neutral"
+      },
+      "predicted": {
+        "가격": "neutral",
+        "음식": "neutral"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "가격은 확인했다. 음식은 주문했다",
+        "aspects": [
+          {
+            "aspect": "가격",
+            "mentions": [
+              {
+                "text": "가격은",
+                "span": [
+                  0,
+                  3
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "가격은 확인했다",
+                "span": [
+                  0,
+                  8
+                ],
+                "detected_sentiments": [],
+                "rule_logs": [],
+                "final_score": 0.0,
+                "label": "neutral"
+              }
+            ],
+            "detected_sentiments": [],
+            "final_score": 0.0,
+            "label": "neutral"
+          },
+          {
+            "aspect": "음식",
+            "mentions": [
+              {
+                "text": "음식은",
+                "span": [
+                  10,
+                  13
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "음식은 주문했다",
+                "span": [
+                  10,
+                  18
+                ],
+                "detected_sentiments": [],
+                "rule_logs": [],
+                "final_score": 0.0,
+                "label": "neutral"
+              }
+            ],
+            "detected_sentiments": [],
+            "final_score": 0.0,
+            "label": "neutral"
+          }
+        ]
+      }
+    },
+    {
+      "text": "음식과 서비스가 좋지만 서비스는 불친절하다",
+      "category": "repeated_coordination",
+      "expected": {
+        "음식": "positive",
+        "서비스": "neutral"
+      },
+      "predicted": {
+        "음식": "positive",
+        "서비스": "neutral"
+      },
+      "exact_match": true,
+      "analysis": {
+        "text": "음식과 서비스가 좋지만 서비스는 불친절하다",
+        "aspects": [
+          {
+            "aspect": "음식",
+            "mentions": [
+              {
+                "text": "음식과",
+                "span": [
+                  0,
+                  3
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "음식과 서비스가 좋지만",
+                "span": [
+                  0,
+                  12
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "좋지만",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "좋지만",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  0,
+                  12
+                ]
+              }
+            ],
+            "final_score": 1.0,
+            "label": "positive"
+          },
+          {
+            "aspect": "서비스",
+            "mentions": [
+              {
+                "text": "서비스가",
+                "span": [
+                  4,
+                  8
+                ]
+              },
+              {
+                "text": "서비스는",
+                "span": [
+                  13,
+                  17
+                ]
+              }
+            ],
+            "segments": [
+              {
+                "text": "음식과 서비스가 좋지만",
+                "span": [
+                  0,
+                  12
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "좋지만",
+                    "base_score": 1.0,
+                    "weight": 1.0,
+                    "weighted_score": 1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": 1.0,
+                "label": "positive"
+              },
+              {
+                "text": "서비스는 불친절하다",
+                "span": [
+                  13,
+                  23
+                ],
+                "detected_sentiments": [
+                  {
+                    "token": "불친절하다",
+                    "base_score": -1.0,
+                    "weight": 1.0,
+                    "weighted_score": -1.0,
+                    "rules": []
+                  }
+                ],
+                "rule_logs": [],
+                "final_score": -1.0,
+                "label": "negative"
+              }
+            ],
+            "detected_sentiments": [
+              {
+                "token": "좋지만",
+                "base_score": 1.0,
+                "weight": 1.0,
+                "weighted_score": 1.0,
+                "rules": [],
+                "segment_span": [
+                  0,
+                  12
+                ]
+              },
+              {
+                "token": "불친절하다",
+                "base_score": -1.0,
+                "weight": 1.0,
+                "weighted_score": -1.0,
+                "rules": [],
+                "segment_span": [
+                  13,
+                  23
+                ]
+              }
+            ],
+            "final_score": 0.0,
+            "label": "neutral"
+          }
+        ]
+      }
+    }
+  ]
+}

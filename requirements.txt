@@ -1,0 +1,4 @@
+# Project environment: Python 3.11; mission minimum: Python 3.10+.
+# Runtime and unittest checks use only the standard library.
+# Sync the project environment with uv:
+# uv pip sync --python .venv --allow-empty-requirements requirements.txt

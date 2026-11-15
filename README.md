@@ -1,124 +1,107 @@
-# Rule-based NLP Pipeline (Python 3.10+)
+# Rule-based NLP Pipeline (Python 3.11)
 
-규칙 기반 자연어 처리 파이프라인으로 **정보 추출(IE)** 과 **감성 분석**을 통합 실행합니다.
+규칙 기반 정보 추출과 감성 분석을 통합 실행합니다. [미션](docs/A4_2_mission.md)의 필수 요구사항을 구현했으며 외부 패키지 없이 Python 표준 라이브러리만 사용합니다.
+
+## 설치와 실행
+
+Python 3.11과 uv가 필요합니다. 평가 대상은 iMac의 macOS·Python 3.11이며, 이번 로컬 구현 검증은 Windows·Python 3.11.4에서 수행했습니다. 저장소 루트에서 실행합니다.
+
+```shell
+uv venv --no-python-downloads .venv
+uv pip sync --python .venv --allow-empty-requirements requirements.txt
+uv run --python .venv python -B -X utf8 main.py --text "문의는 USER@EXAMPLE.COM, 연락처 010 1234 5678, 서비스는 정말 좋다"
+uv run --python .venv python -B -X utf8 main.py --text "주소 서울 강남구 테헤란로 123 101동 202호, 연락처 02-123-4567, 주민번호 900101-1234567, 카드 1234-5678-9012-3456" --mask
+uv run --python .venv python -B -X utf8 main.py --evaluate-all
+uv run --python .venv python -B -X utf8 main.py --compare-sentiment
+uv run --python .venv python -B -X utf8 main.py --text "음식은 맛있는데 가격이 비싸요" --aspect
+uv run --python .venv python -B -X utf8 main.py --evaluate-aspect
+uv run --python .venv python -B -X utf8 main.py --text "배송이 늦었는데 참 빠르네요" --contextual
+uv run --python .venv python -B -X utf8 main.py --evaluate-contextual
+uv run --python .venv python -B -X utf8 -m unittest discover -s tests -v
+```
+
+가상환경 활성화는 필요하지 않습니다. `requirements.txt`는 외부 의존성이 없는 빈 목록이며 미션 제출물로 유지합니다. `.python-version`은 3.11입니다. 캐시 접근이 제한된 환경에서는 위 uv 명령에 `--no-cache`를 추가합니다. 평가를 나누려면 `--evaluate-ie` 또는 `--evaluate-sentiment`를 사용합니다.
+
+`--aspect`는 `--text`의 기존 분석 뒤에 측면별 결과를 추가합니다. `--mask`와 함께 쓰면 가려진 문장을 분석합니다. `--evaluate-all`은 기존 정보 추출·문장 감성 평가이며, 별도 측면 자료는 `--evaluate-aspect`로 평가합니다.
+
+`--contextual`은 기존 분석 뒤에 명시적 반어·인용·최종 의사 규칙의 결과를 추가합니다. `--mask` 적용 문장을 사용합니다. `--evaluate-contextual`은 기존 160문장과 별도 도전 자료 36문장에서 기존 규칙과 문맥 규칙을 비교합니다. 기존 분석과 Aspect의 동작은 유지합니다.
 
 ## 프로젝트 구조
 
 ```text
-src/
-  extractor.py      # 정규표현식 기반 정보 추출/정규화
-  sentiment.py      # 감성 사전 기반 점수 계산 + 규칙 처리
-  evaluator.py      # IE/감성 평가 (정밀도/재현율/정확도/F1)
-  masking.py        # (보너스) 개인정보 마스킹
-
-data/
-  sentiment_lexicon.json      # 일반 감성 200+, 도메인 30+, 부정어/강조어
-  ie_test_cases.json          # 패턴별 10문장 이상, 총 50개
-  sentiment_test_cases.json   # 라벨 포함 100개+
-
-main.py
-requirements.txt
-README.md
+main.py                         # 분석·마스킹·평가 CLI
+src/extractor.py                # 내장 re 기반 5종 정보·국내 주소 추출·정규화
+src/masking.py                  # 추출 후 전화·주민번호·카드·주소 표시 마스킹
+src/sentiment.py                # 사전·표면형·부정·강조·이중부정
+src/aspect_sentiment.py         # 명시적 측면·절별 감성·근거·원문 구간
+src/contextual_sentiment.py     # 선택 반어·인용 제외·최종 의사/결과
+src/evaluator.py                # Precision / Recall / Accuracy / Macro F1
+src/tfidf.py                    # 학습 자료만으로 TF-IDF·코사인 중심 분류
+src/sentiment_experiment.py     # 10·100·1000개, 5개 시드 비교·원자료 저장
+data/ie_test_cases.json         # 기존 정답 50문장, 패턴별 10문장
+data/sentiment_lexicon.json     # 일반 207개 + 도메인 36개
+data/sentiment_test_cases.json  # 라벨을 고정한 고유 160문장
+data/sentiment_train_cases.json # 별도 합성 학습 1008문장·생성 템플릿
+data/aspect_sentiment_test_cases.json # 측면별 정답 36문장·59개, 도전 사례 포함
+data/contextual_sentiment_test_cases.json # 문맥 개발 평가 36문장·정상 대조군·알려진 한계
+data/archive/                  # 수정 전 두 감성 JSON의 바이트 원본
+tests/                         # CLI·추출·마스킹·감성·평가 회귀 검증
+docs/extraction.md             # 정규식 설계·실제 추출 실패 5건
+docs/sentiment.md              # 출처·구축 기준·실제 오분류 25건
+docs/results/baseline.json     # 구현 전 측정 원자료
+docs/results/final.json        # 최종 문장별 결과·해시·실행 조건
+docs/results/tfidf_comparison.json # TF-IDF 15개 실험·표본·예측·해시
+docs/results/aspect_sentiment_evaluation.json # 측면별 정답·예측·실행 조건·해시
+docs/results/contextual_sentiment_evaluation.json # 문맥 규칙 전후 예측·실행 조건·해시
+docs/report.md                 # 요구사항별 완료·검증 보고서
 ```
 
-## 설치
+## 데이터와 규칙
 
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
+- 정보 추출: 이메일·전화·날짜·금액·URL마다 3가지 이상 표기를 처리합니다. 날짜는 ISO 8601, 전화는 하이픈 형식, 금액은 정수로 정규화하고 정렬·중복 제거합니다. `$49.9`는 기존 정답과 같이 49로 변환하며 환율 변환은 하지 않습니다. `1억 2천만원`과 `3천5백만원`, 복수 금액을 지원합니다. 일반 숫자·수량·URL 속 숫자의 금액 오탐을 막고 URL 쿼리·fragment를 보존합니다.
+- 주소 추출은 시·도부터 표기한 국내 도로명·지번 주소와 숫자 동·층·호를 처리합니다. 예를 들어 `경기도 성남시 분당구 판교역로 166 101동 1203호`를 인식합니다. CLI 결과에는 `addresses` 목록이 포함됩니다. Python에서는 `extract_addresses(text)` 또는 `extract_information(text, include_addresses=True)`로 호출합니다.
+- 마스킹은 원문에서 추출한 뒤 표시할 추출값과 분석 문장을 가립니다. 주소는 시·도와 시·군·구까지만 남겨 `경기도 성남시 분당구 ***`로 표시하며 읍·면도 가립니다. 서울 9자리 번호와 주민번호·카드 모양도 처리합니다. 주소의 실제 존재 여부와 주민번호·카드의 실제 유효성은 판정하지 않습니다. 지원 주소 형식과 검증 근거는 [추출 문서](docs/extraction.md#주소-추출마스킹)에 있습니다.
+- 감성 사전: 일반 207개, 도메인 36개를 사용합니다. 의미 없는 임시 표제어 12개를 교체했습니다. 기존 프로젝트 자체 목록을 검토·보완했으며 외부 사전은 다운로드하지 않았습니다. 출처·라이선스 관련 설명과 원본 해시는 [감성 문서](docs/sentiment.md)에 있습니다.
+- 감성 규칙: 내장 `re` 토큰화 후 대소문자·제한된 한국어 표면형을 맞추고 점수를 합산합니다. 부정어는 ×−1, 강조어는 ×1.5이며 문장부호·절 경계를 넘지 않습니다. `좋지 않다`, `정말 맛있지 않았어요`, `나쁘지 않다`를 처리합니다. 매칭 토큰·기본 점수·가중치·적용 규칙·최종 점수와 판정을 반환합니다.
+- 감성 평가: 고유 160문장(긍정 55 / 부정 70 / 중립 35)입니다. 문장과 라벨을 먼저 고정한 뒤 분류기를 실행했으며 예측 결과에 맞춰 라벨을 바꾸지 않았습니다. 기존 116행·고유 31문장은 archive에 보존했습니다.
+- Aspect 감성: 명시적으로 앞에 등장한 음식·가격·서비스·배송·품질을 별도로 판정합니다. `음식은 맛있는데 가격이 비싸요`는 음식 `positive`(+1), 가격 `negative`(−1)입니다. `음식과 서비스가 좋다`는 두 측면에 같은 감성을 연결하며, 같은 측면의 반복은 합산하고 상쇄되면 `neutral`로 표시합니다. 지원 별칭·API·한계는 [측면 분석 설명](docs/sentiment.md#aspect별-감성-분석)에 있습니다.
+- 문맥 감성: 명시적 언급 단서가 있는 인용을 제외하고, 문장 끝의 직접적인 의사·결과와 불만 사건 뒤 긍정 감탄의 일부 반어를 처리합니다. 근거 토큰·가중치·규칙·구간을 반환합니다. 지원 범위와 실패는 [문맥 분석 설명](docs/sentiment.md#반어인용문맥-선택-분석)에 있습니다.
 
-## 실행
+## 실제 평가 결과
 
-### 1) 단일 문장 분석
-```bash
-python main.py --text "문의는 USER@EXAMPLE.COM, 연락처는 010 1234 5678, 서비스는 정말 좋다"
-```
+Windows·CPython 3.11.4, 2026-11-15 측정입니다. F1은 긍정·부정·중립의 Macro F1입니다. 아래 감성 비교는 모두 같은 고정 160문장을 사용합니다.
 
-### 2) 개인정보 마스킹 후 분석
-```bash
-python main.py --text "주민번호 900101-1234567, 카드 1234-5678-9012-3456" --mask
-```
+| 정보 추출 패턴 | Precision | Recall |
+|---|---:|---:|
+| 이메일 | 1.000000 | 1.000000 |
+| 전화 | 1.000000 | 1.000000 |
+| 날짜 | 1.000000 | 1.000000 |
+| 금액 | 1.000000 | 1.000000 |
+| URL | 1.000000 | 1.000000 |
 
-### 3) 평가 실행
-```bash
-python main.py --evaluate-ie
-python main.py --evaluate-sentiment
-python main.py --evaluate-all
-```
+| 감성 비교 조건 | 정답 / 160 | Accuracy | Macro F1 |
+|---|---:|---:|---:|
+| 기존 f19be4a 소스·기존 사전, 규칙 끔 | 83 | 0.518750 | 0.533516 |
+| 기존 f19be4a 소스·기존 사전, 규칙 켬 | 87 | 0.543750 | 0.558716 |
+| 개선 소스·개선 사전, 규칙 끔 | 120 | 0.750000 | 0.759672 |
+| 개선 소스·개선 사전, 규칙 켬 | 135 | 0.843750 | 0.841337 |
 
-## 데이터 구성
+규칙만의 효과는 개선 사전을 고정한 마지막 두 행에서 비교합니다. 기존/개선 파이프라인 비교에는 코드와 사전 변경이 모두 포함됩니다. 기존 116행의 점수와 새 160문장의 점수를 직접 비교하지 않습니다.
 
-- `data/sentiment_lexicon.json`
-  - 일반 감성 단어: 200개 (긍정/부정 균형)
-  - 도메인 특화 단어: 36개 (고객 문의/리뷰 문맥)
-  - 부정어/강조어/이중부정 패턴 별도 관리
-  - 메타데이터에 출처/구축 기준 포함
-- `data/ie_test_cases.json`
-  - 이메일/전화번호/날짜/금액/URL 각 10문장, 총 50문장
-- `data/sentiment_test_cases.json`
-  - positive/negative/neutral 라벨 포함 116문장
+별도 합성 학습 1008문장을 추가해 같은 평가 160문장에서 TF-IDF·코사인 중심 분류기를 비교했습니다. 학습 10·100·1000개와 고정 시드 5개의 평균 Accuracy는 **0.267500 / 0.391250 / 0.433750**, 평균 Macro F1은 **0.223231 / 0.383890 / 0.433892**입니다. 비교한 규칙 기반 Accuracy/Macro F1은 **0.843750 / 0.841337**입니다. 이 결과는 63개 템플릿을 조합한 학습 자료와 기존 개발 평가셋의 관측값입니다. 데이터 구성·표준편차·오분류·해시는 [감성 실험 문서](docs/sentiment.md#tf-idf-비교와-학습-규모별-실험)에 기록했습니다.
 
-## 규칙 설계
+`--compare-sentiment`는 `docs/results/tfidf_comparison.json`에 실행 조건, 소스·데이터 해시, 학습 행 번호, 문장별 예측과 지표를 저장합니다. `--experiment-output 경로`로 저장 위치를 지정할 수 있습니다. 동일 자료와 소스에서 표본·예측·지표를 재현하며 실행 시각과 소요 시간은 실행마다 측정합니다.
 
-### 정보 추출 (`src/extractor.py`)
-- 이메일: 소문자 정규화
-- 전화번호: 다양한 구분자를 `-` 형식으로 통일
-- 날짜: `YYYY-MM-DD`(ISO 8601)로 변환
-- 금액: 숫자형 정수 값으로 정규화 (`1억 2천만원`, `$100` 포함)
-- URL: scheme/host 소문자 정규화
+## 실패 분석과 한계
 
-### 감성 분석 (`src/sentiment.py`)
-- 기본: 토큰화 후 감성 사전 점수 합산
-- 부정어: 극성 반전 (`× -1`)
-- 강조어: 강도 가중 (`× 1.5`)
-- 이중부정 단일 패턴: `나쁘지 않다`, `싫지 않다`, `불편하지 않다` 긍정 보정
-- 출력: 토큰, 감성 단어, 규칙 로그, 최종 점수/판정 상세 제공
+Aspect 개발 평가 36문장·59개 정답 측면에서 측면·극성 Precision/Recall/F1은 **0.912281 / 0.881356 / 0.896552**, 문장 완전 일치율은 **30/36 = 0.833333**입니다. 측면 생략·대명사·쉼표 나열·관형어·반어·미등록 주어의 실패 6문장을 포함한 자체 작성 자료입니다. 조건·전체 예측·해시는 [측면 분석 설명](docs/sentiment.md#aspect별-감성-분석)과 [측정 원자료](docs/results/aspect_sentiment_evaluation.json)에 있습니다.
 
-## 평가 결과 리포트 템플릿
+[정보 추출 문서](docs/extraction.md)에 실제 수정 전 실패 5건의 입력·기대값·실제값·원인·수정 후 결과를 기록했습니다. 기존 50문장의 불일치는 22건에서 0건으로 줄었습니다. [감성 문서](docs/sentiment.md)는 기존 문장 분석의 오분류 25건(사전 누락 1 / 반어 10 / 인용 6 / 문맥 8)을 모두 기록합니다.
 
-```text
-[정보 추출 평가]
-pattern     | precision | recall
-------------|-----------|-------
-emails      | 0.000     | 0.000
-phones      | 0.000     | 0.000
-dates       | 0.000     | 0.000
-amounts     | 0.000     | 0.000
-urls        | 0.000     | 0.000
+선택 문맥 규칙 적용 전후 Accuracy/Macro F1은 기존 160문장에서 **0.843750/0.841337 → 0.975000/0.972941**, 별도 36문장에서 **0.305556/0.277606 → 0.888889/0.880330**입니다. 두 자료에서 정답→오답 회귀는 0건이며 적용 후 실패는 각각 4건입니다. 자체 작성 개발 자료에 맞춰 작성한 제한된 규칙의 관측값이며 독립 자료의 일반화 성능은 미확인입니다. [측정 조건·실패 분석](docs/sentiment.md#반어인용문맥-선택-분석) · [원자료](docs/results/contextual_sentiment_evaluation.json)
 
-[감성 분석 평가]
-phase  | accuracy | f1
--------|----------|---
-before | 0.000    | 0.000
-after  | 0.000    | 0.000
-```
+이 데이터는 자체 작성한 개발용 평가 자료입니다. 독립 평가자·블라인드 검증셋을 사용하지 않았으므로 실제 고객 문장의 일반화 성능으로 해석할 수 없습니다. 형태소 분석 없는 제한된 활용 규칙은 신조어·띄어쓰기·문맥·인용·반어를 놓칠 수 있습니다. 국제화 주소·국제 전화·한글 숫자·음수 금액·환율 변환은 지원 범위 밖입니다. 선택 과제인 Aspect별 분류는 구현 범위에 포함하지 않습니다.
 
-## 실패 사례 분석
+주소 보너스 구현 후 Windows·CPython 3.11.4에서 통합 테스트 **42개가 2.346초에 통과**했습니다. 기존 50문장의 추출 지표와 160문장의 감성 지표는 위 표와 같습니다. 기준 커밋·데이터 해시·전체 요구사항 점검과 주소 검증은 [최종 보고서](docs/report.md), 기존 문장별 측정 원자료는 [final.json](docs/results/final.json)에서 확인할 수 있습니다.
 
-### 정보 추출 실패 사례 (5건 이상)
-1. (예시) ...
-2. (예시) ...
-3. (예시) ...
-4. (예시) ...
-5. (예시) ...
-
-### 감성 분석 오분류 사례 (10건 이상)
-1. (예시) ...
-2. (예시) ...
-3. (예시) ...
-4. (예시) ...
-5. (예시) ...
-6. (예시) ...
-7. (예시) ...
-8. (예시) ...
-9. (예시) ...
-10. (예시) ...
-
-## 한계점 분석
-
-1. 형태소 분석기 없이 규칙/표면형 기반이라 문맥 해석 한계가 있음
-2. 금액/날짜의 예외 표현(속어, 축약, 복합 단위) 대응이 제한적임
-3. 감성 사전 미등재 신조어/복합 표현에 취약함
-4. 부정어 범위(scope)와 문장 구조(절 단위) 처리 정밀도 개선 필요
+TF-IDF 추가 후 전체 **50개 테스트가 2.505초에 통과**했습니다. 원자료 저장 보완 후 관련 **9개가 0.245초에 통과**했으며 새 저장 실패 회귀 1개를 포함합니다. 현재 테스트 정의는 총 51개입니다.
