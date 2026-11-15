@@ -8,6 +8,13 @@ from src.extractor import extract_addresses, extract_information
 
 
 class ExtractorTests(unittest.TestCase):
+    def test_international_phone_fixture(self) -> None:
+        path = Path(__file__).resolve().parents[1] / "data" / "international_phone_test_cases.json"
+        cases = json.loads(path.read_text(encoding="utf-8"))
+        for case in cases:
+            with self.subTest(text=case["text"]):
+                self.assertEqual(extract_information(case["text"])["phones"], case["phones"])
+
     def test_existing_fifty_gold_sentences(self) -> None:
         path = Path(__file__).resolve().parents[1] / "data" / "ie_test_cases.json"
         cases = json.loads(path.read_text(encoding="utf-8"))
@@ -20,7 +27,7 @@ class ExtractorTests(unittest.TestCase):
     def test_at_least_three_variants_per_pattern(self) -> None:
         variants = {
             "emails": [("USER@EXAMPLE.COM", "user@example.com"), ("a.b@sub.example.kr", "a.b@sub.example.kr"), ("a+tag@example.org", "a+tag@example.org")],
-            "phones": [("010-1234-5678", "010-1234-5678"), ("010.1234.5678", "010-1234-5678"), ("010 1234 5678", "010-1234-5678"), ("01012345678", "010-1234-5678")],
+            "phones": [("010-1234-5678", "010-1234-5678"), ("010.1234.5678", "010-1234-5678"), ("010 1234 5678", "010-1234-5678"), ("01012345678", "010-1234-5678"), ("+82 10-1234-5678", "010-1234-5678")],
             "dates": [("2024년 1월 15일", "2024-01-15"), ("2024/01/15", "2024-01-15"), ("24.01.15", "2024-01-15"), ("2024-1-15", "2024-01-15")],
             "amounts": [("10,000원", 10000), ("50000원", 50000), ("1억 2천만원", 120000000), ("$100", 100)],
             "urls": [("https://EXAMPLE.COM", "https://example.com"), ("http://example.kr?a=1&b=2", "http://example.kr?a=1&b=2"), ("https://example.com/path?q=1#section", "https://example.com/path?q=1#section")],

@@ -13,11 +13,15 @@ EMAIL_PATTERN = re.compile(
     r"(?![A-Za-z0-9_-]|\.[A-Za-z0-9.-])"
 )
 
-# 전화: 서울 02 및 3자리 국내 번호, 하이픈/점/공백/무구분 표기.
-# 더 긴 숫자나 ASCII 식별자 내부의 부분 번호를 추출하지 않는다.
+# 전화: 서울 02 및 3자리 국내 번호와 +82/0082 국제 표기.
+# 국제 표기는 국내 트렁크 0을 생략한 2 또는 2자리 지역/서비스 번호만 허용한다.
+# 하이픈/점/공백/무구분 표기를 처리하되 더 긴 숫자나 ASCII 식별자 내부의
+# 부분 번호는 양쪽 lookaround로 추출하지 않는다.
 PHONE_PATTERN = re.compile(
-    r"(?<![0-9A-Za-z_])(?:02[-. ]?\d{3,4}|0[1-9]\d[-. ]?\d{3,4})"
-    r"[-. ]?\d{4}(?![0-9A-Za-z_])"
+    r"(?<![0-9A-Za-z_])(?:"
+    r"(?:\+82|0082)[-. ]?(?:2[-. ]?\d{3,4}|[1-9]\d[-. ]?\d{3,4})"
+    r"|(?:02[-. ]?\d{3,4}|0[1-9]\d[-. ]?\d{3,4})"
+    r")[-. ]?\d{4}(?![0-9A-Za-z_])"
 )
 
 # 한글 날짜: 2자리/4자리 연도와 월일. 숫자 내부 매칭은 막고 한국어 조사는 허용한다.
@@ -124,6 +128,10 @@ _NON_DIGIT_PATTERN = re.compile(r"\D")
 
 def _normalize_phone(raw: str) -> str:
     digits = _NON_DIGIT_PATTERN.sub("", raw)
+    if raw.startswith("+82"):
+        digits = "0" + digits[2:]
+    elif digits.startswith("0082"):
+        digits = "0" + digits[4:]
     prefix = 2 if digits.startswith("02") else 3
     return f"{digits[:prefix]}-{digits[prefix:-4]}-{digits[-4:]}"
 
