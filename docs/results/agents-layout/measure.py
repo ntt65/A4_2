@@ -8,6 +8,7 @@ import statistics
 import subprocess
 import time
 from datetime import datetime, timezone
+from itertools import combinations
 from pathlib import Path
 
 
@@ -88,14 +89,16 @@ def session_evidence(thread_id: str, root_instructions: str) -> dict:
 
 def summarize(records: list[dict]) -> dict:
     metrics = ("cached_input_tokens", "uncached_input_tokens", "output_tokens", "total_tokens", "elapsed_seconds")
+    variants = sorted({row["variant"] for row in records})
     summary = {"run_count": len(records), "passed": sum(row["passed"] for row in records), "tasks": {}}
     for task in TASKS:
         rows = [row for row in records if row["task"] == task]
         if not rows:
             continue
         task_summary = {"A": {}, "B": {}, "median_reduction_percent": {}, "pairs": []}
-        for variant in ("A", "B"):
+        for variant in variants:
             variant_rows = [row for row in rows if row["variant"] == variant]
+            task_summary.setdefault(variant, {})
             task_summary[variant]["passed"] = sum(row["passed"] for row in variant_rows)
             task_summary[variant]["runs"] = len(variant_rows)
             for metric in metrics:
@@ -107,7 +110,7 @@ def summarize(records: list[dict]) -> dict:
             task_summary["median_reduction_percent"][metric] = 100 * (a - b) / a if a and b is not None else None
         for repetition in range(1, 4):
             pair = {row["variant"]: row for row in rows if row["repetition"] == repetition}
-            if set(pair) != {"A", "B"}:
+            if not {"A", "B"}.issubset(pair):
                 continue
             both_passed = pair["A"]["passed"] and pair["B"]["passed"]
             differences = {metric: pair["B"][metric] - pair["A"][metric] for metric in metrics if pair["A"].get(metric) is not None and pair["B"].get(metric) is not None}
@@ -115,13 +118,21 @@ def summarize(records: list[dict]) -> dict:
             task_summary["pairs"].append({"repetition": repetition, "both_passed": both_passed, "B_minus_A": differences, "reduction_percent": reductions})
         summary["tasks"][task] = task_summary
     summary["totals"] = {}
-    for variant in ("A", "B"):
+    for variant in variants:
         rows = [row for row in records if row["variant"] == variant]
         summary["totals"][variant] = {metric: sum(row[metric] for row in rows if row.get(metric) is not None) for metric in metrics}
     summary["aggregate_reduction_percent"] = {
         metric: 100 * (summary["totals"]["A"][metric] - summary["totals"]["B"][metric]) / summary["totals"]["A"][metric]
         if summary["totals"]["A"][metric] else None for metric in metrics
     }
+    summary["comparison_reduction_percent"] = {}
+    for baseline_variant, candidate_variant in combinations(variants, 2):
+        baseline = summary["totals"][baseline_variant]
+        candidate = summary["totals"][candidate_variant]
+        summary["comparison_reduction_percent"][f"{baseline_variant}_to_{candidate_variant}"] = {
+            metric: 100 * (baseline[metric] - candidate[metric]) / baseline[metric]
+            if baseline[metric] else None for metric in metrics
+        }
     return summary
 
 
@@ -130,12 +141,17 @@ def main() -> None:
     parser.add_argument("--repository", type=Path, required=True)
     parser.add_argument("--codex", type=Path, required=True)
     parser.add_argument("--fixture-b", required=True)
+    parser.add_argument("--fixture-c")
     parser.add_argument("--max-attempts", type=int, default=3)
     args = parser.parse_args()
     repository = args.repository.resolve()
     output = Path(__file__).resolve().parent
     (output / "raw").mkdir(exist_ok=True)
     commits = {"A": BASE, "B": args.fixture_b}
+    pairs = list(PAIRS)
+    if args.fixture_c:
+        commits["C"] = args.fixture_c
+        pairs.append(("code", 1, "C"))
     assert not git(repository, "status", "--porcelain"), "Comparison worktree has existing changes"
     tracked = git(repository, "ls-tree", "-r", "--name-only", BASE).splitlines()
     fixed_paths = [path for path in tracked if Path(path).name != "AGENTS.md"]
@@ -151,7 +167,7 @@ def main() -> None:
             "global_guidance_sha256": sha256(Path.home() / ".codex" / "AGENTS.md"),
             "config_sha256": sha256(Path.home() / ".codex" / "config.toml"),
             "fixed_file_sha256": fixed_hashes, "tasks": TASKS, "common_prompt": COMMON_PROMPT,
-            "pairs": PAIRS, "max_attempts": args.max_attempts, "variants": {},
+            "pairs": pairs, "max_attempts": args.max_attempts, "variants": {},
         }
         for variant, commit in commits.items():
             git(repository, "switch", "--detach", commit)
@@ -160,17 +176,30 @@ def main() -> None:
         save_json(manifest_path, manifest)
     else:
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-        assert manifest["fixture_commits"] == commits
+        assert all(commits[variant] == commit for variant, commit in manifest["fixture_commits"].items())
         assert manifest["fixed_file_sha256"] == fixed_hashes
         assert manifest["config_sha256"] == sha256(Path.home() / ".codex" / "config.toml")
         assert manifest["global_guidance_sha256"] == sha256(Path.home() / ".codex" / "AGENTS.md")
+        if args.fixture_c:
+            git(repository, "switch", "--detach", args.fixture_c)
+            manifest["fixture_commits"]["C"] = args.fixture_c
+            manifest["variants"]["C"] = {"AGENTS.md": {
+                "sha256": sha256(repository / "AGENTS.md"),
+                "bytes": (repository / "AGENTS.md").stat().st_size,
+            }}
+            manifest["optimized_source"] = "11c494e893f3a430a7e8f942eb98577c26ce20ee"
+            manifest["pairs"] = pairs
+            manifest["initial_max_attempts"] = 3
+            manifest["max_attempts"] = args.max_attempts
+            manifest["followup_scope"] = "One additional optimized C run requested for the three-configuration comparison."
+            save_json(manifest_path, manifest)
     records_path = output / "runs.jsonl"
     attempts_path = output / "attempts.jsonl"
     records = [json.loads(line) for line in records_path.read_text(encoding="utf-8").splitlines()] if records_path.exists() else []
     attempts = [json.loads(line) for line in attempts_path.read_text(encoding="utf-8").splitlines()] if attempts_path.exists() else []
     completed = {row["run_id"] for row in records}
     run_number = 0
-    for pair_number, (task, repetition, order) in enumerate(PAIRS, 1):
+    for pair_number, (task, repetition, order) in enumerate(pairs, 1):
         for variant in order:
             run_number += 1
             run_id = f"{run_number:02d}_{task}_{repetition}_{variant}"

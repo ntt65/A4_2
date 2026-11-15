@@ -4,7 +4,8 @@
   "unified_source": "894e9aec5e40a81bd0b69368a8ec96f16cb6eac1",
   "fixture_commits": {
     "A": "0f03aeca843d3350f172f91fbd19c073f462e752",
-    "B": "26efe803876a10729d78b712109474562ba177ed"
+    "B": "26efe803876a10729d78b712109474562ba177ed",
+    "C": "b8ac287617c9ad71f10597d32720329b89f25af6"
   },
   "repository": "C:\\Users\\4cat1\\AppData\\Local\\Temp\\a4_2_agents_layout_trials_20261115",
   "model": "gpt-6.1-sol",
@@ -84,6 +85,11 @@
       "code",
       1,
       "AB"
+    ],
+    [
+      "code",
+      1,
+      "C"
     ]
   ],
   "variants": {
@@ -105,6 +111,12 @@
       "AGENTS.md": {
         "sha256": "a9918a10c25abd24492e31bd98631362521190deebb160d287aa6603394c11e3",
         "bytes": 4107
+      }
+    },
+    "C": {
+      "AGENTS.md": {
+        "sha256": "afe3f2932f3d3bb331677379b379e0ea1acb5cbb1bbfdd7b38dc41b86d18f125",
+        "bytes": 2833
       }
     }
   },
@@ -155,6 +167,9 @@
       "AB"
     ]
   ],
-  "max_attempts": 3,
-  "scope_change": "User reduced the experiment to three total attempts during the second invocation."
+  "max_attempts": 4,
+  "scope_change": "User reduced the experiment to three total attempts during the second invocation.",
+  "optimized_source": "11c494e893f3a430a7e8f942eb98577c26ce20ee",
+  "initial_max_attempts": 3,
+  "followup_scope": "One additional optimized C run requested for the three-configuration comparison."
 }
