@@ -1,0 +1,2473 @@
+{
+  "metadata": {
+    "source_commit": "f19be4a34621224981555d4e7b6e098dd8e1e733",
+    "measured_at_utc": "2026-11-14T17:51:58.390115+00:00",
+    "python": "3.11.4 (tags/v3.11.4:d2340ef, Jun  7 2023, 05:45:37) [MSC v.1934 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "command": "uv --no-cache run --python .venv python -B -X utf8 - (baseline capture)",
+    "dataset_sha256": {
+      "ie_test_cases.json": "bbe7a1c4326927e6d831ec4fa6afe9483018a35416fff8f4e68a48820905af75",
+      "sentiment_test_cases.json": "fb2da83c6f55b6d04ad4355a05d854df10d26bc69b461ca521449802ff48a2ef",
+      "sentiment_lexicon.json": "76ebcd0528283684aad787efc0f7fe9ccd1c8213ffc5c51cc4bb1176094b7184"
+    }
+  },
+  "information_extraction": {
+    "metrics": {
+      "emails": {
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "phones": {
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "dates": {
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "amounts": {
+        "precision": 0.18421052631578946,
+        "recall": 0.7
+      },
+      "urls": {
+        "precision": 0.9,
+        "recall": 0.9
+      }
+    },
+    "count": 50,
+    "cases": [
+      {
+        "index": 0,
+        "text": "문의는 user@domain.com 으로 주세요.",
+        "expected": {
+          "emails": [
+            "user@domain.com"
+          ],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [
+            "user@domain.com"
+          ],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "differences": {}
+      },
+      {
+        "index": 1,
+        "text": "담당자 메일은 USER.NAME@Sub.Domain.co.kr 입니다.",
+        "expected": {
+          "emails": [
+            "user.name@sub.domain.co.kr"
+          ],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [
+            "user.name@sub.domain.co.kr"
+          ],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "differences": {}
+      },
+      {
+        "index": 2,
+        "text": "연락처: hello123@test.co.kr, 예비: support@service.com",
+        "expected": {
+          "emails": [
+            "hello123@test.co.kr",
+            "support@service.com"
+          ],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [
+            "hello123@test.co.kr",
+            "support@service.com"
+          ],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "differences": {}
+      },
+      {
+        "index": 3,
+        "text": "신규 주소 abc-def@mail.net 확인 부탁.",
+        "expected": {
+          "emails": [
+            "abc-def@mail.net"
+          ],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [
+            "abc-def@mail.net"
+          ],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "differences": {}
+      },
+      {
+        "index": 4,
+        "text": "test.user+event@sample.org 로 회신 바랍니다.",
+        "expected": {
+          "emails": [
+            "test.user+event@sample.org"
+          ],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [
+            "test.user+event@sample.org"
+          ],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "differences": {}
+      },
+      {
+        "index": 5,
+        "text": "bad@domain 은 무시하고 good@domain.com 만 유효",
+        "expected": {
+          "emails": [
+            "good@domain.com"
+          ],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [
+            "good@domain.com"
+          ],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "differences": {}
+      },
+      {
+        "index": 6,
+        "text": "다중 메일 first@a.com / second@b.co.kr",
+        "expected": {
+          "emails": [
+            "first@a.com",
+            "second@b.co.kr"
+          ],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [
+            "first@a.com",
+            "second@b.co.kr"
+          ],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "differences": {}
+      },
+      {
+        "index": 7,
+        "text": "문의창구 cs_team@shop.kr 입니다",
+        "expected": {
+          "emails": [
+            "cs_team@shop.kr"
+          ],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [
+            "cs_team@shop.kr"
+          ],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "differences": {}
+      },
+      {
+        "index": 8,
+        "text": "임시 이메일 TEMP@EXAMPLE.COM",
+        "expected": {
+          "emails": [
+            "temp@example.com"
+          ],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [
+            "temp@example.com"
+          ],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "differences": {}
+      },
+      {
+        "index": 9,
+        "text": "별칭 포함: user.name+vip@abc.co.kr",
+        "expected": {
+          "emails": [
+            "user.name+vip@abc.co.kr"
+          ],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [
+            "user.name+vip@abc.co.kr"
+          ],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "differences": {}
+      },
+      {
+        "index": 10,
+        "text": "연락처는 010-1234-5678 입니다.",
+        "expected": {
+          "emails": [],
+          "phones": [
+            "010-1234-5678"
+          ],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [
+            "010-1234-5678"
+          ],
+          "dates": [],
+          "amounts": [
+            10
+          ],
+          "urls": []
+        },
+        "differences": {
+          "amounts": {
+            "expected": [],
+            "actual": [
+              10
+            ]
+          }
+        }
+      },
+      {
+        "index": 11,
+        "text": "대표번호 02-123-4567 로 연락.",
+        "expected": {
+          "emails": [],
+          "phones": [
+            "02-123-4567"
+          ],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [
+            "02-123-4567"
+          ],
+          "dates": [],
+          "amounts": [
+            2,
+            123
+          ],
+          "urls": []
+        },
+        "differences": {
+          "amounts": {
+            "expected": [],
+            "actual": [
+              2,
+              123
+            ]
+          }
+        }
+      },
+      {
+        "index": 12,
+        "text": "지점 번호 031.1234.5678",
+        "expected": {
+          "emails": [],
+          "phones": [
+            "031-1234-5678"
+          ],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [
+            "031-1234-5678"
+          ],
+          "dates": [],
+          "amounts": [
+            31
+          ],
+          "urls": []
+        },
+        "differences": {
+          "amounts": {
+            "expected": [],
+            "actual": [
+              31
+            ]
+          }
+        }
+      },
+      {
+        "index": 13,
+        "text": "휴대폰 010 1234 5678",
+        "expected": {
+          "emails": [],
+          "phones": [
+            "010-1234-5678"
+          ],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [
+            "010-1234-5678"
+          ],
+          "dates": [],
+          "amounts": [
+            10
+          ],
+          "urls": []
+        },
+        "differences": {
+          "amounts": {
+            "expected": [],
+            "actual": [
+              10
+            ]
+          }
+        }
+      },
+      {
+        "index": 14,
+        "text": "콜센터 051-123-4567",
+        "expected": {
+          "emails": [],
+          "phones": [
+            "051-123-4567"
+          ],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [
+            "051-123-4567"
+          ],
+          "dates": [],
+          "amounts": [
+            51,
+            123
+          ],
+          "urls": []
+        },
+        "differences": {
+          "amounts": {
+            "expected": [],
+            "actual": [
+              51,
+              123
+            ]
+          }
+        }
+      },
+      {
+        "index": 15,
+        "text": "비상연락망: 01099998888",
+        "expected": {
+          "emails": [],
+          "phones": [
+            "010-9999-8888"
+          ],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [
+            "010-9999-8888"
+          ],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "differences": {}
+      },
+      {
+        "index": 16,
+        "text": "사무실 042 123 4567",
+        "expected": {
+          "emails": [],
+          "phones": [
+            "042-123-4567"
+          ],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [
+            "042-123-4567"
+          ],
+          "dates": [],
+          "amounts": [
+            42,
+            123
+          ],
+          "urls": []
+        },
+        "differences": {
+          "amounts": {
+            "expected": [],
+            "actual": [
+              42,
+              123
+            ]
+          }
+        }
+      },
+      {
+        "index": 17,
+        "text": "고객센터 070-1234-9999",
+        "expected": {
+          "emails": [],
+          "phones": [
+            "070-1234-9999"
+          ],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [
+            "070-1234-9999"
+          ],
+          "dates": [],
+          "amounts": [
+            70
+          ],
+          "urls": []
+        },
+        "differences": {
+          "amounts": {
+            "expected": [],
+            "actual": [
+              70
+            ]
+          }
+        }
+      },
+      {
+        "index": 18,
+        "text": "서울 대표번호는 02 1234 5678",
+        "expected": {
+          "emails": [],
+          "phones": [
+            "02-1234-5678"
+          ],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [
+            "02-1234-5678"
+          ],
+          "dates": [],
+          "amounts": [
+            2
+          ],
+          "urls": []
+        },
+        "differences": {
+          "amounts": {
+            "expected": [],
+            "actual": [
+              2
+            ]
+          }
+        }
+      },
+      {
+        "index": 19,
+        "text": "문의 010.8888.7777",
+        "expected": {
+          "emails": [],
+          "phones": [
+            "010-8888-7777"
+          ],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [
+            "010-8888-7777"
+          ],
+          "dates": [],
+          "amounts": [
+            10
+          ],
+          "urls": []
+        },
+        "differences": {
+          "amounts": {
+            "expected": [],
+            "actual": [
+              10
+            ]
+          }
+        }
+      },
+      {
+        "index": 20,
+        "text": "계약일은 2024년 1월 15일 입니다.",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [
+            "2024-01-15"
+          ],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [
+            "2024-01-15"
+          ],
+          "amounts": [],
+          "urls": []
+        },
+        "differences": {}
+      },
+      {
+        "index": 21,
+        "text": "납기일: 2024/01/15",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [
+            "2024-01-15"
+          ],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [
+            "2024-01-15"
+          ],
+          "amounts": [
+            1,
+            15
+          ],
+          "urls": []
+        },
+        "differences": {
+          "amounts": {
+            "expected": [],
+            "actual": [
+              1,
+              15
+            ]
+          }
+        }
+      },
+      {
+        "index": 22,
+        "text": "출고일 2024-01-15 확인",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [
+            "2024-01-15"
+          ],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [
+            "2024-01-15"
+          ],
+          "amounts": [
+            1,
+            15
+          ],
+          "urls": []
+        },
+        "differences": {
+          "amounts": {
+            "expected": [],
+            "actual": [
+              1,
+              15
+            ]
+          }
+        }
+      },
+      {
+        "index": 23,
+        "text": "기준일 24.01.15 로 표기",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [
+            "2024-01-15"
+          ],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [
+            "2024-01-15"
+          ],
+          "amounts": [
+            15,
+            24
+          ],
+          "urls": []
+        },
+        "differences": {
+          "amounts": {
+            "expected": [],
+            "actual": [
+              15,
+              24
+            ]
+          }
+        }
+      },
+      {
+        "index": 24,
+        "text": "테스트일 2023.12.01",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [
+            "2023-12-01"
+          ],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [
+            "2023-12-01"
+          ],
+          "amounts": [
+            12
+          ],
+          "urls": []
+        },
+        "differences": {
+          "amounts": {
+            "expected": [],
+            "actual": [
+              12
+            ]
+          }
+        }
+      },
+      {
+        "index": 25,
+        "text": "예약일은 2025년 11월 3일",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [
+            "2025-11-03"
+          ],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [
+            "2025-11-03"
+          ],
+          "amounts": [],
+          "urls": []
+        },
+        "differences": {}
+      },
+      {
+        "index": 26,
+        "text": "청구일 2026/6/9",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [
+            "2026-06-09"
+          ],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [
+            "2026-06-09"
+          ],
+          "amounts": [
+            6,
+            9
+          ],
+          "urls": []
+        },
+        "differences": {
+          "amounts": {
+            "expected": [],
+            "actual": [
+              6,
+              9
+            ]
+          }
+        }
+      },
+      {
+        "index": 27,
+        "text": "수정일 2024-7-1",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [
+            "2024-07-01"
+          ],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [
+            "2024-07-01"
+          ],
+          "amounts": [
+            1,
+            7
+          ],
+          "urls": []
+        },
+        "differences": {
+          "amounts": {
+            "expected": [],
+            "actual": [
+              1,
+              7
+            ]
+          }
+        }
+      },
+      {
+        "index": 28,
+        "text": "점검일 99.01.02",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [
+            "1999-01-02"
+          ],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [
+            "1999-01-02"
+          ],
+          "amounts": [
+            2,
+            99
+          ],
+          "urls": []
+        },
+        "differences": {
+          "amounts": {
+            "expected": [],
+            "actual": [
+              2,
+              99
+            ]
+          }
+        }
+      },
+      {
+        "index": 29,
+        "text": "발표일 00-12-31",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [
+            "2000-12-31"
+          ],
+          "amounts": [],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [
+            "2000-12-31"
+          ],
+          "amounts": [
+            0,
+            12,
+            31
+          ],
+          "urls": []
+        },
+        "differences": {
+          "amounts": {
+            "expected": [],
+            "actual": [
+              0,
+              12,
+              31
+            ]
+          }
+        }
+      },
+      {
+        "index": 30,
+        "text": "총액은 10,000원 입니다.",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [
+            10000
+          ],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [
+            10000
+          ],
+          "urls": []
+        },
+        "differences": {}
+      },
+      {
+        "index": 31,
+        "text": "결제금액 50000원",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [
+            50000
+          ],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "differences": {
+          "amounts": {
+            "expected": [
+              50000
+            ],
+            "actual": []
+          }
+        }
+      },
+      {
+        "index": 32,
+        "text": "프로모션가 3만원",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [
+            30000
+          ],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [
+            30000
+          ],
+          "urls": []
+        },
+        "differences": {}
+      },
+      {
+        "index": 33,
+        "text": "대형 계약 1억 2천만원",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [
+            120000000
+          ],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "differences": {
+          "amounts": {
+            "expected": [
+              120000000
+            ],
+            "actual": []
+          }
+        }
+      },
+      {
+        "index": 34,
+        "text": "외화 결제 $100",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [
+            100
+          ],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [
+            100
+          ],
+          "urls": []
+        },
+        "differences": {}
+      },
+      {
+        "index": 35,
+        "text": "옵션 추가 12,345원",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [
+            12345
+          ],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [
+            12345
+          ],
+          "urls": []
+        },
+        "differences": {}
+      },
+      {
+        "index": 36,
+        "text": "예산은 2억",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [
+            200000000
+          ],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": []
+        },
+        "differences": {
+          "amounts": {
+            "expected": [
+              200000000
+            ],
+            "actual": []
+          }
+        }
+      },
+      {
+        "index": 37,
+        "text": "소액 결제 9,900원",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [
+            9900
+          ],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [
+            9900
+          ],
+          "urls": []
+        },
+        "differences": {}
+      },
+      {
+        "index": 38,
+        "text": "단가 1.5만원",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [
+            15000
+          ],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [
+            15000
+          ],
+          "urls": []
+        },
+        "differences": {}
+      },
+      {
+        "index": 39,
+        "text": "쿠폰 적용 후 $49.9",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [
+            49
+          ],
+          "urls": []
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [
+            49
+          ],
+          "urls": []
+        },
+        "differences": {}
+      },
+      {
+        "index": 40,
+        "text": "홈페이지는 https://www.example.com/path?query=value 입니다.",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": [
+            "https://www.example.com/path?query=value"
+          ]
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": [
+            "https://www.example.com/path?query=value"
+          ]
+        },
+        "differences": {}
+      },
+      {
+        "index": 41,
+        "text": "보조 주소 http://example.co.kr",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": [
+            "http://example.co.kr"
+          ]
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": [
+            "http://example.co.kr"
+          ]
+        },
+        "differences": {}
+      },
+      {
+        "index": 42,
+        "text": "문서 링크 https://docs.sample.io/api/v1",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": [
+            "https://docs.sample.io/api/v1"
+          ]
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": [
+            "https://docs.sample.io/api/v1"
+          ]
+        },
+        "differences": {}
+      },
+      {
+        "index": 43,
+        "text": "테스트 https://EXAMPLE.COM/UPPER",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": [
+            "https://example.com/UPPER"
+          ]
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": [
+            "https://example.com/UPPER"
+          ]
+        },
+        "differences": {}
+      },
+      {
+        "index": 44,
+        "text": "포트 포함 http://localhost.example.com:8080/test",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": [
+            "http://localhost.example.com:8080/test"
+          ]
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": [
+            "http://localhost.example.com:8080/test"
+          ]
+        },
+        "differences": {}
+      },
+      {
+        "index": 45,
+        "text": "중첩 경로 https://a.b.co.kr/a/b/c",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": [
+            "https://a.b.co.kr/a/b/c"
+          ]
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": [
+            "https://a.b.co.kr/a/b/c"
+          ]
+        },
+        "differences": {}
+      },
+      {
+        "index": 46,
+        "text": "쿼리 포함 http://service.kr?a=1&b=2",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": [
+            "http://service.kr?a=1&b=2"
+          ]
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [
+            1,
+            2
+          ],
+          "urls": [
+            "http://service.kr"
+          ]
+        },
+        "differences": {
+          "amounts": {
+            "expected": [],
+            "actual": [
+              1,
+              2
+            ]
+          },
+          "urls": {
+            "expected": [
+              "http://service.kr?a=1&b=2"
+            ],
+            "actual": [
+              "http://service.kr"
+            ]
+          }
+        }
+      },
+      {
+        "index": 47,
+        "text": "보안 링크 https://secure.site.net",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": [
+            "https://secure.site.net"
+          ]
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": [
+            "https://secure.site.net"
+          ]
+        },
+        "differences": {}
+      },
+      {
+        "index": 48,
+        "text": "호출 주소 https://api.company.co.kr/v2/items?id=3",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": [
+            "https://api.company.co.kr/v2/items?id=3"
+          ]
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [
+            3
+          ],
+          "urls": [
+            "https://api.company.co.kr/v2/items?id=3"
+          ]
+        },
+        "differences": {
+          "amounts": {
+            "expected": [],
+            "actual": [
+              3
+            ]
+          }
+        }
+      },
+      {
+        "index": 49,
+        "text": "공지 URL http://notice.example.org/index.html",
+        "expected": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": [
+            "http://notice.example.org/index.html"
+          ]
+        },
+        "actual": {
+          "emails": [],
+          "phones": [],
+          "dates": [],
+          "amounts": [],
+          "urls": [
+            "http://notice.example.org/index.html"
+          ]
+        },
+        "differences": {}
+      }
+    ]
+  },
+  "sentiment": {
+    "metrics": {
+      "before": {
+        "accuracy": 0.9655172413793104,
+        "f1": 0.963145896656535
+      },
+      "after": {
+        "accuracy": 1.0,
+        "f1": 1.0
+      }
+    },
+    "count": 116,
+    "unique": 31,
+    "cases": [
+      {
+        "index": 0,
+        "text": "서비스가 좋다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 1.0,
+        "after_score": 1.0
+      },
+      {
+        "index": 1,
+        "text": "상담이 친절하다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 1.0,
+        "after_score": 1.0
+      },
+      {
+        "index": 2,
+        "text": "배송빠르다 정말 만족하다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.4,
+        "after_score": 2.9
+      },
+      {
+        "index": 3,
+        "text": "품질좋다 매우 훌륭하다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.5,
+        "after_score": 3.0
+      },
+      {
+        "index": 4,
+        "text": "가성비좋다 진짜 최고다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.4,
+        "after_score": 2.9
+      },
+      {
+        "index": 5,
+        "text": "응대좋다 재구매의사 있다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 3.0,
+        "after_score": 3.0
+      },
+      {
+        "index": 6,
+        "text": "포장꼼꼼 해서 기쁘다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.3,
+        "after_score": 2.3
+      },
+      {
+        "index": 7,
+        "text": "문의해결 되어 안심된다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.4,
+        "after_score": 2.4
+      },
+      {
+        "index": 8,
+        "text": "환불신속 해서 만족스럽다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.4,
+        "after_score": 2.4
+      },
+      {
+        "index": 9,
+        "text": "사용편함 너무 좋다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.2,
+        "after_score": 2.7
+      },
+      {
+        "index": 10,
+        "text": "서비스가 좋다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 1.0,
+        "after_score": 1.0
+      },
+      {
+        "index": 11,
+        "text": "상담이 친절하다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 1.0,
+        "after_score": 1.0
+      },
+      {
+        "index": 12,
+        "text": "배송빠르다 정말 만족하다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.4,
+        "after_score": 2.9
+      },
+      {
+        "index": 13,
+        "text": "품질좋다 매우 훌륭하다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.5,
+        "after_score": 3.0
+      },
+      {
+        "index": 14,
+        "text": "가성비좋다 진짜 최고다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.4,
+        "after_score": 2.9
+      },
+      {
+        "index": 15,
+        "text": "응대좋다 재구매의사 있다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 3.0,
+        "after_score": 3.0
+      },
+      {
+        "index": 16,
+        "text": "포장꼼꼼 해서 기쁘다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.3,
+        "after_score": 2.3
+      },
+      {
+        "index": 17,
+        "text": "문의해결 되어 안심된다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.4,
+        "after_score": 2.4
+      },
+      {
+        "index": 18,
+        "text": "환불신속 해서 만족스럽다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.4,
+        "after_score": 2.4
+      },
+      {
+        "index": 19,
+        "text": "사용편함 너무 좋다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.2,
+        "after_score": 2.7
+      },
+      {
+        "index": 20,
+        "text": "서비스가 좋다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 1.0,
+        "after_score": 1.0
+      },
+      {
+        "index": 21,
+        "text": "상담이 친절하다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 1.0,
+        "after_score": 1.0
+      },
+      {
+        "index": 22,
+        "text": "배송빠르다 정말 만족하다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.4,
+        "after_score": 2.9
+      },
+      {
+        "index": 23,
+        "text": "품질좋다 매우 훌륭하다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.5,
+        "after_score": 3.0
+      },
+      {
+        "index": 24,
+        "text": "가성비좋다 진짜 최고다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.4,
+        "after_score": 2.9
+      },
+      {
+        "index": 25,
+        "text": "응대좋다 재구매의사 있다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 3.0,
+        "after_score": 3.0
+      },
+      {
+        "index": 26,
+        "text": "포장꼼꼼 해서 기쁘다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.3,
+        "after_score": 2.3
+      },
+      {
+        "index": 27,
+        "text": "문의해결 되어 안심된다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.4,
+        "after_score": 2.4
+      },
+      {
+        "index": 28,
+        "text": "환불신속 해서 만족스럽다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.4,
+        "after_score": 2.4
+      },
+      {
+        "index": 29,
+        "text": "사용편함 너무 좋다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.2,
+        "after_score": 2.7
+      },
+      {
+        "index": 30,
+        "text": "서비스가 좋다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 1.0,
+        "after_score": 1.0
+      },
+      {
+        "index": 31,
+        "text": "상담이 친절하다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 1.0,
+        "after_score": 1.0
+      },
+      {
+        "index": 32,
+        "text": "배송빠르다 정말 만족하다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.4,
+        "after_score": 2.9
+      },
+      {
+        "index": 33,
+        "text": "품질좋다 매우 훌륭하다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.5,
+        "after_score": 3.0
+      },
+      {
+        "index": 34,
+        "text": "가성비좋다 진짜 최고다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.4,
+        "after_score": 2.9
+      },
+      {
+        "index": 35,
+        "text": "응대좋다 재구매의사 있다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 3.0,
+        "after_score": 3.0
+      },
+      {
+        "index": 36,
+        "text": "포장꼼꼼 해서 기쁘다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.3,
+        "after_score": 2.3
+      },
+      {
+        "index": 37,
+        "text": "문의해결 되어 안심된다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.4,
+        "after_score": 2.4
+      },
+      {
+        "index": 38,
+        "text": "환불신속 해서 만족스럽다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.4,
+        "after_score": 2.4
+      },
+      {
+        "index": 39,
+        "text": "사용편함 너무 좋다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.2,
+        "after_score": 2.7
+      },
+      {
+        "index": 40,
+        "text": "서비스가 좋다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 1.0,
+        "after_score": 1.0
+      },
+      {
+        "index": 41,
+        "text": "상담이 친절하다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 1.0,
+        "after_score": 1.0
+      },
+      {
+        "index": 42,
+        "text": "배송빠르다 정말 만족하다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.4,
+        "after_score": 2.9
+      },
+      {
+        "index": 43,
+        "text": "품질좋다 매우 훌륭하다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.5,
+        "after_score": 3.0
+      },
+      {
+        "index": 44,
+        "text": "가성비좋다 진짜 최고다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 2.4,
+        "after_score": 2.9
+      },
+      {
+        "index": 45,
+        "text": "서비스가 나쁘다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -1.0,
+        "after_score": -1.0
+      },
+      {
+        "index": 46,
+        "text": "상담이 불친절하다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -1.0,
+        "after_score": -1.0
+      },
+      {
+        "index": 47,
+        "text": "배송지연 으로 짜증나다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.5,
+        "after_score": -2.5
+      },
+      {
+        "index": 48,
+        "text": "품질불량 이라 실망하다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.8,
+        "after_score": -2.8
+      },
+      {
+        "index": 49,
+        "text": "가성비가 나쁘다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -1.0,
+        "after_score": -1.0
+      },
+      {
+        "index": 50,
+        "text": "응대불친절 해서 화난다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.6,
+        "after_score": -2.6
+      },
+      {
+        "index": 51,
+        "text": "파손배송 때문에 최악이다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.8,
+        "after_score": -2.8
+      },
+      {
+        "index": 52,
+        "text": "문의미해결 이라 답답하다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.6,
+        "after_score": -2.6
+      },
+      {
+        "index": 53,
+        "text": "환불지연 으로 불만족하다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.5,
+        "after_score": -2.5
+      },
+      {
+        "index": 54,
+        "text": "사용불편 해서 별로다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.2,
+        "after_score": -2.2
+      },
+      {
+        "index": 55,
+        "text": "서비스가 나쁘다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -1.0,
+        "after_score": -1.0
+      },
+      {
+        "index": 56,
+        "text": "상담이 불친절하다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -1.0,
+        "after_score": -1.0
+      },
+      {
+        "index": 57,
+        "text": "배송지연 으로 짜증나다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.5,
+        "after_score": -2.5
+      },
+      {
+        "index": 58,
+        "text": "품질불량 이라 실망하다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.8,
+        "after_score": -2.8
+      },
+      {
+        "index": 59,
+        "text": "가성비가 나쁘다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -1.0,
+        "after_score": -1.0
+      },
+      {
+        "index": 60,
+        "text": "응대불친절 해서 화난다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.6,
+        "after_score": -2.6
+      },
+      {
+        "index": 61,
+        "text": "파손배송 때문에 최악이다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.8,
+        "after_score": -2.8
+      },
+      {
+        "index": 62,
+        "text": "문의미해결 이라 답답하다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.6,
+        "after_score": -2.6
+      },
+      {
+        "index": 63,
+        "text": "환불지연 으로 불만족하다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.5,
+        "after_score": -2.5
+      },
+      {
+        "index": 64,
+        "text": "사용불편 해서 별로다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.2,
+        "after_score": -2.2
+      },
+      {
+        "index": 65,
+        "text": "서비스가 나쁘다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -1.0,
+        "after_score": -1.0
+      },
+      {
+        "index": 66,
+        "text": "상담이 불친절하다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -1.0,
+        "after_score": -1.0
+      },
+      {
+        "index": 67,
+        "text": "배송지연 으로 짜증나다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.5,
+        "after_score": -2.5
+      },
+      {
+        "index": 68,
+        "text": "품질불량 이라 실망하다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.8,
+        "after_score": -2.8
+      },
+      {
+        "index": 69,
+        "text": "가성비가 나쁘다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -1.0,
+        "after_score": -1.0
+      },
+      {
+        "index": 70,
+        "text": "응대불친절 해서 화난다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.6,
+        "after_score": -2.6
+      },
+      {
+        "index": 71,
+        "text": "파손배송 때문에 최악이다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.8,
+        "after_score": -2.8
+      },
+      {
+        "index": 72,
+        "text": "문의미해결 이라 답답하다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.6,
+        "after_score": -2.6
+      },
+      {
+        "index": 73,
+        "text": "환불지연 으로 불만족하다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.5,
+        "after_score": -2.5
+      },
+      {
+        "index": 74,
+        "text": "사용불편 해서 별로다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.2,
+        "after_score": -2.2
+      },
+      {
+        "index": 75,
+        "text": "서비스가 나쁘다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -1.0,
+        "after_score": -1.0
+      },
+      {
+        "index": 76,
+        "text": "상담이 불친절하다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -1.0,
+        "after_score": -1.0
+      },
+      {
+        "index": 77,
+        "text": "배송지연 으로 짜증나다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.5,
+        "after_score": -2.5
+      },
+      {
+        "index": 78,
+        "text": "품질불량 이라 실망하다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.8,
+        "after_score": -2.8
+      },
+      {
+        "index": 79,
+        "text": "가성비가 나쁘다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -1.0,
+        "after_score": -1.0
+      },
+      {
+        "index": 80,
+        "text": "응대불친절 해서 화난다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.6,
+        "after_score": -2.6
+      },
+      {
+        "index": 81,
+        "text": "파손배송 때문에 최악이다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.8,
+        "after_score": -2.8
+      },
+      {
+        "index": 82,
+        "text": "문의미해결 이라 답답하다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.6,
+        "after_score": -2.6
+      },
+      {
+        "index": 83,
+        "text": "환불지연 으로 불만족하다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.5,
+        "after_score": -2.5
+      },
+      {
+        "index": 84,
+        "text": "사용불편 해서 별로다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.2,
+        "after_score": -2.2
+      },
+      {
+        "index": 85,
+        "text": "서비스가 나쁘다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -1.0,
+        "after_score": -1.0
+      },
+      {
+        "index": 86,
+        "text": "상담이 불친절하다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -1.0,
+        "after_score": -1.0
+      },
+      {
+        "index": 87,
+        "text": "배송지연 으로 짜증나다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.5,
+        "after_score": -2.5
+      },
+      {
+        "index": 88,
+        "text": "품질불량 이라 실망하다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -2.8,
+        "after_score": -2.8
+      },
+      {
+        "index": 89,
+        "text": "가성비가 나쁘다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -1.0,
+        "after_score": -1.0
+      },
+      {
+        "index": 90,
+        "text": "오늘 상품을 받았다",
+        "expected": "neutral",
+        "before": "neutral",
+        "after": "neutral",
+        "before_score": 0.0,
+        "after_score": 0.0
+      },
+      {
+        "index": 91,
+        "text": "문의 내용을 확인했다",
+        "expected": "neutral",
+        "before": "neutral",
+        "after": "neutral",
+        "before_score": 0.0,
+        "after_score": 0.0
+      },
+      {
+        "index": 92,
+        "text": "배송 상태를 조회했다",
+        "expected": "neutral",
+        "before": "neutral",
+        "after": "neutral",
+        "before_score": 0.0,
+        "after_score": 0.0
+      },
+      {
+        "index": 93,
+        "text": "가격 정보를 확인했다",
+        "expected": "neutral",
+        "before": "neutral",
+        "after": "neutral",
+        "before_score": 0.0,
+        "after_score": 0.0
+      },
+      {
+        "index": 94,
+        "text": "서비스 정책을 읽었다",
+        "expected": "neutral",
+        "before": "neutral",
+        "after": "neutral",
+        "before_score": 0.0,
+        "after_score": 0.0
+      },
+      {
+        "index": 95,
+        "text": "오늘 상품을 받았다",
+        "expected": "neutral",
+        "before": "neutral",
+        "after": "neutral",
+        "before_score": 0.0,
+        "after_score": 0.0
+      },
+      {
+        "index": 96,
+        "text": "문의 내용을 확인했다",
+        "expected": "neutral",
+        "before": "neutral",
+        "after": "neutral",
+        "before_score": 0.0,
+        "after_score": 0.0
+      },
+      {
+        "index": 97,
+        "text": "배송 상태를 조회했다",
+        "expected": "neutral",
+        "before": "neutral",
+        "after": "neutral",
+        "before_score": 0.0,
+        "after_score": 0.0
+      },
+      {
+        "index": 98,
+        "text": "가격 정보를 확인했다",
+        "expected": "neutral",
+        "before": "neutral",
+        "after": "neutral",
+        "before_score": 0.0,
+        "after_score": 0.0
+      },
+      {
+        "index": 99,
+        "text": "서비스 정책을 읽었다",
+        "expected": "neutral",
+        "before": "neutral",
+        "after": "neutral",
+        "before_score": 0.0,
+        "after_score": 0.0
+      },
+      {
+        "index": 100,
+        "text": "오늘 상품을 받았다",
+        "expected": "neutral",
+        "before": "neutral",
+        "after": "neutral",
+        "before_score": 0.0,
+        "after_score": 0.0
+      },
+      {
+        "index": 101,
+        "text": "문의 내용을 확인했다",
+        "expected": "neutral",
+        "before": "neutral",
+        "after": "neutral",
+        "before_score": 0.0,
+        "after_score": 0.0
+      },
+      {
+        "index": 102,
+        "text": "배송 상태를 조회했다",
+        "expected": "neutral",
+        "before": "neutral",
+        "after": "neutral",
+        "before_score": 0.0,
+        "after_score": 0.0
+      },
+      {
+        "index": 103,
+        "text": "가격 정보를 확인했다",
+        "expected": "neutral",
+        "before": "neutral",
+        "after": "neutral",
+        "before_score": 0.0,
+        "after_score": 0.0
+      },
+      {
+        "index": 104,
+        "text": "서비스 정책을 읽었다",
+        "expected": "neutral",
+        "before": "neutral",
+        "after": "neutral",
+        "before_score": 0.0,
+        "after_score": 0.0
+      },
+      {
+        "index": 105,
+        "text": "오늘 상품을 받았다",
+        "expected": "neutral",
+        "before": "neutral",
+        "after": "neutral",
+        "before_score": 0.0,
+        "after_score": 0.0
+      },
+      {
+        "index": 106,
+        "text": "문의 내용을 확인했다",
+        "expected": "neutral",
+        "before": "neutral",
+        "after": "neutral",
+        "before_score": 0.0,
+        "after_score": 0.0
+      },
+      {
+        "index": 107,
+        "text": "배송 상태를 조회했다",
+        "expected": "neutral",
+        "before": "neutral",
+        "after": "neutral",
+        "before_score": 0.0,
+        "after_score": 0.0
+      },
+      {
+        "index": 108,
+        "text": "가격 정보를 확인했다",
+        "expected": "neutral",
+        "before": "neutral",
+        "after": "neutral",
+        "before_score": 0.0,
+        "after_score": 0.0
+      },
+      {
+        "index": 109,
+        "text": "서비스 정책을 읽었다",
+        "expected": "neutral",
+        "before": "neutral",
+        "after": "neutral",
+        "before_score": 0.0,
+        "after_score": 0.0
+      },
+      {
+        "index": 110,
+        "text": "배송이 나쁘지 않다",
+        "expected": "positive",
+        "before": "neutral",
+        "after": "positive",
+        "before_score": 0.0,
+        "after_score": 1.5
+      },
+      {
+        "index": 111,
+        "text": "응대가 싫지 않다",
+        "expected": "positive",
+        "before": "neutral",
+        "after": "positive",
+        "before_score": 0.0,
+        "after_score": 1.3
+      },
+      {
+        "index": 112,
+        "text": "품질이 좋다 않다",
+        "expected": "negative",
+        "before": "positive",
+        "after": "negative",
+        "before_score": 1.0,
+        "after_score": -1.0
+      },
+      {
+        "index": 113,
+        "text": "안 좋다",
+        "expected": "negative",
+        "before": "positive",
+        "after": "negative",
+        "before_score": 1.0,
+        "after_score": -1.0
+      },
+      {
+        "index": 114,
+        "text": "정말 좋다",
+        "expected": "positive",
+        "before": "positive",
+        "after": "positive",
+        "before_score": 1.0,
+        "after_score": 1.5
+      },
+      {
+        "index": 115,
+        "text": "너무 나쁘다",
+        "expected": "negative",
+        "before": "negative",
+        "after": "negative",
+        "before_score": -1.0,
+        "after_score": -1.5
+      }
+    ]
+  }
+}

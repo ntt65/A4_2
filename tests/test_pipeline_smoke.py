@@ -42,7 +42,7 @@ class PipelineSmokeTests(unittest.TestCase):
         extracted, _ = json.JSONDecoder().raw_decode(json_output)
         self.assertEqual(
             extracted,
-            {"emails": ["user@example.com"], "phones": [], "dates": [], "amounts": [], "urls": []},
+            {"emails": ["user@example.com"], "phones": [], "dates": [], "amounts": [], "urls": [], "addresses": []},
         )
         self.assertIn("[감성 분석 결과]", output)
         self.assertIn("판정: positive", output)

@@ -1,0 +1,6148 @@
+{
+  "metadata": {
+    "source": "Project-authored synthetic Korean customer-review training corpus",
+    "created_date_kst": "2026-11-15",
+    "construction": "Cartesian product of 16 label-independent contexts and 21 templates per class",
+    "label_policy": "Explicit satisfaction/intention positive, dissatisfaction/refusal negative, factual records neutral",
+    "limitations": "1008 unique strings from 63 templates, correlated synthetic examples, existing development evaluation set",
+    "contexts": [
+      "온라인 매장을 이용하고 경험을 기록한다.",
+      "동네 상점에서 물건을 산 뒤 후기를 남긴다.",
+      "모바일 앱으로 신청한 서비스에 관해 적는다.",
+      "전화 상담을 마친 뒤 이용 과정을 돌아본다.",
+      "공식 홈페이지에서 주문한 경험을 정리한다.",
+      "처음 방문한 지점에서 겪은 일을 기록한다.",
+      "정기 구독 서비스를 이용한 소감을 남긴다.",
+      "가족의 부탁으로 구매를 진행한 경험을 적는다.",
+      "업무용 제품을 주문한 뒤 이용 기록을 남긴다.",
+      "친구에게 소개받은 업체를 이용하고 후기를 적는다.",
+      "예약한 서비스를 이용한 뒤 과정을 정리한다.",
+      "주말에 새로 가입한 서비스에 관해 기록한다.",
+      "여행 준비 중 이용한 업체에 대한 후기를 남긴다.",
+      "평일 오후에 진행한 주문 경험을 적는다.",
+      "지난달부터 이용한 서비스의 상황을 정리한다.",
+      "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다."
+    ],
+    "templates": {
+      "positive": [
+        "요청한 조건을 빠짐없이 반영해 주어 만족스럽다.",
+        "담당자의 차분하고 친절한 안내가 마음에 든다.",
+        "필요했던 기능을 쉽게 찾을 수 있어서 편리하다.",
+        "마무리까지 세심하게 챙겨 주어 고맙다.",
+        "작은 질문에도 성실히 답해 주어서 신뢰가 간다.",
+        "구매한 물건을 직접 써 보니 품질이 훌륭하다.",
+        "다음에도 이곳을 이용하고 싶을 만큼 좋다.",
+        "설명과 실제 결과가 일치해서 안심이 된다.",
+        "문제가 생겼지만 신속히 해결해 주어 기쁘다.",
+        "복잡할 줄 알았던 절차가 간단해서 즐겁다.",
+        "처음부터 끝까지 응대가 정중해서 감동했다.",
+        "지인에게도 추천하고 싶은 경험이었다.",
+        "비용에 비해 얻은 혜택이 커서 이득이다.",
+        "예상한 수준보다 결과가 뛰어나서 행복하다.",
+        "정말 만족하는 경험이어서 다시 찾고 싶다.",
+        "아주 깔끔하게 일을 마무리해 주었다.",
+        "다루는 방법이 어렵지 않아서 쉽게 적응했다.",
+        "처리 과정은 불편하지 않고 원활하다.",
+        "최종 결과는 나쁘지 않아서 마음이 놓인다.",
+        "상담부터 완료까지 빠른응대로 시간을 아꼈다.",
+        "이용을 마친 지금 재구매의사가 확실하다."
+      ],
+      "negative": [
+        "요청한 조건을 여러 차례 빠뜨려서 실망스럽다.",
+        "담당자가 불친절하게 말을 끊어서 불쾌하다.",
+        "필요한 메뉴를 찾기 어려워 이용이 불편하다.",
+        "마무리를 제대로 하지 않아 짜증이 난다.",
+        "질문을 계속 무시하는 태도에 화가 난다.",
+        "받아 본 물건의 품질이 나빠서 후회된다.",
+        "다음에는 이용하고 싶지 않을 만큼 싫다.",
+        "설명과 결과가 달라 믿기 어렵고 의심스럽다.",
+        "처리를 약속하고도 지키지 않아서 답답하다.",
+        "작은 일을 복잡하게 만들어 지루하고 피곤하다.",
+        "처음부터 끝까지 응대가 무례해서 속상하다.",
+        "다른 사람에게 추천할 수 없을 만큼 최악이다.",
+        "결제한 비용만큼 가치를 얻지 못해 손해다.",
+        "기대했던 수준에 못 미쳐서 아쉽다.",
+        "정말 불만스러운 경험이라 다시 찾기 싫다.",
+        "아주 허술하게 처리해서 결과가 엉망이다.",
+        "조작하는 방식이 편리하지 않아서 힘들었다.",
+        "뒤늦은 응대는 친절하지 않고 무성의했다.",
+        "최종 상태가 좋지 않아서 환불을 신청했다.",
+        "확인할 때마다 결제오류가 생겨서 불편하다.",
+        "받은 제품은 품질불량이라 교환을 요청했다."
+      ],
+      "neutral": [
+        "문의 번호와 담당 부서 이름을 메모했다.",
+        "신청서에 필요한 항목을 모두 입력했다.",
+        "주문한 물품의 수량은 두 개로 표시되어 있다.",
+        "이용 가능한 시간은 오전 열 시부터다.",
+        "결제 수단으로 계좌 이체를 선택했다.",
+        "안내 문서를 내려받아 폴더에 저장했다.",
+        "알림 메시지에 기재된 날짜를 확인했다.",
+        "가입할 때 입력한 이메일 주소를 변경했다.",
+        "이용 내역 화면에는 세 건이 표시된다.",
+        "담당자에게 신청 번호를 전달했다.",
+        "새로운 주소를 회원 정보에 등록했다.",
+        "설명을 들은 뒤 추가 서류를 제출했다.",
+        "배송 날짜를 달력에 적어 두었다.",
+        "결제 영수증을 인쇄하여 보관했다.",
+        "예약 시각을 오후로 변경해 두었다.",
+        "화면 왼쪽 메뉴에서 설정을 열었다.",
+        "발송 여부를 확인하려고 상담을 신청했다.",
+        "안내된 순서에 따라 신청 절차를 진행했다.",
+        "구독 기간은 다음 달 말까지로 되어 있다.",
+        "동일한 계정으로 다른 기기에 접속했다.",
+        "제품의 색상은 회색으로 선택했다."
+      ]
+    }
+  },
+  "cases": [
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 요청한 조건을 빠짐없이 반영해 주어 만족스럽다.",
+      "label": "positive",
+      "context_id": 0,
+      "template_id": "positive-00"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 요청한 조건을 빠짐없이 반영해 주어 만족스럽다.",
+      "label": "positive",
+      "context_id": 1,
+      "template_id": "positive-00"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 요청한 조건을 빠짐없이 반영해 주어 만족스럽다.",
+      "label": "positive",
+      "context_id": 2,
+      "template_id": "positive-00"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 요청한 조건을 빠짐없이 반영해 주어 만족스럽다.",
+      "label": "positive",
+      "context_id": 3,
+      "template_id": "positive-00"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 요청한 조건을 빠짐없이 반영해 주어 만족스럽다.",
+      "label": "positive",
+      "context_id": 4,
+      "template_id": "positive-00"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 요청한 조건을 빠짐없이 반영해 주어 만족스럽다.",
+      "label": "positive",
+      "context_id": 5,
+      "template_id": "positive-00"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 요청한 조건을 빠짐없이 반영해 주어 만족스럽다.",
+      "label": "positive",
+      "context_id": 6,
+      "template_id": "positive-00"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 요청한 조건을 빠짐없이 반영해 주어 만족스럽다.",
+      "label": "positive",
+      "context_id": 7,
+      "template_id": "positive-00"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 요청한 조건을 빠짐없이 반영해 주어 만족스럽다.",
+      "label": "positive",
+      "context_id": 8,
+      "template_id": "positive-00"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 요청한 조건을 빠짐없이 반영해 주어 만족스럽다.",
+      "label": "positive",
+      "context_id": 9,
+      "template_id": "positive-00"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 요청한 조건을 빠짐없이 반영해 주어 만족스럽다.",
+      "label": "positive",
+      "context_id": 10,
+      "template_id": "positive-00"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 요청한 조건을 빠짐없이 반영해 주어 만족스럽다.",
+      "label": "positive",
+      "context_id": 11,
+      "template_id": "positive-00"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 요청한 조건을 빠짐없이 반영해 주어 만족스럽다.",
+      "label": "positive",
+      "context_id": 12,
+      "template_id": "positive-00"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 요청한 조건을 빠짐없이 반영해 주어 만족스럽다.",
+      "label": "positive",
+      "context_id": 13,
+      "template_id": "positive-00"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 요청한 조건을 빠짐없이 반영해 주어 만족스럽다.",
+      "label": "positive",
+      "context_id": 14,
+      "template_id": "positive-00"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 요청한 조건을 빠짐없이 반영해 주어 만족스럽다.",
+      "label": "positive",
+      "context_id": 15,
+      "template_id": "positive-00"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 담당자의 차분하고 친절한 안내가 마음에 든다.",
+      "label": "positive",
+      "context_id": 0,
+      "template_id": "positive-01"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 담당자의 차분하고 친절한 안내가 마음에 든다.",
+      "label": "positive",
+      "context_id": 1,
+      "template_id": "positive-01"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 담당자의 차분하고 친절한 안내가 마음에 든다.",
+      "label": "positive",
+      "context_id": 2,
+      "template_id": "positive-01"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 담당자의 차분하고 친절한 안내가 마음에 든다.",
+      "label": "positive",
+      "context_id": 3,
+      "template_id": "positive-01"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 담당자의 차분하고 친절한 안내가 마음에 든다.",
+      "label": "positive",
+      "context_id": 4,
+      "template_id": "positive-01"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 담당자의 차분하고 친절한 안내가 마음에 든다.",
+      "label": "positive",
+      "context_id": 5,
+      "template_id": "positive-01"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 담당자의 차분하고 친절한 안내가 마음에 든다.",
+      "label": "positive",
+      "context_id": 6,
+      "template_id": "positive-01"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 담당자의 차분하고 친절한 안내가 마음에 든다.",
+      "label": "positive",
+      "context_id": 7,
+      "template_id": "positive-01"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 담당자의 차분하고 친절한 안내가 마음에 든다.",
+      "label": "positive",
+      "context_id": 8,
+      "template_id": "positive-01"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 담당자의 차분하고 친절한 안내가 마음에 든다.",
+      "label": "positive",
+      "context_id": 9,
+      "template_id": "positive-01"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 담당자의 차분하고 친절한 안내가 마음에 든다.",
+      "label": "positive",
+      "context_id": 10,
+      "template_id": "positive-01"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 담당자의 차분하고 친절한 안내가 마음에 든다.",
+      "label": "positive",
+      "context_id": 11,
+      "template_id": "positive-01"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 담당자의 차분하고 친절한 안내가 마음에 든다.",
+      "label": "positive",
+      "context_id": 12,
+      "template_id": "positive-01"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 담당자의 차분하고 친절한 안내가 마음에 든다.",
+      "label": "positive",
+      "context_id": 13,
+      "template_id": "positive-01"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 담당자의 차분하고 친절한 안내가 마음에 든다.",
+      "label": "positive",
+      "context_id": 14,
+      "template_id": "positive-01"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 담당자의 차분하고 친절한 안내가 마음에 든다.",
+      "label": "positive",
+      "context_id": 15,
+      "template_id": "positive-01"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 필요했던 기능을 쉽게 찾을 수 있어서 편리하다.",
+      "label": "positive",
+      "context_id": 0,
+      "template_id": "positive-02"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 필요했던 기능을 쉽게 찾을 수 있어서 편리하다.",
+      "label": "positive",
+      "context_id": 1,
+      "template_id": "positive-02"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 필요했던 기능을 쉽게 찾을 수 있어서 편리하다.",
+      "label": "positive",
+      "context_id": 2,
+      "template_id": "positive-02"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 필요했던 기능을 쉽게 찾을 수 있어서 편리하다.",
+      "label": "positive",
+      "context_id": 3,
+      "template_id": "positive-02"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 필요했던 기능을 쉽게 찾을 수 있어서 편리하다.",
+      "label": "positive",
+      "context_id": 4,
+      "template_id": "positive-02"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 필요했던 기능을 쉽게 찾을 수 있어서 편리하다.",
+      "label": "positive",
+      "context_id": 5,
+      "template_id": "positive-02"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 필요했던 기능을 쉽게 찾을 수 있어서 편리하다.",
+      "label": "positive",
+      "context_id": 6,
+      "template_id": "positive-02"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 필요했던 기능을 쉽게 찾을 수 있어서 편리하다.",
+      "label": "positive",
+      "context_id": 7,
+      "template_id": "positive-02"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 필요했던 기능을 쉽게 찾을 수 있어서 편리하다.",
+      "label": "positive",
+      "context_id": 8,
+      "template_id": "positive-02"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 필요했던 기능을 쉽게 찾을 수 있어서 편리하다.",
+      "label": "positive",
+      "context_id": 9,
+      "template_id": "positive-02"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 필요했던 기능을 쉽게 찾을 수 있어서 편리하다.",
+      "label": "positive",
+      "context_id": 10,
+      "template_id": "positive-02"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 필요했던 기능을 쉽게 찾을 수 있어서 편리하다.",
+      "label": "positive",
+      "context_id": 11,
+      "template_id": "positive-02"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 필요했던 기능을 쉽게 찾을 수 있어서 편리하다.",
+      "label": "positive",
+      "context_id": 12,
+      "template_id": "positive-02"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 필요했던 기능을 쉽게 찾을 수 있어서 편리하다.",
+      "label": "positive",
+      "context_id": 13,
+      "template_id": "positive-02"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 필요했던 기능을 쉽게 찾을 수 있어서 편리하다.",
+      "label": "positive",
+      "context_id": 14,
+      "template_id": "positive-02"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 필요했던 기능을 쉽게 찾을 수 있어서 편리하다.",
+      "label": "positive",
+      "context_id": 15,
+      "template_id": "positive-02"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 마무리까지 세심하게 챙겨 주어 고맙다.",
+      "label": "positive",
+      "context_id": 0,
+      "template_id": "positive-03"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 마무리까지 세심하게 챙겨 주어 고맙다.",
+      "label": "positive",
+      "context_id": 1,
+      "template_id": "positive-03"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 마무리까지 세심하게 챙겨 주어 고맙다.",
+      "label": "positive",
+      "context_id": 2,
+      "template_id": "positive-03"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 마무리까지 세심하게 챙겨 주어 고맙다.",
+      "label": "positive",
+      "context_id": 3,
+      "template_id": "positive-03"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 마무리까지 세심하게 챙겨 주어 고맙다.",
+      "label": "positive",
+      "context_id": 4,
+      "template_id": "positive-03"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 마무리까지 세심하게 챙겨 주어 고맙다.",
+      "label": "positive",
+      "context_id": 5,
+      "template_id": "positive-03"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 마무리까지 세심하게 챙겨 주어 고맙다.",
+      "label": "positive",
+      "context_id": 6,
+      "template_id": "positive-03"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 마무리까지 세심하게 챙겨 주어 고맙다.",
+      "label": "positive",
+      "context_id": 7,
+      "template_id": "positive-03"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 마무리까지 세심하게 챙겨 주어 고맙다.",
+      "label": "positive",
+      "context_id": 8,
+      "template_id": "positive-03"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 마무리까지 세심하게 챙겨 주어 고맙다.",
+      "label": "positive",
+      "context_id": 9,
+      "template_id": "positive-03"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 마무리까지 세심하게 챙겨 주어 고맙다.",
+      "label": "positive",
+      "context_id": 10,
+      "template_id": "positive-03"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 마무리까지 세심하게 챙겨 주어 고맙다.",
+      "label": "positive",
+      "context_id": 11,
+      "template_id": "positive-03"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 마무리까지 세심하게 챙겨 주어 고맙다.",
+      "label": "positive",
+      "context_id": 12,
+      "template_id": "positive-03"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 마무리까지 세심하게 챙겨 주어 고맙다.",
+      "label": "positive",
+      "context_id": 13,
+      "template_id": "positive-03"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 마무리까지 세심하게 챙겨 주어 고맙다.",
+      "label": "positive",
+      "context_id": 14,
+      "template_id": "positive-03"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 마무리까지 세심하게 챙겨 주어 고맙다.",
+      "label": "positive",
+      "context_id": 15,
+      "template_id": "positive-03"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 작은 질문에도 성실히 답해 주어서 신뢰가 간다.",
+      "label": "positive",
+      "context_id": 0,
+      "template_id": "positive-04"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 작은 질문에도 성실히 답해 주어서 신뢰가 간다.",
+      "label": "positive",
+      "context_id": 1,
+      "template_id": "positive-04"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 작은 질문에도 성실히 답해 주어서 신뢰가 간다.",
+      "label": "positive",
+      "context_id": 2,
+      "template_id": "positive-04"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 작은 질문에도 성실히 답해 주어서 신뢰가 간다.",
+      "label": "positive",
+      "context_id": 3,
+      "template_id": "positive-04"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 작은 질문에도 성실히 답해 주어서 신뢰가 간다.",
+      "label": "positive",
+      "context_id": 4,
+      "template_id": "positive-04"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 작은 질문에도 성실히 답해 주어서 신뢰가 간다.",
+      "label": "positive",
+      "context_id": 5,
+      "template_id": "positive-04"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 작은 질문에도 성실히 답해 주어서 신뢰가 간다.",
+      "label": "positive",
+      "context_id": 6,
+      "template_id": "positive-04"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 작은 질문에도 성실히 답해 주어서 신뢰가 간다.",
+      "label": "positive",
+      "context_id": 7,
+      "template_id": "positive-04"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 작은 질문에도 성실히 답해 주어서 신뢰가 간다.",
+      "label": "positive",
+      "context_id": 8,
+      "template_id": "positive-04"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 작은 질문에도 성실히 답해 주어서 신뢰가 간다.",
+      "label": "positive",
+      "context_id": 9,
+      "template_id": "positive-04"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 작은 질문에도 성실히 답해 주어서 신뢰가 간다.",
+      "label": "positive",
+      "context_id": 10,
+      "template_id": "positive-04"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 작은 질문에도 성실히 답해 주어서 신뢰가 간다.",
+      "label": "positive",
+      "context_id": 11,
+      "template_id": "positive-04"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 작은 질문에도 성실히 답해 주어서 신뢰가 간다.",
+      "label": "positive",
+      "context_id": 12,
+      "template_id": "positive-04"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 작은 질문에도 성실히 답해 주어서 신뢰가 간다.",
+      "label": "positive",
+      "context_id": 13,
+      "template_id": "positive-04"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 작은 질문에도 성실히 답해 주어서 신뢰가 간다.",
+      "label": "positive",
+      "context_id": 14,
+      "template_id": "positive-04"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 작은 질문에도 성실히 답해 주어서 신뢰가 간다.",
+      "label": "positive",
+      "context_id": 15,
+      "template_id": "positive-04"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 구매한 물건을 직접 써 보니 품질이 훌륭하다.",
+      "label": "positive",
+      "context_id": 0,
+      "template_id": "positive-05"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 구매한 물건을 직접 써 보니 품질이 훌륭하다.",
+      "label": "positive",
+      "context_id": 1,
+      "template_id": "positive-05"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 구매한 물건을 직접 써 보니 품질이 훌륭하다.",
+      "label": "positive",
+      "context_id": 2,
+      "template_id": "positive-05"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 구매한 물건을 직접 써 보니 품질이 훌륭하다.",
+      "label": "positive",
+      "context_id": 3,
+      "template_id": "positive-05"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 구매한 물건을 직접 써 보니 품질이 훌륭하다.",
+      "label": "positive",
+      "context_id": 4,
+      "template_id": "positive-05"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 구매한 물건을 직접 써 보니 품질이 훌륭하다.",
+      "label": "positive",
+      "context_id": 5,
+      "template_id": "positive-05"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 구매한 물건을 직접 써 보니 품질이 훌륭하다.",
+      "label": "positive",
+      "context_id": 6,
+      "template_id": "positive-05"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 구매한 물건을 직접 써 보니 품질이 훌륭하다.",
+      "label": "positive",
+      "context_id": 7,
+      "template_id": "positive-05"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 구매한 물건을 직접 써 보니 품질이 훌륭하다.",
+      "label": "positive",
+      "context_id": 8,
+      "template_id": "positive-05"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 구매한 물건을 직접 써 보니 품질이 훌륭하다.",
+      "label": "positive",
+      "context_id": 9,
+      "template_id": "positive-05"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 구매한 물건을 직접 써 보니 품질이 훌륭하다.",
+      "label": "positive",
+      "context_id": 10,
+      "template_id": "positive-05"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 구매한 물건을 직접 써 보니 품질이 훌륭하다.",
+      "label": "positive",
+      "context_id": 11,
+      "template_id": "positive-05"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 구매한 물건을 직접 써 보니 품질이 훌륭하다.",
+      "label": "positive",
+      "context_id": 12,
+      "template_id": "positive-05"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 구매한 물건을 직접 써 보니 품질이 훌륭하다.",
+      "label": "positive",
+      "context_id": 13,
+      "template_id": "positive-05"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 구매한 물건을 직접 써 보니 품질이 훌륭하다.",
+      "label": "positive",
+      "context_id": 14,
+      "template_id": "positive-05"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 구매한 물건을 직접 써 보니 품질이 훌륭하다.",
+      "label": "positive",
+      "context_id": 15,
+      "template_id": "positive-05"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 다음에도 이곳을 이용하고 싶을 만큼 좋다.",
+      "label": "positive",
+      "context_id": 0,
+      "template_id": "positive-06"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 다음에도 이곳을 이용하고 싶을 만큼 좋다.",
+      "label": "positive",
+      "context_id": 1,
+      "template_id": "positive-06"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 다음에도 이곳을 이용하고 싶을 만큼 좋다.",
+      "label": "positive",
+      "context_id": 2,
+      "template_id": "positive-06"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 다음에도 이곳을 이용하고 싶을 만큼 좋다.",
+      "label": "positive",
+      "context_id": 3,
+      "template_id": "positive-06"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 다음에도 이곳을 이용하고 싶을 만큼 좋다.",
+      "label": "positive",
+      "context_id": 4,
+      "template_id": "positive-06"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 다음에도 이곳을 이용하고 싶을 만큼 좋다.",
+      "label": "positive",
+      "context_id": 5,
+      "template_id": "positive-06"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 다음에도 이곳을 이용하고 싶을 만큼 좋다.",
+      "label": "positive",
+      "context_id": 6,
+      "template_id": "positive-06"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 다음에도 이곳을 이용하고 싶을 만큼 좋다.",
+      "label": "positive",
+      "context_id": 7,
+      "template_id": "positive-06"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 다음에도 이곳을 이용하고 싶을 만큼 좋다.",
+      "label": "positive",
+      "context_id": 8,
+      "template_id": "positive-06"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 다음에도 이곳을 이용하고 싶을 만큼 좋다.",
+      "label": "positive",
+      "context_id": 9,
+      "template_id": "positive-06"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 다음에도 이곳을 이용하고 싶을 만큼 좋다.",
+      "label": "positive",
+      "context_id": 10,
+      "template_id": "positive-06"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 다음에도 이곳을 이용하고 싶을 만큼 좋다.",
+      "label": "positive",
+      "context_id": 11,
+      "template_id": "positive-06"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 다음에도 이곳을 이용하고 싶을 만큼 좋다.",
+      "label": "positive",
+      "context_id": 12,
+      "template_id": "positive-06"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 다음에도 이곳을 이용하고 싶을 만큼 좋다.",
+      "label": "positive",
+      "context_id": 13,
+      "template_id": "positive-06"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 다음에도 이곳을 이용하고 싶을 만큼 좋다.",
+      "label": "positive",
+      "context_id": 14,
+      "template_id": "positive-06"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 다음에도 이곳을 이용하고 싶을 만큼 좋다.",
+      "label": "positive",
+      "context_id": 15,
+      "template_id": "positive-06"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 설명과 실제 결과가 일치해서 안심이 된다.",
+      "label": "positive",
+      "context_id": 0,
+      "template_id": "positive-07"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 설명과 실제 결과가 일치해서 안심이 된다.",
+      "label": "positive",
+      "context_id": 1,
+      "template_id": "positive-07"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 설명과 실제 결과가 일치해서 안심이 된다.",
+      "label": "positive",
+      "context_id": 2,
+      "template_id": "positive-07"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 설명과 실제 결과가 일치해서 안심이 된다.",
+      "label": "positive",
+      "context_id": 3,
+      "template_id": "positive-07"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 설명과 실제 결과가 일치해서 안심이 된다.",
+      "label": "positive",
+      "context_id": 4,
+      "template_id": "positive-07"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 설명과 실제 결과가 일치해서 안심이 된다.",
+      "label": "positive",
+      "context_id": 5,
+      "template_id": "positive-07"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 설명과 실제 결과가 일치해서 안심이 된다.",
+      "label": "positive",
+      "context_id": 6,
+      "template_id": "positive-07"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 설명과 실제 결과가 일치해서 안심이 된다.",
+      "label": "positive",
+      "context_id": 7,
+      "template_id": "positive-07"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 설명과 실제 결과가 일치해서 안심이 된다.",
+      "label": "positive",
+      "context_id": 8,
+      "template_id": "positive-07"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 설명과 실제 결과가 일치해서 안심이 된다.",
+      "label": "positive",
+      "context_id": 9,
+      "template_id": "positive-07"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 설명과 실제 결과가 일치해서 안심이 된다.",
+      "label": "positive",
+      "context_id": 10,
+      "template_id": "positive-07"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 설명과 실제 결과가 일치해서 안심이 된다.",
+      "label": "positive",
+      "context_id": 11,
+      "template_id": "positive-07"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 설명과 실제 결과가 일치해서 안심이 된다.",
+      "label": "positive",
+      "context_id": 12,
+      "template_id": "positive-07"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 설명과 실제 결과가 일치해서 안심이 된다.",
+      "label": "positive",
+      "context_id": 13,
+      "template_id": "positive-07"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 설명과 실제 결과가 일치해서 안심이 된다.",
+      "label": "positive",
+      "context_id": 14,
+      "template_id": "positive-07"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 설명과 실제 결과가 일치해서 안심이 된다.",
+      "label": "positive",
+      "context_id": 15,
+      "template_id": "positive-07"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 문제가 생겼지만 신속히 해결해 주어 기쁘다.",
+      "label": "positive",
+      "context_id": 0,
+      "template_id": "positive-08"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 문제가 생겼지만 신속히 해결해 주어 기쁘다.",
+      "label": "positive",
+      "context_id": 1,
+      "template_id": "positive-08"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 문제가 생겼지만 신속히 해결해 주어 기쁘다.",
+      "label": "positive",
+      "context_id": 2,
+      "template_id": "positive-08"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 문제가 생겼지만 신속히 해결해 주어 기쁘다.",
+      "label": "positive",
+      "context_id": 3,
+      "template_id": "positive-08"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 문제가 생겼지만 신속히 해결해 주어 기쁘다.",
+      "label": "positive",
+      "context_id": 4,
+      "template_id": "positive-08"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 문제가 생겼지만 신속히 해결해 주어 기쁘다.",
+      "label": "positive",
+      "context_id": 5,
+      "template_id": "positive-08"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 문제가 생겼지만 신속히 해결해 주어 기쁘다.",
+      "label": "positive",
+      "context_id": 6,
+      "template_id": "positive-08"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 문제가 생겼지만 신속히 해결해 주어 기쁘다.",
+      "label": "positive",
+      "context_id": 7,
+      "template_id": "positive-08"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 문제가 생겼지만 신속히 해결해 주어 기쁘다.",
+      "label": "positive",
+      "context_id": 8,
+      "template_id": "positive-08"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 문제가 생겼지만 신속히 해결해 주어 기쁘다.",
+      "label": "positive",
+      "context_id": 9,
+      "template_id": "positive-08"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 문제가 생겼지만 신속히 해결해 주어 기쁘다.",
+      "label": "positive",
+      "context_id": 10,
+      "template_id": "positive-08"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 문제가 생겼지만 신속히 해결해 주어 기쁘다.",
+      "label": "positive",
+      "context_id": 11,
+      "template_id": "positive-08"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 문제가 생겼지만 신속히 해결해 주어 기쁘다.",
+      "label": "positive",
+      "context_id": 12,
+      "template_id": "positive-08"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 문제가 생겼지만 신속히 해결해 주어 기쁘다.",
+      "label": "positive",
+      "context_id": 13,
+      "template_id": "positive-08"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 문제가 생겼지만 신속히 해결해 주어 기쁘다.",
+      "label": "positive",
+      "context_id": 14,
+      "template_id": "positive-08"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 문제가 생겼지만 신속히 해결해 주어 기쁘다.",
+      "label": "positive",
+      "context_id": 15,
+      "template_id": "positive-08"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 복잡할 줄 알았던 절차가 간단해서 즐겁다.",
+      "label": "positive",
+      "context_id": 0,
+      "template_id": "positive-09"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 복잡할 줄 알았던 절차가 간단해서 즐겁다.",
+      "label": "positive",
+      "context_id": 1,
+      "template_id": "positive-09"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 복잡할 줄 알았던 절차가 간단해서 즐겁다.",
+      "label": "positive",
+      "context_id": 2,
+      "template_id": "positive-09"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 복잡할 줄 알았던 절차가 간단해서 즐겁다.",
+      "label": "positive",
+      "context_id": 3,
+      "template_id": "positive-09"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 복잡할 줄 알았던 절차가 간단해서 즐겁다.",
+      "label": "positive",
+      "context_id": 4,
+      "template_id": "positive-09"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 복잡할 줄 알았던 절차가 간단해서 즐겁다.",
+      "label": "positive",
+      "context_id": 5,
+      "template_id": "positive-09"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 복잡할 줄 알았던 절차가 간단해서 즐겁다.",
+      "label": "positive",
+      "context_id": 6,
+      "template_id": "positive-09"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 복잡할 줄 알았던 절차가 간단해서 즐겁다.",
+      "label": "positive",
+      "context_id": 7,
+      "template_id": "positive-09"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 복잡할 줄 알았던 절차가 간단해서 즐겁다.",
+      "label": "positive",
+      "context_id": 8,
+      "template_id": "positive-09"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 복잡할 줄 알았던 절차가 간단해서 즐겁다.",
+      "label": "positive",
+      "context_id": 9,
+      "template_id": "positive-09"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 복잡할 줄 알았던 절차가 간단해서 즐겁다.",
+      "label": "positive",
+      "context_id": 10,
+      "template_id": "positive-09"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 복잡할 줄 알았던 절차가 간단해서 즐겁다.",
+      "label": "positive",
+      "context_id": 11,
+      "template_id": "positive-09"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 복잡할 줄 알았던 절차가 간단해서 즐겁다.",
+      "label": "positive",
+      "context_id": 12,
+      "template_id": "positive-09"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 복잡할 줄 알았던 절차가 간단해서 즐겁다.",
+      "label": "positive",
+      "context_id": 13,
+      "template_id": "positive-09"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 복잡할 줄 알았던 절차가 간단해서 즐겁다.",
+      "label": "positive",
+      "context_id": 14,
+      "template_id": "positive-09"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 복잡할 줄 알았던 절차가 간단해서 즐겁다.",
+      "label": "positive",
+      "context_id": 15,
+      "template_id": "positive-09"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 처음부터 끝까지 응대가 정중해서 감동했다.",
+      "label": "positive",
+      "context_id": 0,
+      "template_id": "positive-10"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 처음부터 끝까지 응대가 정중해서 감동했다.",
+      "label": "positive",
+      "context_id": 1,
+      "template_id": "positive-10"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 처음부터 끝까지 응대가 정중해서 감동했다.",
+      "label": "positive",
+      "context_id": 2,
+      "template_id": "positive-10"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 처음부터 끝까지 응대가 정중해서 감동했다.",
+      "label": "positive",
+      "context_id": 3,
+      "template_id": "positive-10"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 처음부터 끝까지 응대가 정중해서 감동했다.",
+      "label": "positive",
+      "context_id": 4,
+      "template_id": "positive-10"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 처음부터 끝까지 응대가 정중해서 감동했다.",
+      "label": "positive",
+      "context_id": 5,
+      "template_id": "positive-10"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 처음부터 끝까지 응대가 정중해서 감동했다.",
+      "label": "positive",
+      "context_id": 6,
+      "template_id": "positive-10"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 처음부터 끝까지 응대가 정중해서 감동했다.",
+      "label": "positive",
+      "context_id": 7,
+      "template_id": "positive-10"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 처음부터 끝까지 응대가 정중해서 감동했다.",
+      "label": "positive",
+      "context_id": 8,
+      "template_id": "positive-10"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 처음부터 끝까지 응대가 정중해서 감동했다.",
+      "label": "positive",
+      "context_id": 9,
+      "template_id": "positive-10"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 처음부터 끝까지 응대가 정중해서 감동했다.",
+      "label": "positive",
+      "context_id": 10,
+      "template_id": "positive-10"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 처음부터 끝까지 응대가 정중해서 감동했다.",
+      "label": "positive",
+      "context_id": 11,
+      "template_id": "positive-10"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 처음부터 끝까지 응대가 정중해서 감동했다.",
+      "label": "positive",
+      "context_id": 12,
+      "template_id": "positive-10"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 처음부터 끝까지 응대가 정중해서 감동했다.",
+      "label": "positive",
+      "context_id": 13,
+      "template_id": "positive-10"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 처음부터 끝까지 응대가 정중해서 감동했다.",
+      "label": "positive",
+      "context_id": 14,
+      "template_id": "positive-10"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 처음부터 끝까지 응대가 정중해서 감동했다.",
+      "label": "positive",
+      "context_id": 15,
+      "template_id": "positive-10"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 지인에게도 추천하고 싶은 경험이었다.",
+      "label": "positive",
+      "context_id": 0,
+      "template_id": "positive-11"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 지인에게도 추천하고 싶은 경험이었다.",
+      "label": "positive",
+      "context_id": 1,
+      "template_id": "positive-11"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 지인에게도 추천하고 싶은 경험이었다.",
+      "label": "positive",
+      "context_id": 2,
+      "template_id": "positive-11"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 지인에게도 추천하고 싶은 경험이었다.",
+      "label": "positive",
+      "context_id": 3,
+      "template_id": "positive-11"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 지인에게도 추천하고 싶은 경험이었다.",
+      "label": "positive",
+      "context_id": 4,
+      "template_id": "positive-11"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 지인에게도 추천하고 싶은 경험이었다.",
+      "label": "positive",
+      "context_id": 5,
+      "template_id": "positive-11"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 지인에게도 추천하고 싶은 경험이었다.",
+      "label": "positive",
+      "context_id": 6,
+      "template_id": "positive-11"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 지인에게도 추천하고 싶은 경험이었다.",
+      "label": "positive",
+      "context_id": 7,
+      "template_id": "positive-11"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 지인에게도 추천하고 싶은 경험이었다.",
+      "label": "positive",
+      "context_id": 8,
+      "template_id": "positive-11"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 지인에게도 추천하고 싶은 경험이었다.",
+      "label": "positive",
+      "context_id": 9,
+      "template_id": "positive-11"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 지인에게도 추천하고 싶은 경험이었다.",
+      "label": "positive",
+      "context_id": 10,
+      "template_id": "positive-11"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 지인에게도 추천하고 싶은 경험이었다.",
+      "label": "positive",
+      "context_id": 11,
+      "template_id": "positive-11"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 지인에게도 추천하고 싶은 경험이었다.",
+      "label": "positive",
+      "context_id": 12,
+      "template_id": "positive-11"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 지인에게도 추천하고 싶은 경험이었다.",
+      "label": "positive",
+      "context_id": 13,
+      "template_id": "positive-11"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 지인에게도 추천하고 싶은 경험이었다.",
+      "label": "positive",
+      "context_id": 14,
+      "template_id": "positive-11"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 지인에게도 추천하고 싶은 경험이었다.",
+      "label": "positive",
+      "context_id": 15,
+      "template_id": "positive-11"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 비용에 비해 얻은 혜택이 커서 이득이다.",
+      "label": "positive",
+      "context_id": 0,
+      "template_id": "positive-12"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 비용에 비해 얻은 혜택이 커서 이득이다.",
+      "label": "positive",
+      "context_id": 1,
+      "template_id": "positive-12"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 비용에 비해 얻은 혜택이 커서 이득이다.",
+      "label": "positive",
+      "context_id": 2,
+      "template_id": "positive-12"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 비용에 비해 얻은 혜택이 커서 이득이다.",
+      "label": "positive",
+      "context_id": 3,
+      "template_id": "positive-12"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 비용에 비해 얻은 혜택이 커서 이득이다.",
+      "label": "positive",
+      "context_id": 4,
+      "template_id": "positive-12"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 비용에 비해 얻은 혜택이 커서 이득이다.",
+      "label": "positive",
+      "context_id": 5,
+      "template_id": "positive-12"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 비용에 비해 얻은 혜택이 커서 이득이다.",
+      "label": "positive",
+      "context_id": 6,
+      "template_id": "positive-12"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 비용에 비해 얻은 혜택이 커서 이득이다.",
+      "label": "positive",
+      "context_id": 7,
+      "template_id": "positive-12"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 비용에 비해 얻은 혜택이 커서 이득이다.",
+      "label": "positive",
+      "context_id": 8,
+      "template_id": "positive-12"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 비용에 비해 얻은 혜택이 커서 이득이다.",
+      "label": "positive",
+      "context_id": 9,
+      "template_id": "positive-12"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 비용에 비해 얻은 혜택이 커서 이득이다.",
+      "label": "positive",
+      "context_id": 10,
+      "template_id": "positive-12"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 비용에 비해 얻은 혜택이 커서 이득이다.",
+      "label": "positive",
+      "context_id": 11,
+      "template_id": "positive-12"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 비용에 비해 얻은 혜택이 커서 이득이다.",
+      "label": "positive",
+      "context_id": 12,
+      "template_id": "positive-12"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 비용에 비해 얻은 혜택이 커서 이득이다.",
+      "label": "positive",
+      "context_id": 13,
+      "template_id": "positive-12"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 비용에 비해 얻은 혜택이 커서 이득이다.",
+      "label": "positive",
+      "context_id": 14,
+      "template_id": "positive-12"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 비용에 비해 얻은 혜택이 커서 이득이다.",
+      "label": "positive",
+      "context_id": 15,
+      "template_id": "positive-12"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 예상한 수준보다 결과가 뛰어나서 행복하다.",
+      "label": "positive",
+      "context_id": 0,
+      "template_id": "positive-13"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 예상한 수준보다 결과가 뛰어나서 행복하다.",
+      "label": "positive",
+      "context_id": 1,
+      "template_id": "positive-13"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 예상한 수준보다 결과가 뛰어나서 행복하다.",
+      "label": "positive",
+      "context_id": 2,
+      "template_id": "positive-13"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 예상한 수준보다 결과가 뛰어나서 행복하다.",
+      "label": "positive",
+      "context_id": 3,
+      "template_id": "positive-13"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 예상한 수준보다 결과가 뛰어나서 행복하다.",
+      "label": "positive",
+      "context_id": 4,
+      "template_id": "positive-13"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 예상한 수준보다 결과가 뛰어나서 행복하다.",
+      "label": "positive",
+      "context_id": 5,
+      "template_id": "positive-13"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 예상한 수준보다 결과가 뛰어나서 행복하다.",
+      "label": "positive",
+      "context_id": 6,
+      "template_id": "positive-13"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 예상한 수준보다 결과가 뛰어나서 행복하다.",
+      "label": "positive",
+      "context_id": 7,
+      "template_id": "positive-13"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 예상한 수준보다 결과가 뛰어나서 행복하다.",
+      "label": "positive",
+      "context_id": 8,
+      "template_id": "positive-13"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 예상한 수준보다 결과가 뛰어나서 행복하다.",
+      "label": "positive",
+      "context_id": 9,
+      "template_id": "positive-13"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 예상한 수준보다 결과가 뛰어나서 행복하다.",
+      "label": "positive",
+      "context_id": 10,
+      "template_id": "positive-13"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 예상한 수준보다 결과가 뛰어나서 행복하다.",
+      "label": "positive",
+      "context_id": 11,
+      "template_id": "positive-13"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 예상한 수준보다 결과가 뛰어나서 행복하다.",
+      "label": "positive",
+      "context_id": 12,
+      "template_id": "positive-13"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 예상한 수준보다 결과가 뛰어나서 행복하다.",
+      "label": "positive",
+      "context_id": 13,
+      "template_id": "positive-13"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 예상한 수준보다 결과가 뛰어나서 행복하다.",
+      "label": "positive",
+      "context_id": 14,
+      "template_id": "positive-13"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 예상한 수준보다 결과가 뛰어나서 행복하다.",
+      "label": "positive",
+      "context_id": 15,
+      "template_id": "positive-13"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 정말 만족하는 경험이어서 다시 찾고 싶다.",
+      "label": "positive",
+      "context_id": 0,
+      "template_id": "positive-14"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 정말 만족하는 경험이어서 다시 찾고 싶다.",
+      "label": "positive",
+      "context_id": 1,
+      "template_id": "positive-14"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 정말 만족하는 경험이어서 다시 찾고 싶다.",
+      "label": "positive",
+      "context_id": 2,
+      "template_id": "positive-14"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 정말 만족하는 경험이어서 다시 찾고 싶다.",
+      "label": "positive",
+      "context_id": 3,
+      "template_id": "positive-14"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 정말 만족하는 경험이어서 다시 찾고 싶다.",
+      "label": "positive",
+      "context_id": 4,
+      "template_id": "positive-14"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 정말 만족하는 경험이어서 다시 찾고 싶다.",
+      "label": "positive",
+      "context_id": 5,
+      "template_id": "positive-14"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 정말 만족하는 경험이어서 다시 찾고 싶다.",
+      "label": "positive",
+      "context_id": 6,
+      "template_id": "positive-14"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 정말 만족하는 경험이어서 다시 찾고 싶다.",
+      "label": "positive",
+      "context_id": 7,
+      "template_id": "positive-14"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 정말 만족하는 경험이어서 다시 찾고 싶다.",
+      "label": "positive",
+      "context_id": 8,
+      "template_id": "positive-14"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 정말 만족하는 경험이어서 다시 찾고 싶다.",
+      "label": "positive",
+      "context_id": 9,
+      "template_id": "positive-14"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 정말 만족하는 경험이어서 다시 찾고 싶다.",
+      "label": "positive",
+      "context_id": 10,
+      "template_id": "positive-14"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 정말 만족하는 경험이어서 다시 찾고 싶다.",
+      "label": "positive",
+      "context_id": 11,
+      "template_id": "positive-14"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 정말 만족하는 경험이어서 다시 찾고 싶다.",
+      "label": "positive",
+      "context_id": 12,
+      "template_id": "positive-14"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 정말 만족하는 경험이어서 다시 찾고 싶다.",
+      "label": "positive",
+      "context_id": 13,
+      "template_id": "positive-14"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 정말 만족하는 경험이어서 다시 찾고 싶다.",
+      "label": "positive",
+      "context_id": 14,
+      "template_id": "positive-14"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 정말 만족하는 경험이어서 다시 찾고 싶다.",
+      "label": "positive",
+      "context_id": 15,
+      "template_id": "positive-14"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 아주 깔끔하게 일을 마무리해 주었다.",
+      "label": "positive",
+      "context_id": 0,
+      "template_id": "positive-15"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 아주 깔끔하게 일을 마무리해 주었다.",
+      "label": "positive",
+      "context_id": 1,
+      "template_id": "positive-15"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 아주 깔끔하게 일을 마무리해 주었다.",
+      "label": "positive",
+      "context_id": 2,
+      "template_id": "positive-15"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 아주 깔끔하게 일을 마무리해 주었다.",
+      "label": "positive",
+      "context_id": 3,
+      "template_id": "positive-15"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 아주 깔끔하게 일을 마무리해 주었다.",
+      "label": "positive",
+      "context_id": 4,
+      "template_id": "positive-15"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 아주 깔끔하게 일을 마무리해 주었다.",
+      "label": "positive",
+      "context_id": 5,
+      "template_id": "positive-15"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 아주 깔끔하게 일을 마무리해 주었다.",
+      "label": "positive",
+      "context_id": 6,
+      "template_id": "positive-15"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 아주 깔끔하게 일을 마무리해 주었다.",
+      "label": "positive",
+      "context_id": 7,
+      "template_id": "positive-15"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 아주 깔끔하게 일을 마무리해 주었다.",
+      "label": "positive",
+      "context_id": 8,
+      "template_id": "positive-15"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 아주 깔끔하게 일을 마무리해 주었다.",
+      "label": "positive",
+      "context_id": 9,
+      "template_id": "positive-15"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 아주 깔끔하게 일을 마무리해 주었다.",
+      "label": "positive",
+      "context_id": 10,
+      "template_id": "positive-15"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 아주 깔끔하게 일을 마무리해 주었다.",
+      "label": "positive",
+      "context_id": 11,
+      "template_id": "positive-15"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 아주 깔끔하게 일을 마무리해 주었다.",
+      "label": "positive",
+      "context_id": 12,
+      "template_id": "positive-15"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 아주 깔끔하게 일을 마무리해 주었다.",
+      "label": "positive",
+      "context_id": 13,
+      "template_id": "positive-15"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 아주 깔끔하게 일을 마무리해 주었다.",
+      "label": "positive",
+      "context_id": 14,
+      "template_id": "positive-15"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 아주 깔끔하게 일을 마무리해 주었다.",
+      "label": "positive",
+      "context_id": 15,
+      "template_id": "positive-15"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 다루는 방법이 어렵지 않아서 쉽게 적응했다.",
+      "label": "positive",
+      "context_id": 0,
+      "template_id": "positive-16"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 다루는 방법이 어렵지 않아서 쉽게 적응했다.",
+      "label": "positive",
+      "context_id": 1,
+      "template_id": "positive-16"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 다루는 방법이 어렵지 않아서 쉽게 적응했다.",
+      "label": "positive",
+      "context_id": 2,
+      "template_id": "positive-16"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 다루는 방법이 어렵지 않아서 쉽게 적응했다.",
+      "label": "positive",
+      "context_id": 3,
+      "template_id": "positive-16"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 다루는 방법이 어렵지 않아서 쉽게 적응했다.",
+      "label": "positive",
+      "context_id": 4,
+      "template_id": "positive-16"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 다루는 방법이 어렵지 않아서 쉽게 적응했다.",
+      "label": "positive",
+      "context_id": 5,
+      "template_id": "positive-16"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 다루는 방법이 어렵지 않아서 쉽게 적응했다.",
+      "label": "positive",
+      "context_id": 6,
+      "template_id": "positive-16"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 다루는 방법이 어렵지 않아서 쉽게 적응했다.",
+      "label": "positive",
+      "context_id": 7,
+      "template_id": "positive-16"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 다루는 방법이 어렵지 않아서 쉽게 적응했다.",
+      "label": "positive",
+      "context_id": 8,
+      "template_id": "positive-16"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 다루는 방법이 어렵지 않아서 쉽게 적응했다.",
+      "label": "positive",
+      "context_id": 9,
+      "template_id": "positive-16"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 다루는 방법이 어렵지 않아서 쉽게 적응했다.",
+      "label": "positive",
+      "context_id": 10,
+      "template_id": "positive-16"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 다루는 방법이 어렵지 않아서 쉽게 적응했다.",
+      "label": "positive",
+      "context_id": 11,
+      "template_id": "positive-16"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 다루는 방법이 어렵지 않아서 쉽게 적응했다.",
+      "label": "positive",
+      "context_id": 12,
+      "template_id": "positive-16"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 다루는 방법이 어렵지 않아서 쉽게 적응했다.",
+      "label": "positive",
+      "context_id": 13,
+      "template_id": "positive-16"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 다루는 방법이 어렵지 않아서 쉽게 적응했다.",
+      "label": "positive",
+      "context_id": 14,
+      "template_id": "positive-16"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 다루는 방법이 어렵지 않아서 쉽게 적응했다.",
+      "label": "positive",
+      "context_id": 15,
+      "template_id": "positive-16"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 처리 과정은 불편하지 않고 원활하다.",
+      "label": "positive",
+      "context_id": 0,
+      "template_id": "positive-17"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 처리 과정은 불편하지 않고 원활하다.",
+      "label": "positive",
+      "context_id": 1,
+      "template_id": "positive-17"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 처리 과정은 불편하지 않고 원활하다.",
+      "label": "positive",
+      "context_id": 2,
+      "template_id": "positive-17"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 처리 과정은 불편하지 않고 원활하다.",
+      "label": "positive",
+      "context_id": 3,
+      "template_id": "positive-17"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 처리 과정은 불편하지 않고 원활하다.",
+      "label": "positive",
+      "context_id": 4,
+      "template_id": "positive-17"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 처리 과정은 불편하지 않고 원활하다.",
+      "label": "positive",
+      "context_id": 5,
+      "template_id": "positive-17"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 처리 과정은 불편하지 않고 원활하다.",
+      "label": "positive",
+      "context_id": 6,
+      "template_id": "positive-17"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 처리 과정은 불편하지 않고 원활하다.",
+      "label": "positive",
+      "context_id": 7,
+      "template_id": "positive-17"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 처리 과정은 불편하지 않고 원활하다.",
+      "label": "positive",
+      "context_id": 8,
+      "template_id": "positive-17"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 처리 과정은 불편하지 않고 원활하다.",
+      "label": "positive",
+      "context_id": 9,
+      "template_id": "positive-17"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 처리 과정은 불편하지 않고 원활하다.",
+      "label": "positive",
+      "context_id": 10,
+      "template_id": "positive-17"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 처리 과정은 불편하지 않고 원활하다.",
+      "label": "positive",
+      "context_id": 11,
+      "template_id": "positive-17"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 처리 과정은 불편하지 않고 원활하다.",
+      "label": "positive",
+      "context_id": 12,
+      "template_id": "positive-17"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 처리 과정은 불편하지 않고 원활하다.",
+      "label": "positive",
+      "context_id": 13,
+      "template_id": "positive-17"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 처리 과정은 불편하지 않고 원활하다.",
+      "label": "positive",
+      "context_id": 14,
+      "template_id": "positive-17"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 처리 과정은 불편하지 않고 원활하다.",
+      "label": "positive",
+      "context_id": 15,
+      "template_id": "positive-17"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 최종 결과는 나쁘지 않아서 마음이 놓인다.",
+      "label": "positive",
+      "context_id": 0,
+      "template_id": "positive-18"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 최종 결과는 나쁘지 않아서 마음이 놓인다.",
+      "label": "positive",
+      "context_id": 1,
+      "template_id": "positive-18"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 최종 결과는 나쁘지 않아서 마음이 놓인다.",
+      "label": "positive",
+      "context_id": 2,
+      "template_id": "positive-18"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 최종 결과는 나쁘지 않아서 마음이 놓인다.",
+      "label": "positive",
+      "context_id": 3,
+      "template_id": "positive-18"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 최종 결과는 나쁘지 않아서 마음이 놓인다.",
+      "label": "positive",
+      "context_id": 4,
+      "template_id": "positive-18"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 최종 결과는 나쁘지 않아서 마음이 놓인다.",
+      "label": "positive",
+      "context_id": 5,
+      "template_id": "positive-18"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 최종 결과는 나쁘지 않아서 마음이 놓인다.",
+      "label": "positive",
+      "context_id": 6,
+      "template_id": "positive-18"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 최종 결과는 나쁘지 않아서 마음이 놓인다.",
+      "label": "positive",
+      "context_id": 7,
+      "template_id": "positive-18"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 최종 결과는 나쁘지 않아서 마음이 놓인다.",
+      "label": "positive",
+      "context_id": 8,
+      "template_id": "positive-18"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 최종 결과는 나쁘지 않아서 마음이 놓인다.",
+      "label": "positive",
+      "context_id": 9,
+      "template_id": "positive-18"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 최종 결과는 나쁘지 않아서 마음이 놓인다.",
+      "label": "positive",
+      "context_id": 10,
+      "template_id": "positive-18"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 최종 결과는 나쁘지 않아서 마음이 놓인다.",
+      "label": "positive",
+      "context_id": 11,
+      "template_id": "positive-18"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 최종 결과는 나쁘지 않아서 마음이 놓인다.",
+      "label": "positive",
+      "context_id": 12,
+      "template_id": "positive-18"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 최종 결과는 나쁘지 않아서 마음이 놓인다.",
+      "label": "positive",
+      "context_id": 13,
+      "template_id": "positive-18"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 최종 결과는 나쁘지 않아서 마음이 놓인다.",
+      "label": "positive",
+      "context_id": 14,
+      "template_id": "positive-18"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 최종 결과는 나쁘지 않아서 마음이 놓인다.",
+      "label": "positive",
+      "context_id": 15,
+      "template_id": "positive-18"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 상담부터 완료까지 빠른응대로 시간을 아꼈다.",
+      "label": "positive",
+      "context_id": 0,
+      "template_id": "positive-19"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 상담부터 완료까지 빠른응대로 시간을 아꼈다.",
+      "label": "positive",
+      "context_id": 1,
+      "template_id": "positive-19"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 상담부터 완료까지 빠른응대로 시간을 아꼈다.",
+      "label": "positive",
+      "context_id": 2,
+      "template_id": "positive-19"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 상담부터 완료까지 빠른응대로 시간을 아꼈다.",
+      "label": "positive",
+      "context_id": 3,
+      "template_id": "positive-19"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 상담부터 완료까지 빠른응대로 시간을 아꼈다.",
+      "label": "positive",
+      "context_id": 4,
+      "template_id": "positive-19"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 상담부터 완료까지 빠른응대로 시간을 아꼈다.",
+      "label": "positive",
+      "context_id": 5,
+      "template_id": "positive-19"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 상담부터 완료까지 빠른응대로 시간을 아꼈다.",
+      "label": "positive",
+      "context_id": 6,
+      "template_id": "positive-19"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 상담부터 완료까지 빠른응대로 시간을 아꼈다.",
+      "label": "positive",
+      "context_id": 7,
+      "template_id": "positive-19"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 상담부터 완료까지 빠른응대로 시간을 아꼈다.",
+      "label": "positive",
+      "context_id": 8,
+      "template_id": "positive-19"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 상담부터 완료까지 빠른응대로 시간을 아꼈다.",
+      "label": "positive",
+      "context_id": 9,
+      "template_id": "positive-19"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 상담부터 완료까지 빠른응대로 시간을 아꼈다.",
+      "label": "positive",
+      "context_id": 10,
+      "template_id": "positive-19"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 상담부터 완료까지 빠른응대로 시간을 아꼈다.",
+      "label": "positive",
+      "context_id": 11,
+      "template_id": "positive-19"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 상담부터 완료까지 빠른응대로 시간을 아꼈다.",
+      "label": "positive",
+      "context_id": 12,
+      "template_id": "positive-19"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 상담부터 완료까지 빠른응대로 시간을 아꼈다.",
+      "label": "positive",
+      "context_id": 13,
+      "template_id": "positive-19"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 상담부터 완료까지 빠른응대로 시간을 아꼈다.",
+      "label": "positive",
+      "context_id": 14,
+      "template_id": "positive-19"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 상담부터 완료까지 빠른응대로 시간을 아꼈다.",
+      "label": "positive",
+      "context_id": 15,
+      "template_id": "positive-19"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 이용을 마친 지금 재구매의사가 확실하다.",
+      "label": "positive",
+      "context_id": 0,
+      "template_id": "positive-20"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 이용을 마친 지금 재구매의사가 확실하다.",
+      "label": "positive",
+      "context_id": 1,
+      "template_id": "positive-20"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 이용을 마친 지금 재구매의사가 확실하다.",
+      "label": "positive",
+      "context_id": 2,
+      "template_id": "positive-20"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 이용을 마친 지금 재구매의사가 확실하다.",
+      "label": "positive",
+      "context_id": 3,
+      "template_id": "positive-20"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 이용을 마친 지금 재구매의사가 확실하다.",
+      "label": "positive",
+      "context_id": 4,
+      "template_id": "positive-20"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 이용을 마친 지금 재구매의사가 확실하다.",
+      "label": "positive",
+      "context_id": 5,
+      "template_id": "positive-20"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 이용을 마친 지금 재구매의사가 확실하다.",
+      "label": "positive",
+      "context_id": 6,
+      "template_id": "positive-20"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 이용을 마친 지금 재구매의사가 확실하다.",
+      "label": "positive",
+      "context_id": 7,
+      "template_id": "positive-20"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 이용을 마친 지금 재구매의사가 확실하다.",
+      "label": "positive",
+      "context_id": 8,
+      "template_id": "positive-20"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 이용을 마친 지금 재구매의사가 확실하다.",
+      "label": "positive",
+      "context_id": 9,
+      "template_id": "positive-20"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 이용을 마친 지금 재구매의사가 확실하다.",
+      "label": "positive",
+      "context_id": 10,
+      "template_id": "positive-20"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 이용을 마친 지금 재구매의사가 확실하다.",
+      "label": "positive",
+      "context_id": 11,
+      "template_id": "positive-20"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 이용을 마친 지금 재구매의사가 확실하다.",
+      "label": "positive",
+      "context_id": 12,
+      "template_id": "positive-20"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 이용을 마친 지금 재구매의사가 확실하다.",
+      "label": "positive",
+      "context_id": 13,
+      "template_id": "positive-20"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 이용을 마친 지금 재구매의사가 확실하다.",
+      "label": "positive",
+      "context_id": 14,
+      "template_id": "positive-20"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 이용을 마친 지금 재구매의사가 확실하다.",
+      "label": "positive",
+      "context_id": 15,
+      "template_id": "positive-20"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 요청한 조건을 여러 차례 빠뜨려서 실망스럽다.",
+      "label": "negative",
+      "context_id": 0,
+      "template_id": "negative-00"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 요청한 조건을 여러 차례 빠뜨려서 실망스럽다.",
+      "label": "negative",
+      "context_id": 1,
+      "template_id": "negative-00"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 요청한 조건을 여러 차례 빠뜨려서 실망스럽다.",
+      "label": "negative",
+      "context_id": 2,
+      "template_id": "negative-00"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 요청한 조건을 여러 차례 빠뜨려서 실망스럽다.",
+      "label": "negative",
+      "context_id": 3,
+      "template_id": "negative-00"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 요청한 조건을 여러 차례 빠뜨려서 실망스럽다.",
+      "label": "negative",
+      "context_id": 4,
+      "template_id": "negative-00"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 요청한 조건을 여러 차례 빠뜨려서 실망스럽다.",
+      "label": "negative",
+      "context_id": 5,
+      "template_id": "negative-00"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 요청한 조건을 여러 차례 빠뜨려서 실망스럽다.",
+      "label": "negative",
+      "context_id": 6,
+      "template_id": "negative-00"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 요청한 조건을 여러 차례 빠뜨려서 실망스럽다.",
+      "label": "negative",
+      "context_id": 7,
+      "template_id": "negative-00"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 요청한 조건을 여러 차례 빠뜨려서 실망스럽다.",
+      "label": "negative",
+      "context_id": 8,
+      "template_id": "negative-00"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 요청한 조건을 여러 차례 빠뜨려서 실망스럽다.",
+      "label": "negative",
+      "context_id": 9,
+      "template_id": "negative-00"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 요청한 조건을 여러 차례 빠뜨려서 실망스럽다.",
+      "label": "negative",
+      "context_id": 10,
+      "template_id": "negative-00"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 요청한 조건을 여러 차례 빠뜨려서 실망스럽다.",
+      "label": "negative",
+      "context_id": 11,
+      "template_id": "negative-00"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 요청한 조건을 여러 차례 빠뜨려서 실망스럽다.",
+      "label": "negative",
+      "context_id": 12,
+      "template_id": "negative-00"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 요청한 조건을 여러 차례 빠뜨려서 실망스럽다.",
+      "label": "negative",
+      "context_id": 13,
+      "template_id": "negative-00"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 요청한 조건을 여러 차례 빠뜨려서 실망스럽다.",
+      "label": "negative",
+      "context_id": 14,
+      "template_id": "negative-00"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 요청한 조건을 여러 차례 빠뜨려서 실망스럽다.",
+      "label": "negative",
+      "context_id": 15,
+      "template_id": "negative-00"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 담당자가 불친절하게 말을 끊어서 불쾌하다.",
+      "label": "negative",
+      "context_id": 0,
+      "template_id": "negative-01"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 담당자가 불친절하게 말을 끊어서 불쾌하다.",
+      "label": "negative",
+      "context_id": 1,
+      "template_id": "negative-01"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 담당자가 불친절하게 말을 끊어서 불쾌하다.",
+      "label": "negative",
+      "context_id": 2,
+      "template_id": "negative-01"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 담당자가 불친절하게 말을 끊어서 불쾌하다.",
+      "label": "negative",
+      "context_id": 3,
+      "template_id": "negative-01"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 담당자가 불친절하게 말을 끊어서 불쾌하다.",
+      "label": "negative",
+      "context_id": 4,
+      "template_id": "negative-01"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 담당자가 불친절하게 말을 끊어서 불쾌하다.",
+      "label": "negative",
+      "context_id": 5,
+      "template_id": "negative-01"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 담당자가 불친절하게 말을 끊어서 불쾌하다.",
+      "label": "negative",
+      "context_id": 6,
+      "template_id": "negative-01"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 담당자가 불친절하게 말을 끊어서 불쾌하다.",
+      "label": "negative",
+      "context_id": 7,
+      "template_id": "negative-01"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 담당자가 불친절하게 말을 끊어서 불쾌하다.",
+      "label": "negative",
+      "context_id": 8,
+      "template_id": "negative-01"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 담당자가 불친절하게 말을 끊어서 불쾌하다.",
+      "label": "negative",
+      "context_id": 9,
+      "template_id": "negative-01"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 담당자가 불친절하게 말을 끊어서 불쾌하다.",
+      "label": "negative",
+      "context_id": 10,
+      "template_id": "negative-01"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 담당자가 불친절하게 말을 끊어서 불쾌하다.",
+      "label": "negative",
+      "context_id": 11,
+      "template_id": "negative-01"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 담당자가 불친절하게 말을 끊어서 불쾌하다.",
+      "label": "negative",
+      "context_id": 12,
+      "template_id": "negative-01"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 담당자가 불친절하게 말을 끊어서 불쾌하다.",
+      "label": "negative",
+      "context_id": 13,
+      "template_id": "negative-01"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 담당자가 불친절하게 말을 끊어서 불쾌하다.",
+      "label": "negative",
+      "context_id": 14,
+      "template_id": "negative-01"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 담당자가 불친절하게 말을 끊어서 불쾌하다.",
+      "label": "negative",
+      "context_id": 15,
+      "template_id": "negative-01"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 필요한 메뉴를 찾기 어려워 이용이 불편하다.",
+      "label": "negative",
+      "context_id": 0,
+      "template_id": "negative-02"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 필요한 메뉴를 찾기 어려워 이용이 불편하다.",
+      "label": "negative",
+      "context_id": 1,
+      "template_id": "negative-02"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 필요한 메뉴를 찾기 어려워 이용이 불편하다.",
+      "label": "negative",
+      "context_id": 2,
+      "template_id": "negative-02"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 필요한 메뉴를 찾기 어려워 이용이 불편하다.",
+      "label": "negative",
+      "context_id": 3,
+      "template_id": "negative-02"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 필요한 메뉴를 찾기 어려워 이용이 불편하다.",
+      "label": "negative",
+      "context_id": 4,
+      "template_id": "negative-02"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 필요한 메뉴를 찾기 어려워 이용이 불편하다.",
+      "label": "negative",
+      "context_id": 5,
+      "template_id": "negative-02"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 필요한 메뉴를 찾기 어려워 이용이 불편하다.",
+      "label": "negative",
+      "context_id": 6,
+      "template_id": "negative-02"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 필요한 메뉴를 찾기 어려워 이용이 불편하다.",
+      "label": "negative",
+      "context_id": 7,
+      "template_id": "negative-02"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 필요한 메뉴를 찾기 어려워 이용이 불편하다.",
+      "label": "negative",
+      "context_id": 8,
+      "template_id": "negative-02"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 필요한 메뉴를 찾기 어려워 이용이 불편하다.",
+      "label": "negative",
+      "context_id": 9,
+      "template_id": "negative-02"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 필요한 메뉴를 찾기 어려워 이용이 불편하다.",
+      "label": "negative",
+      "context_id": 10,
+      "template_id": "negative-02"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 필요한 메뉴를 찾기 어려워 이용이 불편하다.",
+      "label": "negative",
+      "context_id": 11,
+      "template_id": "negative-02"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 필요한 메뉴를 찾기 어려워 이용이 불편하다.",
+      "label": "negative",
+      "context_id": 12,
+      "template_id": "negative-02"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 필요한 메뉴를 찾기 어려워 이용이 불편하다.",
+      "label": "negative",
+      "context_id": 13,
+      "template_id": "negative-02"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 필요한 메뉴를 찾기 어려워 이용이 불편하다.",
+      "label": "negative",
+      "context_id": 14,
+      "template_id": "negative-02"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 필요한 메뉴를 찾기 어려워 이용이 불편하다.",
+      "label": "negative",
+      "context_id": 15,
+      "template_id": "negative-02"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 마무리를 제대로 하지 않아 짜증이 난다.",
+      "label": "negative",
+      "context_id": 0,
+      "template_id": "negative-03"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 마무리를 제대로 하지 않아 짜증이 난다.",
+      "label": "negative",
+      "context_id": 1,
+      "template_id": "negative-03"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 마무리를 제대로 하지 않아 짜증이 난다.",
+      "label": "negative",
+      "context_id": 2,
+      "template_id": "negative-03"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 마무리를 제대로 하지 않아 짜증이 난다.",
+      "label": "negative",
+      "context_id": 3,
+      "template_id": "negative-03"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 마무리를 제대로 하지 않아 짜증이 난다.",
+      "label": "negative",
+      "context_id": 4,
+      "template_id": "negative-03"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 마무리를 제대로 하지 않아 짜증이 난다.",
+      "label": "negative",
+      "context_id": 5,
+      "template_id": "negative-03"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 마무리를 제대로 하지 않아 짜증이 난다.",
+      "label": "negative",
+      "context_id": 6,
+      "template_id": "negative-03"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 마무리를 제대로 하지 않아 짜증이 난다.",
+      "label": "negative",
+      "context_id": 7,
+      "template_id": "negative-03"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 마무리를 제대로 하지 않아 짜증이 난다.",
+      "label": "negative",
+      "context_id": 8,
+      "template_id": "negative-03"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 마무리를 제대로 하지 않아 짜증이 난다.",
+      "label": "negative",
+      "context_id": 9,
+      "template_id": "negative-03"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 마무리를 제대로 하지 않아 짜증이 난다.",
+      "label": "negative",
+      "context_id": 10,
+      "template_id": "negative-03"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 마무리를 제대로 하지 않아 짜증이 난다.",
+      "label": "negative",
+      "context_id": 11,
+      "template_id": "negative-03"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 마무리를 제대로 하지 않아 짜증이 난다.",
+      "label": "negative",
+      "context_id": 12,
+      "template_id": "negative-03"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 마무리를 제대로 하지 않아 짜증이 난다.",
+      "label": "negative",
+      "context_id": 13,
+      "template_id": "negative-03"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 마무리를 제대로 하지 않아 짜증이 난다.",
+      "label": "negative",
+      "context_id": 14,
+      "template_id": "negative-03"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 마무리를 제대로 하지 않아 짜증이 난다.",
+      "label": "negative",
+      "context_id": 15,
+      "template_id": "negative-03"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 질문을 계속 무시하는 태도에 화가 난다.",
+      "label": "negative",
+      "context_id": 0,
+      "template_id": "negative-04"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 질문을 계속 무시하는 태도에 화가 난다.",
+      "label": "negative",
+      "context_id": 1,
+      "template_id": "negative-04"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 질문을 계속 무시하는 태도에 화가 난다.",
+      "label": "negative",
+      "context_id": 2,
+      "template_id": "negative-04"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 질문을 계속 무시하는 태도에 화가 난다.",
+      "label": "negative",
+      "context_id": 3,
+      "template_id": "negative-04"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 질문을 계속 무시하는 태도에 화가 난다.",
+      "label": "negative",
+      "context_id": 4,
+      "template_id": "negative-04"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 질문을 계속 무시하는 태도에 화가 난다.",
+      "label": "negative",
+      "context_id": 5,
+      "template_id": "negative-04"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 질문을 계속 무시하는 태도에 화가 난다.",
+      "label": "negative",
+      "context_id": 6,
+      "template_id": "negative-04"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 질문을 계속 무시하는 태도에 화가 난다.",
+      "label": "negative",
+      "context_id": 7,
+      "template_id": "negative-04"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 질문을 계속 무시하는 태도에 화가 난다.",
+      "label": "negative",
+      "context_id": 8,
+      "template_id": "negative-04"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 질문을 계속 무시하는 태도에 화가 난다.",
+      "label": "negative",
+      "context_id": 9,
+      "template_id": "negative-04"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 질문을 계속 무시하는 태도에 화가 난다.",
+      "label": "negative",
+      "context_id": 10,
+      "template_id": "negative-04"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 질문을 계속 무시하는 태도에 화가 난다.",
+      "label": "negative",
+      "context_id": 11,
+      "template_id": "negative-04"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 질문을 계속 무시하는 태도에 화가 난다.",
+      "label": "negative",
+      "context_id": 12,
+      "template_id": "negative-04"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 질문을 계속 무시하는 태도에 화가 난다.",
+      "label": "negative",
+      "context_id": 13,
+      "template_id": "negative-04"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 질문을 계속 무시하는 태도에 화가 난다.",
+      "label": "negative",
+      "context_id": 14,
+      "template_id": "negative-04"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 질문을 계속 무시하는 태도에 화가 난다.",
+      "label": "negative",
+      "context_id": 15,
+      "template_id": "negative-04"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 받아 본 물건의 품질이 나빠서 후회된다.",
+      "label": "negative",
+      "context_id": 0,
+      "template_id": "negative-05"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 받아 본 물건의 품질이 나빠서 후회된다.",
+      "label": "negative",
+      "context_id": 1,
+      "template_id": "negative-05"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 받아 본 물건의 품질이 나빠서 후회된다.",
+      "label": "negative",
+      "context_id": 2,
+      "template_id": "negative-05"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 받아 본 물건의 품질이 나빠서 후회된다.",
+      "label": "negative",
+      "context_id": 3,
+      "template_id": "negative-05"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 받아 본 물건의 품질이 나빠서 후회된다.",
+      "label": "negative",
+      "context_id": 4,
+      "template_id": "negative-05"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 받아 본 물건의 품질이 나빠서 후회된다.",
+      "label": "negative",
+      "context_id": 5,
+      "template_id": "negative-05"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 받아 본 물건의 품질이 나빠서 후회된다.",
+      "label": "negative",
+      "context_id": 6,
+      "template_id": "negative-05"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 받아 본 물건의 품질이 나빠서 후회된다.",
+      "label": "negative",
+      "context_id": 7,
+      "template_id": "negative-05"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 받아 본 물건의 품질이 나빠서 후회된다.",
+      "label": "negative",
+      "context_id": 8,
+      "template_id": "negative-05"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 받아 본 물건의 품질이 나빠서 후회된다.",
+      "label": "negative",
+      "context_id": 9,
+      "template_id": "negative-05"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 받아 본 물건의 품질이 나빠서 후회된다.",
+      "label": "negative",
+      "context_id": 10,
+      "template_id": "negative-05"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 받아 본 물건의 품질이 나빠서 후회된다.",
+      "label": "negative",
+      "context_id": 11,
+      "template_id": "negative-05"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 받아 본 물건의 품질이 나빠서 후회된다.",
+      "label": "negative",
+      "context_id": 12,
+      "template_id": "negative-05"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 받아 본 물건의 품질이 나빠서 후회된다.",
+      "label": "negative",
+      "context_id": 13,
+      "template_id": "negative-05"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 받아 본 물건의 품질이 나빠서 후회된다.",
+      "label": "negative",
+      "context_id": 14,
+      "template_id": "negative-05"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 받아 본 물건의 품질이 나빠서 후회된다.",
+      "label": "negative",
+      "context_id": 15,
+      "template_id": "negative-05"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 다음에는 이용하고 싶지 않을 만큼 싫다.",
+      "label": "negative",
+      "context_id": 0,
+      "template_id": "negative-06"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 다음에는 이용하고 싶지 않을 만큼 싫다.",
+      "label": "negative",
+      "context_id": 1,
+      "template_id": "negative-06"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 다음에는 이용하고 싶지 않을 만큼 싫다.",
+      "label": "negative",
+      "context_id": 2,
+      "template_id": "negative-06"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 다음에는 이용하고 싶지 않을 만큼 싫다.",
+      "label": "negative",
+      "context_id": 3,
+      "template_id": "negative-06"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 다음에는 이용하고 싶지 않을 만큼 싫다.",
+      "label": "negative",
+      "context_id": 4,
+      "template_id": "negative-06"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 다음에는 이용하고 싶지 않을 만큼 싫다.",
+      "label": "negative",
+      "context_id": 5,
+      "template_id": "negative-06"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 다음에는 이용하고 싶지 않을 만큼 싫다.",
+      "label": "negative",
+      "context_id": 6,
+      "template_id": "negative-06"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 다음에는 이용하고 싶지 않을 만큼 싫다.",
+      "label": "negative",
+      "context_id": 7,
+      "template_id": "negative-06"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 다음에는 이용하고 싶지 않을 만큼 싫다.",
+      "label": "negative",
+      "context_id": 8,
+      "template_id": "negative-06"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 다음에는 이용하고 싶지 않을 만큼 싫다.",
+      "label": "negative",
+      "context_id": 9,
+      "template_id": "negative-06"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 다음에는 이용하고 싶지 않을 만큼 싫다.",
+      "label": "negative",
+      "context_id": 10,
+      "template_id": "negative-06"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 다음에는 이용하고 싶지 않을 만큼 싫다.",
+      "label": "negative",
+      "context_id": 11,
+      "template_id": "negative-06"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 다음에는 이용하고 싶지 않을 만큼 싫다.",
+      "label": "negative",
+      "context_id": 12,
+      "template_id": "negative-06"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 다음에는 이용하고 싶지 않을 만큼 싫다.",
+      "label": "negative",
+      "context_id": 13,
+      "template_id": "negative-06"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 다음에는 이용하고 싶지 않을 만큼 싫다.",
+      "label": "negative",
+      "context_id": 14,
+      "template_id": "negative-06"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 다음에는 이용하고 싶지 않을 만큼 싫다.",
+      "label": "negative",
+      "context_id": 15,
+      "template_id": "negative-06"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 설명과 결과가 달라 믿기 어렵고 의심스럽다.",
+      "label": "negative",
+      "context_id": 0,
+      "template_id": "negative-07"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 설명과 결과가 달라 믿기 어렵고 의심스럽다.",
+      "label": "negative",
+      "context_id": 1,
+      "template_id": "negative-07"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 설명과 결과가 달라 믿기 어렵고 의심스럽다.",
+      "label": "negative",
+      "context_id": 2,
+      "template_id": "negative-07"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 설명과 결과가 달라 믿기 어렵고 의심스럽다.",
+      "label": "negative",
+      "context_id": 3,
+      "template_id": "negative-07"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 설명과 결과가 달라 믿기 어렵고 의심스럽다.",
+      "label": "negative",
+      "context_id": 4,
+      "template_id": "negative-07"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 설명과 결과가 달라 믿기 어렵고 의심스럽다.",
+      "label": "negative",
+      "context_id": 5,
+      "template_id": "negative-07"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 설명과 결과가 달라 믿기 어렵고 의심스럽다.",
+      "label": "negative",
+      "context_id": 6,
+      "template_id": "negative-07"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 설명과 결과가 달라 믿기 어렵고 의심스럽다.",
+      "label": "negative",
+      "context_id": 7,
+      "template_id": "negative-07"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 설명과 결과가 달라 믿기 어렵고 의심스럽다.",
+      "label": "negative",
+      "context_id": 8,
+      "template_id": "negative-07"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 설명과 결과가 달라 믿기 어렵고 의심스럽다.",
+      "label": "negative",
+      "context_id": 9,
+      "template_id": "negative-07"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 설명과 결과가 달라 믿기 어렵고 의심스럽다.",
+      "label": "negative",
+      "context_id": 10,
+      "template_id": "negative-07"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 설명과 결과가 달라 믿기 어렵고 의심스럽다.",
+      "label": "negative",
+      "context_id": 11,
+      "template_id": "negative-07"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 설명과 결과가 달라 믿기 어렵고 의심스럽다.",
+      "label": "negative",
+      "context_id": 12,
+      "template_id": "negative-07"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 설명과 결과가 달라 믿기 어렵고 의심스럽다.",
+      "label": "negative",
+      "context_id": 13,
+      "template_id": "negative-07"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 설명과 결과가 달라 믿기 어렵고 의심스럽다.",
+      "label": "negative",
+      "context_id": 14,
+      "template_id": "negative-07"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 설명과 결과가 달라 믿기 어렵고 의심스럽다.",
+      "label": "negative",
+      "context_id": 15,
+      "template_id": "negative-07"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 처리를 약속하고도 지키지 않아서 답답하다.",
+      "label": "negative",
+      "context_id": 0,
+      "template_id": "negative-08"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 처리를 약속하고도 지키지 않아서 답답하다.",
+      "label": "negative",
+      "context_id": 1,
+      "template_id": "negative-08"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 처리를 약속하고도 지키지 않아서 답답하다.",
+      "label": "negative",
+      "context_id": 2,
+      "template_id": "negative-08"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 처리를 약속하고도 지키지 않아서 답답하다.",
+      "label": "negative",
+      "context_id": 3,
+      "template_id": "negative-08"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 처리를 약속하고도 지키지 않아서 답답하다.",
+      "label": "negative",
+      "context_id": 4,
+      "template_id": "negative-08"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 처리를 약속하고도 지키지 않아서 답답하다.",
+      "label": "negative",
+      "context_id": 5,
+      "template_id": "negative-08"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 처리를 약속하고도 지키지 않아서 답답하다.",
+      "label": "negative",
+      "context_id": 6,
+      "template_id": "negative-08"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 처리를 약속하고도 지키지 않아서 답답하다.",
+      "label": "negative",
+      "context_id": 7,
+      "template_id": "negative-08"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 처리를 약속하고도 지키지 않아서 답답하다.",
+      "label": "negative",
+      "context_id": 8,
+      "template_id": "negative-08"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 처리를 약속하고도 지키지 않아서 답답하다.",
+      "label": "negative",
+      "context_id": 9,
+      "template_id": "negative-08"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 처리를 약속하고도 지키지 않아서 답답하다.",
+      "label": "negative",
+      "context_id": 10,
+      "template_id": "negative-08"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 처리를 약속하고도 지키지 않아서 답답하다.",
+      "label": "negative",
+      "context_id": 11,
+      "template_id": "negative-08"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 처리를 약속하고도 지키지 않아서 답답하다.",
+      "label": "negative",
+      "context_id": 12,
+      "template_id": "negative-08"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 처리를 약속하고도 지키지 않아서 답답하다.",
+      "label": "negative",
+      "context_id": 13,
+      "template_id": "negative-08"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 처리를 약속하고도 지키지 않아서 답답하다.",
+      "label": "negative",
+      "context_id": 14,
+      "template_id": "negative-08"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 처리를 약속하고도 지키지 않아서 답답하다.",
+      "label": "negative",
+      "context_id": 15,
+      "template_id": "negative-08"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 작은 일을 복잡하게 만들어 지루하고 피곤하다.",
+      "label": "negative",
+      "context_id": 0,
+      "template_id": "negative-09"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 작은 일을 복잡하게 만들어 지루하고 피곤하다.",
+      "label": "negative",
+      "context_id": 1,
+      "template_id": "negative-09"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 작은 일을 복잡하게 만들어 지루하고 피곤하다.",
+      "label": "negative",
+      "context_id": 2,
+      "template_id": "negative-09"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 작은 일을 복잡하게 만들어 지루하고 피곤하다.",
+      "label": "negative",
+      "context_id": 3,
+      "template_id": "negative-09"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 작은 일을 복잡하게 만들어 지루하고 피곤하다.",
+      "label": "negative",
+      "context_id": 4,
+      "template_id": "negative-09"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 작은 일을 복잡하게 만들어 지루하고 피곤하다.",
+      "label": "negative",
+      "context_id": 5,
+      "template_id": "negative-09"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 작은 일을 복잡하게 만들어 지루하고 피곤하다.",
+      "label": "negative",
+      "context_id": 6,
+      "template_id": "negative-09"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 작은 일을 복잡하게 만들어 지루하고 피곤하다.",
+      "label": "negative",
+      "context_id": 7,
+      "template_id": "negative-09"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 작은 일을 복잡하게 만들어 지루하고 피곤하다.",
+      "label": "negative",
+      "context_id": 8,
+      "template_id": "negative-09"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 작은 일을 복잡하게 만들어 지루하고 피곤하다.",
+      "label": "negative",
+      "context_id": 9,
+      "template_id": "negative-09"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 작은 일을 복잡하게 만들어 지루하고 피곤하다.",
+      "label": "negative",
+      "context_id": 10,
+      "template_id": "negative-09"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 작은 일을 복잡하게 만들어 지루하고 피곤하다.",
+      "label": "negative",
+      "context_id": 11,
+      "template_id": "negative-09"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 작은 일을 복잡하게 만들어 지루하고 피곤하다.",
+      "label": "negative",
+      "context_id": 12,
+      "template_id": "negative-09"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 작은 일을 복잡하게 만들어 지루하고 피곤하다.",
+      "label": "negative",
+      "context_id": 13,
+      "template_id": "negative-09"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 작은 일을 복잡하게 만들어 지루하고 피곤하다.",
+      "label": "negative",
+      "context_id": 14,
+      "template_id": "negative-09"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 작은 일을 복잡하게 만들어 지루하고 피곤하다.",
+      "label": "negative",
+      "context_id": 15,
+      "template_id": "negative-09"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 처음부터 끝까지 응대가 무례해서 속상하다.",
+      "label": "negative",
+      "context_id": 0,
+      "template_id": "negative-10"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 처음부터 끝까지 응대가 무례해서 속상하다.",
+      "label": "negative",
+      "context_id": 1,
+      "template_id": "negative-10"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 처음부터 끝까지 응대가 무례해서 속상하다.",
+      "label": "negative",
+      "context_id": 2,
+      "template_id": "negative-10"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 처음부터 끝까지 응대가 무례해서 속상하다.",
+      "label": "negative",
+      "context_id": 3,
+      "template_id": "negative-10"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 처음부터 끝까지 응대가 무례해서 속상하다.",
+      "label": "negative",
+      "context_id": 4,
+      "template_id": "negative-10"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 처음부터 끝까지 응대가 무례해서 속상하다.",
+      "label": "negative",
+      "context_id": 5,
+      "template_id": "negative-10"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 처음부터 끝까지 응대가 무례해서 속상하다.",
+      "label": "negative",
+      "context_id": 6,
+      "template_id": "negative-10"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 처음부터 끝까지 응대가 무례해서 속상하다.",
+      "label": "negative",
+      "context_id": 7,
+      "template_id": "negative-10"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 처음부터 끝까지 응대가 무례해서 속상하다.",
+      "label": "negative",
+      "context_id": 8,
+      "template_id": "negative-10"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 처음부터 끝까지 응대가 무례해서 속상하다.",
+      "label": "negative",
+      "context_id": 9,
+      "template_id": "negative-10"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 처음부터 끝까지 응대가 무례해서 속상하다.",
+      "label": "negative",
+      "context_id": 10,
+      "template_id": "negative-10"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 처음부터 끝까지 응대가 무례해서 속상하다.",
+      "label": "negative",
+      "context_id": 11,
+      "template_id": "negative-10"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 처음부터 끝까지 응대가 무례해서 속상하다.",
+      "label": "negative",
+      "context_id": 12,
+      "template_id": "negative-10"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 처음부터 끝까지 응대가 무례해서 속상하다.",
+      "label": "negative",
+      "context_id": 13,
+      "template_id": "negative-10"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 처음부터 끝까지 응대가 무례해서 속상하다.",
+      "label": "negative",
+      "context_id": 14,
+      "template_id": "negative-10"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 처음부터 끝까지 응대가 무례해서 속상하다.",
+      "label": "negative",
+      "context_id": 15,
+      "template_id": "negative-10"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 다른 사람에게 추천할 수 없을 만큼 최악이다.",
+      "label": "negative",
+      "context_id": 0,
+      "template_id": "negative-11"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 다른 사람에게 추천할 수 없을 만큼 최악이다.",
+      "label": "negative",
+      "context_id": 1,
+      "template_id": "negative-11"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 다른 사람에게 추천할 수 없을 만큼 최악이다.",
+      "label": "negative",
+      "context_id": 2,
+      "template_id": "negative-11"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 다른 사람에게 추천할 수 없을 만큼 최악이다.",
+      "label": "negative",
+      "context_id": 3,
+      "template_id": "negative-11"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 다른 사람에게 추천할 수 없을 만큼 최악이다.",
+      "label": "negative",
+      "context_id": 4,
+      "template_id": "negative-11"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 다른 사람에게 추천할 수 없을 만큼 최악이다.",
+      "label": "negative",
+      "context_id": 5,
+      "template_id": "negative-11"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 다른 사람에게 추천할 수 없을 만큼 최악이다.",
+      "label": "negative",
+      "context_id": 6,
+      "template_id": "negative-11"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 다른 사람에게 추천할 수 없을 만큼 최악이다.",
+      "label": "negative",
+      "context_id": 7,
+      "template_id": "negative-11"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 다른 사람에게 추천할 수 없을 만큼 최악이다.",
+      "label": "negative",
+      "context_id": 8,
+      "template_id": "negative-11"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 다른 사람에게 추천할 수 없을 만큼 최악이다.",
+      "label": "negative",
+      "context_id": 9,
+      "template_id": "negative-11"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 다른 사람에게 추천할 수 없을 만큼 최악이다.",
+      "label": "negative",
+      "context_id": 10,
+      "template_id": "negative-11"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 다른 사람에게 추천할 수 없을 만큼 최악이다.",
+      "label": "negative",
+      "context_id": 11,
+      "template_id": "negative-11"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 다른 사람에게 추천할 수 없을 만큼 최악이다.",
+      "label": "negative",
+      "context_id": 12,
+      "template_id": "negative-11"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 다른 사람에게 추천할 수 없을 만큼 최악이다.",
+      "label": "negative",
+      "context_id": 13,
+      "template_id": "negative-11"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 다른 사람에게 추천할 수 없을 만큼 최악이다.",
+      "label": "negative",
+      "context_id": 14,
+      "template_id": "negative-11"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 다른 사람에게 추천할 수 없을 만큼 최악이다.",
+      "label": "negative",
+      "context_id": 15,
+      "template_id": "negative-11"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 결제한 비용만큼 가치를 얻지 못해 손해다.",
+      "label": "negative",
+      "context_id": 0,
+      "template_id": "negative-12"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 결제한 비용만큼 가치를 얻지 못해 손해다.",
+      "label": "negative",
+      "context_id": 1,
+      "template_id": "negative-12"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 결제한 비용만큼 가치를 얻지 못해 손해다.",
+      "label": "negative",
+      "context_id": 2,
+      "template_id": "negative-12"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 결제한 비용만큼 가치를 얻지 못해 손해다.",
+      "label": "negative",
+      "context_id": 3,
+      "template_id": "negative-12"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 결제한 비용만큼 가치를 얻지 못해 손해다.",
+      "label": "negative",
+      "context_id": 4,
+      "template_id": "negative-12"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 결제한 비용만큼 가치를 얻지 못해 손해다.",
+      "label": "negative",
+      "context_id": 5,
+      "template_id": "negative-12"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 결제한 비용만큼 가치를 얻지 못해 손해다.",
+      "label": "negative",
+      "context_id": 6,
+      "template_id": "negative-12"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 결제한 비용만큼 가치를 얻지 못해 손해다.",
+      "label": "negative",
+      "context_id": 7,
+      "template_id": "negative-12"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 결제한 비용만큼 가치를 얻지 못해 손해다.",
+      "label": "negative",
+      "context_id": 8,
+      "template_id": "negative-12"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 결제한 비용만큼 가치를 얻지 못해 손해다.",
+      "label": "negative",
+      "context_id": 9,
+      "template_id": "negative-12"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 결제한 비용만큼 가치를 얻지 못해 손해다.",
+      "label": "negative",
+      "context_id": 10,
+      "template_id": "negative-12"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 결제한 비용만큼 가치를 얻지 못해 손해다.",
+      "label": "negative",
+      "context_id": 11,
+      "template_id": "negative-12"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 결제한 비용만큼 가치를 얻지 못해 손해다.",
+      "label": "negative",
+      "context_id": 12,
+      "template_id": "negative-12"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 결제한 비용만큼 가치를 얻지 못해 손해다.",
+      "label": "negative",
+      "context_id": 13,
+      "template_id": "negative-12"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 결제한 비용만큼 가치를 얻지 못해 손해다.",
+      "label": "negative",
+      "context_id": 14,
+      "template_id": "negative-12"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 결제한 비용만큼 가치를 얻지 못해 손해다.",
+      "label": "negative",
+      "context_id": 15,
+      "template_id": "negative-12"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 기대했던 수준에 못 미쳐서 아쉽다.",
+      "label": "negative",
+      "context_id": 0,
+      "template_id": "negative-13"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 기대했던 수준에 못 미쳐서 아쉽다.",
+      "label": "negative",
+      "context_id": 1,
+      "template_id": "negative-13"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 기대했던 수준에 못 미쳐서 아쉽다.",
+      "label": "negative",
+      "context_id": 2,
+      "template_id": "negative-13"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 기대했던 수준에 못 미쳐서 아쉽다.",
+      "label": "negative",
+      "context_id": 3,
+      "template_id": "negative-13"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 기대했던 수준에 못 미쳐서 아쉽다.",
+      "label": "negative",
+      "context_id": 4,
+      "template_id": "negative-13"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 기대했던 수준에 못 미쳐서 아쉽다.",
+      "label": "negative",
+      "context_id": 5,
+      "template_id": "negative-13"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 기대했던 수준에 못 미쳐서 아쉽다.",
+      "label": "negative",
+      "context_id": 6,
+      "template_id": "negative-13"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 기대했던 수준에 못 미쳐서 아쉽다.",
+      "label": "negative",
+      "context_id": 7,
+      "template_id": "negative-13"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 기대했던 수준에 못 미쳐서 아쉽다.",
+      "label": "negative",
+      "context_id": 8,
+      "template_id": "negative-13"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 기대했던 수준에 못 미쳐서 아쉽다.",
+      "label": "negative",
+      "context_id": 9,
+      "template_id": "negative-13"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 기대했던 수준에 못 미쳐서 아쉽다.",
+      "label": "negative",
+      "context_id": 10,
+      "template_id": "negative-13"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 기대했던 수준에 못 미쳐서 아쉽다.",
+      "label": "negative",
+      "context_id": 11,
+      "template_id": "negative-13"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 기대했던 수준에 못 미쳐서 아쉽다.",
+      "label": "negative",
+      "context_id": 12,
+      "template_id": "negative-13"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 기대했던 수준에 못 미쳐서 아쉽다.",
+      "label": "negative",
+      "context_id": 13,
+      "template_id": "negative-13"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 기대했던 수준에 못 미쳐서 아쉽다.",
+      "label": "negative",
+      "context_id": 14,
+      "template_id": "negative-13"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 기대했던 수준에 못 미쳐서 아쉽다.",
+      "label": "negative",
+      "context_id": 15,
+      "template_id": "negative-13"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 정말 불만스러운 경험이라 다시 찾기 싫다.",
+      "label": "negative",
+      "context_id": 0,
+      "template_id": "negative-14"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 정말 불만스러운 경험이라 다시 찾기 싫다.",
+      "label": "negative",
+      "context_id": 1,
+      "template_id": "negative-14"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 정말 불만스러운 경험이라 다시 찾기 싫다.",
+      "label": "negative",
+      "context_id": 2,
+      "template_id": "negative-14"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 정말 불만스러운 경험이라 다시 찾기 싫다.",
+      "label": "negative",
+      "context_id": 3,
+      "template_id": "negative-14"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 정말 불만스러운 경험이라 다시 찾기 싫다.",
+      "label": "negative",
+      "context_id": 4,
+      "template_id": "negative-14"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 정말 불만스러운 경험이라 다시 찾기 싫다.",
+      "label": "negative",
+      "context_id": 5,
+      "template_id": "negative-14"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 정말 불만스러운 경험이라 다시 찾기 싫다.",
+      "label": "negative",
+      "context_id": 6,
+      "template_id": "negative-14"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 정말 불만스러운 경험이라 다시 찾기 싫다.",
+      "label": "negative",
+      "context_id": 7,
+      "template_id": "negative-14"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 정말 불만스러운 경험이라 다시 찾기 싫다.",
+      "label": "negative",
+      "context_id": 8,
+      "template_id": "negative-14"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 정말 불만스러운 경험이라 다시 찾기 싫다.",
+      "label": "negative",
+      "context_id": 9,
+      "template_id": "negative-14"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 정말 불만스러운 경험이라 다시 찾기 싫다.",
+      "label": "negative",
+      "context_id": 10,
+      "template_id": "negative-14"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 정말 불만스러운 경험이라 다시 찾기 싫다.",
+      "label": "negative",
+      "context_id": 11,
+      "template_id": "negative-14"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 정말 불만스러운 경험이라 다시 찾기 싫다.",
+      "label": "negative",
+      "context_id": 12,
+      "template_id": "negative-14"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 정말 불만스러운 경험이라 다시 찾기 싫다.",
+      "label": "negative",
+      "context_id": 13,
+      "template_id": "negative-14"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 정말 불만스러운 경험이라 다시 찾기 싫다.",
+      "label": "negative",
+      "context_id": 14,
+      "template_id": "negative-14"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 정말 불만스러운 경험이라 다시 찾기 싫다.",
+      "label": "negative",
+      "context_id": 15,
+      "template_id": "negative-14"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 아주 허술하게 처리해서 결과가 엉망이다.",
+      "label": "negative",
+      "context_id": 0,
+      "template_id": "negative-15"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 아주 허술하게 처리해서 결과가 엉망이다.",
+      "label": "negative",
+      "context_id": 1,
+      "template_id": "negative-15"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 아주 허술하게 처리해서 결과가 엉망이다.",
+      "label": "negative",
+      "context_id": 2,
+      "template_id": "negative-15"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 아주 허술하게 처리해서 결과가 엉망이다.",
+      "label": "negative",
+      "context_id": 3,
+      "template_id": "negative-15"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 아주 허술하게 처리해서 결과가 엉망이다.",
+      "label": "negative",
+      "context_id": 4,
+      "template_id": "negative-15"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 아주 허술하게 처리해서 결과가 엉망이다.",
+      "label": "negative",
+      "context_id": 5,
+      "template_id": "negative-15"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 아주 허술하게 처리해서 결과가 엉망이다.",
+      "label": "negative",
+      "context_id": 6,
+      "template_id": "negative-15"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 아주 허술하게 처리해서 결과가 엉망이다.",
+      "label": "negative",
+      "context_id": 7,
+      "template_id": "negative-15"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 아주 허술하게 처리해서 결과가 엉망이다.",
+      "label": "negative",
+      "context_id": 8,
+      "template_id": "negative-15"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 아주 허술하게 처리해서 결과가 엉망이다.",
+      "label": "negative",
+      "context_id": 9,
+      "template_id": "negative-15"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 아주 허술하게 처리해서 결과가 엉망이다.",
+      "label": "negative",
+      "context_id": 10,
+      "template_id": "negative-15"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 아주 허술하게 처리해서 결과가 엉망이다.",
+      "label": "negative",
+      "context_id": 11,
+      "template_id": "negative-15"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 아주 허술하게 처리해서 결과가 엉망이다.",
+      "label": "negative",
+      "context_id": 12,
+      "template_id": "negative-15"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 아주 허술하게 처리해서 결과가 엉망이다.",
+      "label": "negative",
+      "context_id": 13,
+      "template_id": "negative-15"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 아주 허술하게 처리해서 결과가 엉망이다.",
+      "label": "negative",
+      "context_id": 14,
+      "template_id": "negative-15"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 아주 허술하게 처리해서 결과가 엉망이다.",
+      "label": "negative",
+      "context_id": 15,
+      "template_id": "negative-15"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 조작하는 방식이 편리하지 않아서 힘들었다.",
+      "label": "negative",
+      "context_id": 0,
+      "template_id": "negative-16"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 조작하는 방식이 편리하지 않아서 힘들었다.",
+      "label": "negative",
+      "context_id": 1,
+      "template_id": "negative-16"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 조작하는 방식이 편리하지 않아서 힘들었다.",
+      "label": "negative",
+      "context_id": 2,
+      "template_id": "negative-16"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 조작하는 방식이 편리하지 않아서 힘들었다.",
+      "label": "negative",
+      "context_id": 3,
+      "template_id": "negative-16"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 조작하는 방식이 편리하지 않아서 힘들었다.",
+      "label": "negative",
+      "context_id": 4,
+      "template_id": "negative-16"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 조작하는 방식이 편리하지 않아서 힘들었다.",
+      "label": "negative",
+      "context_id": 5,
+      "template_id": "negative-16"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 조작하는 방식이 편리하지 않아서 힘들었다.",
+      "label": "negative",
+      "context_id": 6,
+      "template_id": "negative-16"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 조작하는 방식이 편리하지 않아서 힘들었다.",
+      "label": "negative",
+      "context_id": 7,
+      "template_id": "negative-16"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 조작하는 방식이 편리하지 않아서 힘들었다.",
+      "label": "negative",
+      "context_id": 8,
+      "template_id": "negative-16"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 조작하는 방식이 편리하지 않아서 힘들었다.",
+      "label": "negative",
+      "context_id": 9,
+      "template_id": "negative-16"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 조작하는 방식이 편리하지 않아서 힘들었다.",
+      "label": "negative",
+      "context_id": 10,
+      "template_id": "negative-16"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 조작하는 방식이 편리하지 않아서 힘들었다.",
+      "label": "negative",
+      "context_id": 11,
+      "template_id": "negative-16"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 조작하는 방식이 편리하지 않아서 힘들었다.",
+      "label": "negative",
+      "context_id": 12,
+      "template_id": "negative-16"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 조작하는 방식이 편리하지 않아서 힘들었다.",
+      "label": "negative",
+      "context_id": 13,
+      "template_id": "negative-16"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 조작하는 방식이 편리하지 않아서 힘들었다.",
+      "label": "negative",
+      "context_id": 14,
+      "template_id": "negative-16"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 조작하는 방식이 편리하지 않아서 힘들었다.",
+      "label": "negative",
+      "context_id": 15,
+      "template_id": "negative-16"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 뒤늦은 응대는 친절하지 않고 무성의했다.",
+      "label": "negative",
+      "context_id": 0,
+      "template_id": "negative-17"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 뒤늦은 응대는 친절하지 않고 무성의했다.",
+      "label": "negative",
+      "context_id": 1,
+      "template_id": "negative-17"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 뒤늦은 응대는 친절하지 않고 무성의했다.",
+      "label": "negative",
+      "context_id": 2,
+      "template_id": "negative-17"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 뒤늦은 응대는 친절하지 않고 무성의했다.",
+      "label": "negative",
+      "context_id": 3,
+      "template_id": "negative-17"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 뒤늦은 응대는 친절하지 않고 무성의했다.",
+      "label": "negative",
+      "context_id": 4,
+      "template_id": "negative-17"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 뒤늦은 응대는 친절하지 않고 무성의했다.",
+      "label": "negative",
+      "context_id": 5,
+      "template_id": "negative-17"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 뒤늦은 응대는 친절하지 않고 무성의했다.",
+      "label": "negative",
+      "context_id": 6,
+      "template_id": "negative-17"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 뒤늦은 응대는 친절하지 않고 무성의했다.",
+      "label": "negative",
+      "context_id": 7,
+      "template_id": "negative-17"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 뒤늦은 응대는 친절하지 않고 무성의했다.",
+      "label": "negative",
+      "context_id": 8,
+      "template_id": "negative-17"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 뒤늦은 응대는 친절하지 않고 무성의했다.",
+      "label": "negative",
+      "context_id": 9,
+      "template_id": "negative-17"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 뒤늦은 응대는 친절하지 않고 무성의했다.",
+      "label": "negative",
+      "context_id": 10,
+      "template_id": "negative-17"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 뒤늦은 응대는 친절하지 않고 무성의했다.",
+      "label": "negative",
+      "context_id": 11,
+      "template_id": "negative-17"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 뒤늦은 응대는 친절하지 않고 무성의했다.",
+      "label": "negative",
+      "context_id": 12,
+      "template_id": "negative-17"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 뒤늦은 응대는 친절하지 않고 무성의했다.",
+      "label": "negative",
+      "context_id": 13,
+      "template_id": "negative-17"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 뒤늦은 응대는 친절하지 않고 무성의했다.",
+      "label": "negative",
+      "context_id": 14,
+      "template_id": "negative-17"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 뒤늦은 응대는 친절하지 않고 무성의했다.",
+      "label": "negative",
+      "context_id": 15,
+      "template_id": "negative-17"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 최종 상태가 좋지 않아서 환불을 신청했다.",
+      "label": "negative",
+      "context_id": 0,
+      "template_id": "negative-18"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 최종 상태가 좋지 않아서 환불을 신청했다.",
+      "label": "negative",
+      "context_id": 1,
+      "template_id": "negative-18"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 최종 상태가 좋지 않아서 환불을 신청했다.",
+      "label": "negative",
+      "context_id": 2,
+      "template_id": "negative-18"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 최종 상태가 좋지 않아서 환불을 신청했다.",
+      "label": "negative",
+      "context_id": 3,
+      "template_id": "negative-18"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 최종 상태가 좋지 않아서 환불을 신청했다.",
+      "label": "negative",
+      "context_id": 4,
+      "template_id": "negative-18"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 최종 상태가 좋지 않아서 환불을 신청했다.",
+      "label": "negative",
+      "context_id": 5,
+      "template_id": "negative-18"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 최종 상태가 좋지 않아서 환불을 신청했다.",
+      "label": "negative",
+      "context_id": 6,
+      "template_id": "negative-18"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 최종 상태가 좋지 않아서 환불을 신청했다.",
+      "label": "negative",
+      "context_id": 7,
+      "template_id": "negative-18"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 최종 상태가 좋지 않아서 환불을 신청했다.",
+      "label": "negative",
+      "context_id": 8,
+      "template_id": "negative-18"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 최종 상태가 좋지 않아서 환불을 신청했다.",
+      "label": "negative",
+      "context_id": 9,
+      "template_id": "negative-18"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 최종 상태가 좋지 않아서 환불을 신청했다.",
+      "label": "negative",
+      "context_id": 10,
+      "template_id": "negative-18"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 최종 상태가 좋지 않아서 환불을 신청했다.",
+      "label": "negative",
+      "context_id": 11,
+      "template_id": "negative-18"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 최종 상태가 좋지 않아서 환불을 신청했다.",
+      "label": "negative",
+      "context_id": 12,
+      "template_id": "negative-18"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 최종 상태가 좋지 않아서 환불을 신청했다.",
+      "label": "negative",
+      "context_id": 13,
+      "template_id": "negative-18"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 최종 상태가 좋지 않아서 환불을 신청했다.",
+      "label": "negative",
+      "context_id": 14,
+      "template_id": "negative-18"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 최종 상태가 좋지 않아서 환불을 신청했다.",
+      "label": "negative",
+      "context_id": 15,
+      "template_id": "negative-18"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 확인할 때마다 결제오류가 생겨서 불편하다.",
+      "label": "negative",
+      "context_id": 0,
+      "template_id": "negative-19"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 확인할 때마다 결제오류가 생겨서 불편하다.",
+      "label": "negative",
+      "context_id": 1,
+      "template_id": "negative-19"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 확인할 때마다 결제오류가 생겨서 불편하다.",
+      "label": "negative",
+      "context_id": 2,
+      "template_id": "negative-19"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 확인할 때마다 결제오류가 생겨서 불편하다.",
+      "label": "negative",
+      "context_id": 3,
+      "template_id": "negative-19"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 확인할 때마다 결제오류가 생겨서 불편하다.",
+      "label": "negative",
+      "context_id": 4,
+      "template_id": "negative-19"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 확인할 때마다 결제오류가 생겨서 불편하다.",
+      "label": "negative",
+      "context_id": 5,
+      "template_id": "negative-19"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 확인할 때마다 결제오류가 생겨서 불편하다.",
+      "label": "negative",
+      "context_id": 6,
+      "template_id": "negative-19"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 확인할 때마다 결제오류가 생겨서 불편하다.",
+      "label": "negative",
+      "context_id": 7,
+      "template_id": "negative-19"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 확인할 때마다 결제오류가 생겨서 불편하다.",
+      "label": "negative",
+      "context_id": 8,
+      "template_id": "negative-19"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 확인할 때마다 결제오류가 생겨서 불편하다.",
+      "label": "negative",
+      "context_id": 9,
+      "template_id": "negative-19"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 확인할 때마다 결제오류가 생겨서 불편하다.",
+      "label": "negative",
+      "context_id": 10,
+      "template_id": "negative-19"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 확인할 때마다 결제오류가 생겨서 불편하다.",
+      "label": "negative",
+      "context_id": 11,
+      "template_id": "negative-19"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 확인할 때마다 결제오류가 생겨서 불편하다.",
+      "label": "negative",
+      "context_id": 12,
+      "template_id": "negative-19"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 확인할 때마다 결제오류가 생겨서 불편하다.",
+      "label": "negative",
+      "context_id": 13,
+      "template_id": "negative-19"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 확인할 때마다 결제오류가 생겨서 불편하다.",
+      "label": "negative",
+      "context_id": 14,
+      "template_id": "negative-19"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 확인할 때마다 결제오류가 생겨서 불편하다.",
+      "label": "negative",
+      "context_id": 15,
+      "template_id": "negative-19"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 받은 제품은 품질불량이라 교환을 요청했다.",
+      "label": "negative",
+      "context_id": 0,
+      "template_id": "negative-20"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 받은 제품은 품질불량이라 교환을 요청했다.",
+      "label": "negative",
+      "context_id": 1,
+      "template_id": "negative-20"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 받은 제품은 품질불량이라 교환을 요청했다.",
+      "label": "negative",
+      "context_id": 2,
+      "template_id": "negative-20"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 받은 제품은 품질불량이라 교환을 요청했다.",
+      "label": "negative",
+      "context_id": 3,
+      "template_id": "negative-20"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 받은 제품은 품질불량이라 교환을 요청했다.",
+      "label": "negative",
+      "context_id": 4,
+      "template_id": "negative-20"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 받은 제품은 품질불량이라 교환을 요청했다.",
+      "label": "negative",
+      "context_id": 5,
+      "template_id": "negative-20"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 받은 제품은 품질불량이라 교환을 요청했다.",
+      "label": "negative",
+      "context_id": 6,
+      "template_id": "negative-20"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 받은 제품은 품질불량이라 교환을 요청했다.",
+      "label": "negative",
+      "context_id": 7,
+      "template_id": "negative-20"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 받은 제품은 품질불량이라 교환을 요청했다.",
+      "label": "negative",
+      "context_id": 8,
+      "template_id": "negative-20"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 받은 제품은 품질불량이라 교환을 요청했다.",
+      "label": "negative",
+      "context_id": 9,
+      "template_id": "negative-20"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 받은 제품은 품질불량이라 교환을 요청했다.",
+      "label": "negative",
+      "context_id": 10,
+      "template_id": "negative-20"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 받은 제품은 품질불량이라 교환을 요청했다.",
+      "label": "negative",
+      "context_id": 11,
+      "template_id": "negative-20"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 받은 제품은 품질불량이라 교환을 요청했다.",
+      "label": "negative",
+      "context_id": 12,
+      "template_id": "negative-20"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 받은 제품은 품질불량이라 교환을 요청했다.",
+      "label": "negative",
+      "context_id": 13,
+      "template_id": "negative-20"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 받은 제품은 품질불량이라 교환을 요청했다.",
+      "label": "negative",
+      "context_id": 14,
+      "template_id": "negative-20"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 받은 제품은 품질불량이라 교환을 요청했다.",
+      "label": "negative",
+      "context_id": 15,
+      "template_id": "negative-20"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 문의 번호와 담당 부서 이름을 메모했다.",
+      "label": "neutral",
+      "context_id": 0,
+      "template_id": "neutral-00"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 문의 번호와 담당 부서 이름을 메모했다.",
+      "label": "neutral",
+      "context_id": 1,
+      "template_id": "neutral-00"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 문의 번호와 담당 부서 이름을 메모했다.",
+      "label": "neutral",
+      "context_id": 2,
+      "template_id": "neutral-00"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 문의 번호와 담당 부서 이름을 메모했다.",
+      "label": "neutral",
+      "context_id": 3,
+      "template_id": "neutral-00"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 문의 번호와 담당 부서 이름을 메모했다.",
+      "label": "neutral",
+      "context_id": 4,
+      "template_id": "neutral-00"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 문의 번호와 담당 부서 이름을 메모했다.",
+      "label": "neutral",
+      "context_id": 5,
+      "template_id": "neutral-00"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 문의 번호와 담당 부서 이름을 메모했다.",
+      "label": "neutral",
+      "context_id": 6,
+      "template_id": "neutral-00"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 문의 번호와 담당 부서 이름을 메모했다.",
+      "label": "neutral",
+      "context_id": 7,
+      "template_id": "neutral-00"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 문의 번호와 담당 부서 이름을 메모했다.",
+      "label": "neutral",
+      "context_id": 8,
+      "template_id": "neutral-00"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 문의 번호와 담당 부서 이름을 메모했다.",
+      "label": "neutral",
+      "context_id": 9,
+      "template_id": "neutral-00"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 문의 번호와 담당 부서 이름을 메모했다.",
+      "label": "neutral",
+      "context_id": 10,
+      "template_id": "neutral-00"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 문의 번호와 담당 부서 이름을 메모했다.",
+      "label": "neutral",
+      "context_id": 11,
+      "template_id": "neutral-00"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 문의 번호와 담당 부서 이름을 메모했다.",
+      "label": "neutral",
+      "context_id": 12,
+      "template_id": "neutral-00"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 문의 번호와 담당 부서 이름을 메모했다.",
+      "label": "neutral",
+      "context_id": 13,
+      "template_id": "neutral-00"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 문의 번호와 담당 부서 이름을 메모했다.",
+      "label": "neutral",
+      "context_id": 14,
+      "template_id": "neutral-00"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 문의 번호와 담당 부서 이름을 메모했다.",
+      "label": "neutral",
+      "context_id": 15,
+      "template_id": "neutral-00"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 신청서에 필요한 항목을 모두 입력했다.",
+      "label": "neutral",
+      "context_id": 0,
+      "template_id": "neutral-01"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 신청서에 필요한 항목을 모두 입력했다.",
+      "label": "neutral",
+      "context_id": 1,
+      "template_id": "neutral-01"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 신청서에 필요한 항목을 모두 입력했다.",
+      "label": "neutral",
+      "context_id": 2,
+      "template_id": "neutral-01"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 신청서에 필요한 항목을 모두 입력했다.",
+      "label": "neutral",
+      "context_id": 3,
+      "template_id": "neutral-01"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 신청서에 필요한 항목을 모두 입력했다.",
+      "label": "neutral",
+      "context_id": 4,
+      "template_id": "neutral-01"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 신청서에 필요한 항목을 모두 입력했다.",
+      "label": "neutral",
+      "context_id": 5,
+      "template_id": "neutral-01"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 신청서에 필요한 항목을 모두 입력했다.",
+      "label": "neutral",
+      "context_id": 6,
+      "template_id": "neutral-01"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 신청서에 필요한 항목을 모두 입력했다.",
+      "label": "neutral",
+      "context_id": 7,
+      "template_id": "neutral-01"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 신청서에 필요한 항목을 모두 입력했다.",
+      "label": "neutral",
+      "context_id": 8,
+      "template_id": "neutral-01"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 신청서에 필요한 항목을 모두 입력했다.",
+      "label": "neutral",
+      "context_id": 9,
+      "template_id": "neutral-01"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 신청서에 필요한 항목을 모두 입력했다.",
+      "label": "neutral",
+      "context_id": 10,
+      "template_id": "neutral-01"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 신청서에 필요한 항목을 모두 입력했다.",
+      "label": "neutral",
+      "context_id": 11,
+      "template_id": "neutral-01"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 신청서에 필요한 항목을 모두 입력했다.",
+      "label": "neutral",
+      "context_id": 12,
+      "template_id": "neutral-01"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 신청서에 필요한 항목을 모두 입력했다.",
+      "label": "neutral",
+      "context_id": 13,
+      "template_id": "neutral-01"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 신청서에 필요한 항목을 모두 입력했다.",
+      "label": "neutral",
+      "context_id": 14,
+      "template_id": "neutral-01"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 신청서에 필요한 항목을 모두 입력했다.",
+      "label": "neutral",
+      "context_id": 15,
+      "template_id": "neutral-01"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 주문한 물품의 수량은 두 개로 표시되어 있다.",
+      "label": "neutral",
+      "context_id": 0,
+      "template_id": "neutral-02"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 주문한 물품의 수량은 두 개로 표시되어 있다.",
+      "label": "neutral",
+      "context_id": 1,
+      "template_id": "neutral-02"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 주문한 물품의 수량은 두 개로 표시되어 있다.",
+      "label": "neutral",
+      "context_id": 2,
+      "template_id": "neutral-02"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 주문한 물품의 수량은 두 개로 표시되어 있다.",
+      "label": "neutral",
+      "context_id": 3,
+      "template_id": "neutral-02"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 주문한 물품의 수량은 두 개로 표시되어 있다.",
+      "label": "neutral",
+      "context_id": 4,
+      "template_id": "neutral-02"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 주문한 물품의 수량은 두 개로 표시되어 있다.",
+      "label": "neutral",
+      "context_id": 5,
+      "template_id": "neutral-02"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 주문한 물품의 수량은 두 개로 표시되어 있다.",
+      "label": "neutral",
+      "context_id": 6,
+      "template_id": "neutral-02"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 주문한 물품의 수량은 두 개로 표시되어 있다.",
+      "label": "neutral",
+      "context_id": 7,
+      "template_id": "neutral-02"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 주문한 물품의 수량은 두 개로 표시되어 있다.",
+      "label": "neutral",
+      "context_id": 8,
+      "template_id": "neutral-02"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 주문한 물품의 수량은 두 개로 표시되어 있다.",
+      "label": "neutral",
+      "context_id": 9,
+      "template_id": "neutral-02"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 주문한 물품의 수량은 두 개로 표시되어 있다.",
+      "label": "neutral",
+      "context_id": 10,
+      "template_id": "neutral-02"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 주문한 물품의 수량은 두 개로 표시되어 있다.",
+      "label": "neutral",
+      "context_id": 11,
+      "template_id": "neutral-02"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 주문한 물품의 수량은 두 개로 표시되어 있다.",
+      "label": "neutral",
+      "context_id": 12,
+      "template_id": "neutral-02"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 주문한 물품의 수량은 두 개로 표시되어 있다.",
+      "label": "neutral",
+      "context_id": 13,
+      "template_id": "neutral-02"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 주문한 물품의 수량은 두 개로 표시되어 있다.",
+      "label": "neutral",
+      "context_id": 14,
+      "template_id": "neutral-02"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 주문한 물품의 수량은 두 개로 표시되어 있다.",
+      "label": "neutral",
+      "context_id": 15,
+      "template_id": "neutral-02"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 이용 가능한 시간은 오전 열 시부터다.",
+      "label": "neutral",
+      "context_id": 0,
+      "template_id": "neutral-03"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 이용 가능한 시간은 오전 열 시부터다.",
+      "label": "neutral",
+      "context_id": 1,
+      "template_id": "neutral-03"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 이용 가능한 시간은 오전 열 시부터다.",
+      "label": "neutral",
+      "context_id": 2,
+      "template_id": "neutral-03"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 이용 가능한 시간은 오전 열 시부터다.",
+      "label": "neutral",
+      "context_id": 3,
+      "template_id": "neutral-03"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 이용 가능한 시간은 오전 열 시부터다.",
+      "label": "neutral",
+      "context_id": 4,
+      "template_id": "neutral-03"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 이용 가능한 시간은 오전 열 시부터다.",
+      "label": "neutral",
+      "context_id": 5,
+      "template_id": "neutral-03"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 이용 가능한 시간은 오전 열 시부터다.",
+      "label": "neutral",
+      "context_id": 6,
+      "template_id": "neutral-03"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 이용 가능한 시간은 오전 열 시부터다.",
+      "label": "neutral",
+      "context_id": 7,
+      "template_id": "neutral-03"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 이용 가능한 시간은 오전 열 시부터다.",
+      "label": "neutral",
+      "context_id": 8,
+      "template_id": "neutral-03"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 이용 가능한 시간은 오전 열 시부터다.",
+      "label": "neutral",
+      "context_id": 9,
+      "template_id": "neutral-03"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 이용 가능한 시간은 오전 열 시부터다.",
+      "label": "neutral",
+      "context_id": 10,
+      "template_id": "neutral-03"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 이용 가능한 시간은 오전 열 시부터다.",
+      "label": "neutral",
+      "context_id": 11,
+      "template_id": "neutral-03"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 이용 가능한 시간은 오전 열 시부터다.",
+      "label": "neutral",
+      "context_id": 12,
+      "template_id": "neutral-03"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 이용 가능한 시간은 오전 열 시부터다.",
+      "label": "neutral",
+      "context_id": 13,
+      "template_id": "neutral-03"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 이용 가능한 시간은 오전 열 시부터다.",
+      "label": "neutral",
+      "context_id": 14,
+      "template_id": "neutral-03"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 이용 가능한 시간은 오전 열 시부터다.",
+      "label": "neutral",
+      "context_id": 15,
+      "template_id": "neutral-03"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 결제 수단으로 계좌 이체를 선택했다.",
+      "label": "neutral",
+      "context_id": 0,
+      "template_id": "neutral-04"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 결제 수단으로 계좌 이체를 선택했다.",
+      "label": "neutral",
+      "context_id": 1,
+      "template_id": "neutral-04"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 결제 수단으로 계좌 이체를 선택했다.",
+      "label": "neutral",
+      "context_id": 2,
+      "template_id": "neutral-04"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 결제 수단으로 계좌 이체를 선택했다.",
+      "label": "neutral",
+      "context_id": 3,
+      "template_id": "neutral-04"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 결제 수단으로 계좌 이체를 선택했다.",
+      "label": "neutral",
+      "context_id": 4,
+      "template_id": "neutral-04"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 결제 수단으로 계좌 이체를 선택했다.",
+      "label": "neutral",
+      "context_id": 5,
+      "template_id": "neutral-04"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 결제 수단으로 계좌 이체를 선택했다.",
+      "label": "neutral",
+      "context_id": 6,
+      "template_id": "neutral-04"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 결제 수단으로 계좌 이체를 선택했다.",
+      "label": "neutral",
+      "context_id": 7,
+      "template_id": "neutral-04"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 결제 수단으로 계좌 이체를 선택했다.",
+      "label": "neutral",
+      "context_id": 8,
+      "template_id": "neutral-04"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 결제 수단으로 계좌 이체를 선택했다.",
+      "label": "neutral",
+      "context_id": 9,
+      "template_id": "neutral-04"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 결제 수단으로 계좌 이체를 선택했다.",
+      "label": "neutral",
+      "context_id": 10,
+      "template_id": "neutral-04"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 결제 수단으로 계좌 이체를 선택했다.",
+      "label": "neutral",
+      "context_id": 11,
+      "template_id": "neutral-04"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 결제 수단으로 계좌 이체를 선택했다.",
+      "label": "neutral",
+      "context_id": 12,
+      "template_id": "neutral-04"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 결제 수단으로 계좌 이체를 선택했다.",
+      "label": "neutral",
+      "context_id": 13,
+      "template_id": "neutral-04"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 결제 수단으로 계좌 이체를 선택했다.",
+      "label": "neutral",
+      "context_id": 14,
+      "template_id": "neutral-04"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 결제 수단으로 계좌 이체를 선택했다.",
+      "label": "neutral",
+      "context_id": 15,
+      "template_id": "neutral-04"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 안내 문서를 내려받아 폴더에 저장했다.",
+      "label": "neutral",
+      "context_id": 0,
+      "template_id": "neutral-05"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 안내 문서를 내려받아 폴더에 저장했다.",
+      "label": "neutral",
+      "context_id": 1,
+      "template_id": "neutral-05"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 안내 문서를 내려받아 폴더에 저장했다.",
+      "label": "neutral",
+      "context_id": 2,
+      "template_id": "neutral-05"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 안내 문서를 내려받아 폴더에 저장했다.",
+      "label": "neutral",
+      "context_id": 3,
+      "template_id": "neutral-05"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 안내 문서를 내려받아 폴더에 저장했다.",
+      "label": "neutral",
+      "context_id": 4,
+      "template_id": "neutral-05"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 안내 문서를 내려받아 폴더에 저장했다.",
+      "label": "neutral",
+      "context_id": 5,
+      "template_id": "neutral-05"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 안내 문서를 내려받아 폴더에 저장했다.",
+      "label": "neutral",
+      "context_id": 6,
+      "template_id": "neutral-05"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 안내 문서를 내려받아 폴더에 저장했다.",
+      "label": "neutral",
+      "context_id": 7,
+      "template_id": "neutral-05"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 안내 문서를 내려받아 폴더에 저장했다.",
+      "label": "neutral",
+      "context_id": 8,
+      "template_id": "neutral-05"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 안내 문서를 내려받아 폴더에 저장했다.",
+      "label": "neutral",
+      "context_id": 9,
+      "template_id": "neutral-05"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 안내 문서를 내려받아 폴더에 저장했다.",
+      "label": "neutral",
+      "context_id": 10,
+      "template_id": "neutral-05"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 안내 문서를 내려받아 폴더에 저장했다.",
+      "label": "neutral",
+      "context_id": 11,
+      "template_id": "neutral-05"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 안내 문서를 내려받아 폴더에 저장했다.",
+      "label": "neutral",
+      "context_id": 12,
+      "template_id": "neutral-05"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 안내 문서를 내려받아 폴더에 저장했다.",
+      "label": "neutral",
+      "context_id": 13,
+      "template_id": "neutral-05"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 안내 문서를 내려받아 폴더에 저장했다.",
+      "label": "neutral",
+      "context_id": 14,
+      "template_id": "neutral-05"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 안내 문서를 내려받아 폴더에 저장했다.",
+      "label": "neutral",
+      "context_id": 15,
+      "template_id": "neutral-05"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 알림 메시지에 기재된 날짜를 확인했다.",
+      "label": "neutral",
+      "context_id": 0,
+      "template_id": "neutral-06"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 알림 메시지에 기재된 날짜를 확인했다.",
+      "label": "neutral",
+      "context_id": 1,
+      "template_id": "neutral-06"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 알림 메시지에 기재된 날짜를 확인했다.",
+      "label": "neutral",
+      "context_id": 2,
+      "template_id": "neutral-06"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 알림 메시지에 기재된 날짜를 확인했다.",
+      "label": "neutral",
+      "context_id": 3,
+      "template_id": "neutral-06"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 알림 메시지에 기재된 날짜를 확인했다.",
+      "label": "neutral",
+      "context_id": 4,
+      "template_id": "neutral-06"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 알림 메시지에 기재된 날짜를 확인했다.",
+      "label": "neutral",
+      "context_id": 5,
+      "template_id": "neutral-06"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 알림 메시지에 기재된 날짜를 확인했다.",
+      "label": "neutral",
+      "context_id": 6,
+      "template_id": "neutral-06"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 알림 메시지에 기재된 날짜를 확인했다.",
+      "label": "neutral",
+      "context_id": 7,
+      "template_id": "neutral-06"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 알림 메시지에 기재된 날짜를 확인했다.",
+      "label": "neutral",
+      "context_id": 8,
+      "template_id": "neutral-06"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 알림 메시지에 기재된 날짜를 확인했다.",
+      "label": "neutral",
+      "context_id": 9,
+      "template_id": "neutral-06"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 알림 메시지에 기재된 날짜를 확인했다.",
+      "label": "neutral",
+      "context_id": 10,
+      "template_id": "neutral-06"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 알림 메시지에 기재된 날짜를 확인했다.",
+      "label": "neutral",
+      "context_id": 11,
+      "template_id": "neutral-06"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 알림 메시지에 기재된 날짜를 확인했다.",
+      "label": "neutral",
+      "context_id": 12,
+      "template_id": "neutral-06"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 알림 메시지에 기재된 날짜를 확인했다.",
+      "label": "neutral",
+      "context_id": 13,
+      "template_id": "neutral-06"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 알림 메시지에 기재된 날짜를 확인했다.",
+      "label": "neutral",
+      "context_id": 14,
+      "template_id": "neutral-06"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 알림 메시지에 기재된 날짜를 확인했다.",
+      "label": "neutral",
+      "context_id": 15,
+      "template_id": "neutral-06"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 가입할 때 입력한 이메일 주소를 변경했다.",
+      "label": "neutral",
+      "context_id": 0,
+      "template_id": "neutral-07"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 가입할 때 입력한 이메일 주소를 변경했다.",
+      "label": "neutral",
+      "context_id": 1,
+      "template_id": "neutral-07"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 가입할 때 입력한 이메일 주소를 변경했다.",
+      "label": "neutral",
+      "context_id": 2,
+      "template_id": "neutral-07"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 가입할 때 입력한 이메일 주소를 변경했다.",
+      "label": "neutral",
+      "context_id": 3,
+      "template_id": "neutral-07"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 가입할 때 입력한 이메일 주소를 변경했다.",
+      "label": "neutral",
+      "context_id": 4,
+      "template_id": "neutral-07"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 가입할 때 입력한 이메일 주소를 변경했다.",
+      "label": "neutral",
+      "context_id": 5,
+      "template_id": "neutral-07"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 가입할 때 입력한 이메일 주소를 변경했다.",
+      "label": "neutral",
+      "context_id": 6,
+      "template_id": "neutral-07"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 가입할 때 입력한 이메일 주소를 변경했다.",
+      "label": "neutral",
+      "context_id": 7,
+      "template_id": "neutral-07"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 가입할 때 입력한 이메일 주소를 변경했다.",
+      "label": "neutral",
+      "context_id": 8,
+      "template_id": "neutral-07"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 가입할 때 입력한 이메일 주소를 변경했다.",
+      "label": "neutral",
+      "context_id": 9,
+      "template_id": "neutral-07"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 가입할 때 입력한 이메일 주소를 변경했다.",
+      "label": "neutral",
+      "context_id": 10,
+      "template_id": "neutral-07"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 가입할 때 입력한 이메일 주소를 변경했다.",
+      "label": "neutral",
+      "context_id": 11,
+      "template_id": "neutral-07"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 가입할 때 입력한 이메일 주소를 변경했다.",
+      "label": "neutral",
+      "context_id": 12,
+      "template_id": "neutral-07"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 가입할 때 입력한 이메일 주소를 변경했다.",
+      "label": "neutral",
+      "context_id": 13,
+      "template_id": "neutral-07"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 가입할 때 입력한 이메일 주소를 변경했다.",
+      "label": "neutral",
+      "context_id": 14,
+      "template_id": "neutral-07"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 가입할 때 입력한 이메일 주소를 변경했다.",
+      "label": "neutral",
+      "context_id": 15,
+      "template_id": "neutral-07"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 이용 내역 화면에는 세 건이 표시된다.",
+      "label": "neutral",
+      "context_id": 0,
+      "template_id": "neutral-08"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 이용 내역 화면에는 세 건이 표시된다.",
+      "label": "neutral",
+      "context_id": 1,
+      "template_id": "neutral-08"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 이용 내역 화면에는 세 건이 표시된다.",
+      "label": "neutral",
+      "context_id": 2,
+      "template_id": "neutral-08"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 이용 내역 화면에는 세 건이 표시된다.",
+      "label": "neutral",
+      "context_id": 3,
+      "template_id": "neutral-08"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 이용 내역 화면에는 세 건이 표시된다.",
+      "label": "neutral",
+      "context_id": 4,
+      "template_id": "neutral-08"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 이용 내역 화면에는 세 건이 표시된다.",
+      "label": "neutral",
+      "context_id": 5,
+      "template_id": "neutral-08"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 이용 내역 화면에는 세 건이 표시된다.",
+      "label": "neutral",
+      "context_id": 6,
+      "template_id": "neutral-08"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 이용 내역 화면에는 세 건이 표시된다.",
+      "label": "neutral",
+      "context_id": 7,
+      "template_id": "neutral-08"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 이용 내역 화면에는 세 건이 표시된다.",
+      "label": "neutral",
+      "context_id": 8,
+      "template_id": "neutral-08"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 이용 내역 화면에는 세 건이 표시된다.",
+      "label": "neutral",
+      "context_id": 9,
+      "template_id": "neutral-08"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 이용 내역 화면에는 세 건이 표시된다.",
+      "label": "neutral",
+      "context_id": 10,
+      "template_id": "neutral-08"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 이용 내역 화면에는 세 건이 표시된다.",
+      "label": "neutral",
+      "context_id": 11,
+      "template_id": "neutral-08"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 이용 내역 화면에는 세 건이 표시된다.",
+      "label": "neutral",
+      "context_id": 12,
+      "template_id": "neutral-08"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 이용 내역 화면에는 세 건이 표시된다.",
+      "label": "neutral",
+      "context_id": 13,
+      "template_id": "neutral-08"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 이용 내역 화면에는 세 건이 표시된다.",
+      "label": "neutral",
+      "context_id": 14,
+      "template_id": "neutral-08"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 이용 내역 화면에는 세 건이 표시된다.",
+      "label": "neutral",
+      "context_id": 15,
+      "template_id": "neutral-08"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 담당자에게 신청 번호를 전달했다.",
+      "label": "neutral",
+      "context_id": 0,
+      "template_id": "neutral-09"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 담당자에게 신청 번호를 전달했다.",
+      "label": "neutral",
+      "context_id": 1,
+      "template_id": "neutral-09"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 담당자에게 신청 번호를 전달했다.",
+      "label": "neutral",
+      "context_id": 2,
+      "template_id": "neutral-09"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 담당자에게 신청 번호를 전달했다.",
+      "label": "neutral",
+      "context_id": 3,
+      "template_id": "neutral-09"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 담당자에게 신청 번호를 전달했다.",
+      "label": "neutral",
+      "context_id": 4,
+      "template_id": "neutral-09"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 담당자에게 신청 번호를 전달했다.",
+      "label": "neutral",
+      "context_id": 5,
+      "template_id": "neutral-09"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 담당자에게 신청 번호를 전달했다.",
+      "label": "neutral",
+      "context_id": 6,
+      "template_id": "neutral-09"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 담당자에게 신청 번호를 전달했다.",
+      "label": "neutral",
+      "context_id": 7,
+      "template_id": "neutral-09"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 담당자에게 신청 번호를 전달했다.",
+      "label": "neutral",
+      "context_id": 8,
+      "template_id": "neutral-09"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 담당자에게 신청 번호를 전달했다.",
+      "label": "neutral",
+      "context_id": 9,
+      "template_id": "neutral-09"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 담당자에게 신청 번호를 전달했다.",
+      "label": "neutral",
+      "context_id": 10,
+      "template_id": "neutral-09"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 담당자에게 신청 번호를 전달했다.",
+      "label": "neutral",
+      "context_id": 11,
+      "template_id": "neutral-09"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 담당자에게 신청 번호를 전달했다.",
+      "label": "neutral",
+      "context_id": 12,
+      "template_id": "neutral-09"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 담당자에게 신청 번호를 전달했다.",
+      "label": "neutral",
+      "context_id": 13,
+      "template_id": "neutral-09"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 담당자에게 신청 번호를 전달했다.",
+      "label": "neutral",
+      "context_id": 14,
+      "template_id": "neutral-09"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 담당자에게 신청 번호를 전달했다.",
+      "label": "neutral",
+      "context_id": 15,
+      "template_id": "neutral-09"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 새로운 주소를 회원 정보에 등록했다.",
+      "label": "neutral",
+      "context_id": 0,
+      "template_id": "neutral-10"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 새로운 주소를 회원 정보에 등록했다.",
+      "label": "neutral",
+      "context_id": 1,
+      "template_id": "neutral-10"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 새로운 주소를 회원 정보에 등록했다.",
+      "label": "neutral",
+      "context_id": 2,
+      "template_id": "neutral-10"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 새로운 주소를 회원 정보에 등록했다.",
+      "label": "neutral",
+      "context_id": 3,
+      "template_id": "neutral-10"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 새로운 주소를 회원 정보에 등록했다.",
+      "label": "neutral",
+      "context_id": 4,
+      "template_id": "neutral-10"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 새로운 주소를 회원 정보에 등록했다.",
+      "label": "neutral",
+      "context_id": 5,
+      "template_id": "neutral-10"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 새로운 주소를 회원 정보에 등록했다.",
+      "label": "neutral",
+      "context_id": 6,
+      "template_id": "neutral-10"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 새로운 주소를 회원 정보에 등록했다.",
+      "label": "neutral",
+      "context_id": 7,
+      "template_id": "neutral-10"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 새로운 주소를 회원 정보에 등록했다.",
+      "label": "neutral",
+      "context_id": 8,
+      "template_id": "neutral-10"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 새로운 주소를 회원 정보에 등록했다.",
+      "label": "neutral",
+      "context_id": 9,
+      "template_id": "neutral-10"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 새로운 주소를 회원 정보에 등록했다.",
+      "label": "neutral",
+      "context_id": 10,
+      "template_id": "neutral-10"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 새로운 주소를 회원 정보에 등록했다.",
+      "label": "neutral",
+      "context_id": 11,
+      "template_id": "neutral-10"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 새로운 주소를 회원 정보에 등록했다.",
+      "label": "neutral",
+      "context_id": 12,
+      "template_id": "neutral-10"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 새로운 주소를 회원 정보에 등록했다.",
+      "label": "neutral",
+      "context_id": 13,
+      "template_id": "neutral-10"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 새로운 주소를 회원 정보에 등록했다.",
+      "label": "neutral",
+      "context_id": 14,
+      "template_id": "neutral-10"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 새로운 주소를 회원 정보에 등록했다.",
+      "label": "neutral",
+      "context_id": 15,
+      "template_id": "neutral-10"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 설명을 들은 뒤 추가 서류를 제출했다.",
+      "label": "neutral",
+      "context_id": 0,
+      "template_id": "neutral-11"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 설명을 들은 뒤 추가 서류를 제출했다.",
+      "label": "neutral",
+      "context_id": 1,
+      "template_id": "neutral-11"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 설명을 들은 뒤 추가 서류를 제출했다.",
+      "label": "neutral",
+      "context_id": 2,
+      "template_id": "neutral-11"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 설명을 들은 뒤 추가 서류를 제출했다.",
+      "label": "neutral",
+      "context_id": 3,
+      "template_id": "neutral-11"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 설명을 들은 뒤 추가 서류를 제출했다.",
+      "label": "neutral",
+      "context_id": 4,
+      "template_id": "neutral-11"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 설명을 들은 뒤 추가 서류를 제출했다.",
+      "label": "neutral",
+      "context_id": 5,
+      "template_id": "neutral-11"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 설명을 들은 뒤 추가 서류를 제출했다.",
+      "label": "neutral",
+      "context_id": 6,
+      "template_id": "neutral-11"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 설명을 들은 뒤 추가 서류를 제출했다.",
+      "label": "neutral",
+      "context_id": 7,
+      "template_id": "neutral-11"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 설명을 들은 뒤 추가 서류를 제출했다.",
+      "label": "neutral",
+      "context_id": 8,
+      "template_id": "neutral-11"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 설명을 들은 뒤 추가 서류를 제출했다.",
+      "label": "neutral",
+      "context_id": 9,
+      "template_id": "neutral-11"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 설명을 들은 뒤 추가 서류를 제출했다.",
+      "label": "neutral",
+      "context_id": 10,
+      "template_id": "neutral-11"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 설명을 들은 뒤 추가 서류를 제출했다.",
+      "label": "neutral",
+      "context_id": 11,
+      "template_id": "neutral-11"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 설명을 들은 뒤 추가 서류를 제출했다.",
+      "label": "neutral",
+      "context_id": 12,
+      "template_id": "neutral-11"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 설명을 들은 뒤 추가 서류를 제출했다.",
+      "label": "neutral",
+      "context_id": 13,
+      "template_id": "neutral-11"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 설명을 들은 뒤 추가 서류를 제출했다.",
+      "label": "neutral",
+      "context_id": 14,
+      "template_id": "neutral-11"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 설명을 들은 뒤 추가 서류를 제출했다.",
+      "label": "neutral",
+      "context_id": 15,
+      "template_id": "neutral-11"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 배송 날짜를 달력에 적어 두었다.",
+      "label": "neutral",
+      "context_id": 0,
+      "template_id": "neutral-12"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 배송 날짜를 달력에 적어 두었다.",
+      "label": "neutral",
+      "context_id": 1,
+      "template_id": "neutral-12"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 배송 날짜를 달력에 적어 두었다.",
+      "label": "neutral",
+      "context_id": 2,
+      "template_id": "neutral-12"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 배송 날짜를 달력에 적어 두었다.",
+      "label": "neutral",
+      "context_id": 3,
+      "template_id": "neutral-12"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 배송 날짜를 달력에 적어 두었다.",
+      "label": "neutral",
+      "context_id": 4,
+      "template_id": "neutral-12"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 배송 날짜를 달력에 적어 두었다.",
+      "label": "neutral",
+      "context_id": 5,
+      "template_id": "neutral-12"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 배송 날짜를 달력에 적어 두었다.",
+      "label": "neutral",
+      "context_id": 6,
+      "template_id": "neutral-12"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 배송 날짜를 달력에 적어 두었다.",
+      "label": "neutral",
+      "context_id": 7,
+      "template_id": "neutral-12"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 배송 날짜를 달력에 적어 두었다.",
+      "label": "neutral",
+      "context_id": 8,
+      "template_id": "neutral-12"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 배송 날짜를 달력에 적어 두었다.",
+      "label": "neutral",
+      "context_id": 9,
+      "template_id": "neutral-12"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 배송 날짜를 달력에 적어 두었다.",
+      "label": "neutral",
+      "context_id": 10,
+      "template_id": "neutral-12"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 배송 날짜를 달력에 적어 두었다.",
+      "label": "neutral",
+      "context_id": 11,
+      "template_id": "neutral-12"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 배송 날짜를 달력에 적어 두었다.",
+      "label": "neutral",
+      "context_id": 12,
+      "template_id": "neutral-12"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 배송 날짜를 달력에 적어 두었다.",
+      "label": "neutral",
+      "context_id": 13,
+      "template_id": "neutral-12"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 배송 날짜를 달력에 적어 두었다.",
+      "label": "neutral",
+      "context_id": 14,
+      "template_id": "neutral-12"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 배송 날짜를 달력에 적어 두었다.",
+      "label": "neutral",
+      "context_id": 15,
+      "template_id": "neutral-12"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 결제 영수증을 인쇄하여 보관했다.",
+      "label": "neutral",
+      "context_id": 0,
+      "template_id": "neutral-13"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 결제 영수증을 인쇄하여 보관했다.",
+      "label": "neutral",
+      "context_id": 1,
+      "template_id": "neutral-13"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 결제 영수증을 인쇄하여 보관했다.",
+      "label": "neutral",
+      "context_id": 2,
+      "template_id": "neutral-13"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 결제 영수증을 인쇄하여 보관했다.",
+      "label": "neutral",
+      "context_id": 3,
+      "template_id": "neutral-13"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 결제 영수증을 인쇄하여 보관했다.",
+      "label": "neutral",
+      "context_id": 4,
+      "template_id": "neutral-13"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 결제 영수증을 인쇄하여 보관했다.",
+      "label": "neutral",
+      "context_id": 5,
+      "template_id": "neutral-13"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 결제 영수증을 인쇄하여 보관했다.",
+      "label": "neutral",
+      "context_id": 6,
+      "template_id": "neutral-13"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 결제 영수증을 인쇄하여 보관했다.",
+      "label": "neutral",
+      "context_id": 7,
+      "template_id": "neutral-13"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 결제 영수증을 인쇄하여 보관했다.",
+      "label": "neutral",
+      "context_id": 8,
+      "template_id": "neutral-13"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 결제 영수증을 인쇄하여 보관했다.",
+      "label": "neutral",
+      "context_id": 9,
+      "template_id": "neutral-13"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 결제 영수증을 인쇄하여 보관했다.",
+      "label": "neutral",
+      "context_id": 10,
+      "template_id": "neutral-13"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 결제 영수증을 인쇄하여 보관했다.",
+      "label": "neutral",
+      "context_id": 11,
+      "template_id": "neutral-13"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 결제 영수증을 인쇄하여 보관했다.",
+      "label": "neutral",
+      "context_id": 12,
+      "template_id": "neutral-13"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 결제 영수증을 인쇄하여 보관했다.",
+      "label": "neutral",
+      "context_id": 13,
+      "template_id": "neutral-13"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 결제 영수증을 인쇄하여 보관했다.",
+      "label": "neutral",
+      "context_id": 14,
+      "template_id": "neutral-13"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 결제 영수증을 인쇄하여 보관했다.",
+      "label": "neutral",
+      "context_id": 15,
+      "template_id": "neutral-13"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 예약 시각을 오후로 변경해 두었다.",
+      "label": "neutral",
+      "context_id": 0,
+      "template_id": "neutral-14"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 예약 시각을 오후로 변경해 두었다.",
+      "label": "neutral",
+      "context_id": 1,
+      "template_id": "neutral-14"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 예약 시각을 오후로 변경해 두었다.",
+      "label": "neutral",
+      "context_id": 2,
+      "template_id": "neutral-14"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 예약 시각을 오후로 변경해 두었다.",
+      "label": "neutral",
+      "context_id": 3,
+      "template_id": "neutral-14"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 예약 시각을 오후로 변경해 두었다.",
+      "label": "neutral",
+      "context_id": 4,
+      "template_id": "neutral-14"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 예약 시각을 오후로 변경해 두었다.",
+      "label": "neutral",
+      "context_id": 5,
+      "template_id": "neutral-14"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 예약 시각을 오후로 변경해 두었다.",
+      "label": "neutral",
+      "context_id": 6,
+      "template_id": "neutral-14"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 예약 시각을 오후로 변경해 두었다.",
+      "label": "neutral",
+      "context_id": 7,
+      "template_id": "neutral-14"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 예약 시각을 오후로 변경해 두었다.",
+      "label": "neutral",
+      "context_id": 8,
+      "template_id": "neutral-14"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 예약 시각을 오후로 변경해 두었다.",
+      "label": "neutral",
+      "context_id": 9,
+      "template_id": "neutral-14"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 예약 시각을 오후로 변경해 두었다.",
+      "label": "neutral",
+      "context_id": 10,
+      "template_id": "neutral-14"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 예약 시각을 오후로 변경해 두었다.",
+      "label": "neutral",
+      "context_id": 11,
+      "template_id": "neutral-14"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 예약 시각을 오후로 변경해 두었다.",
+      "label": "neutral",
+      "context_id": 12,
+      "template_id": "neutral-14"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 예약 시각을 오후로 변경해 두었다.",
+      "label": "neutral",
+      "context_id": 13,
+      "template_id": "neutral-14"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 예약 시각을 오후로 변경해 두었다.",
+      "label": "neutral",
+      "context_id": 14,
+      "template_id": "neutral-14"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 예약 시각을 오후로 변경해 두었다.",
+      "label": "neutral",
+      "context_id": 15,
+      "template_id": "neutral-14"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 화면 왼쪽 메뉴에서 설정을 열었다.",
+      "label": "neutral",
+      "context_id": 0,
+      "template_id": "neutral-15"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 화면 왼쪽 메뉴에서 설정을 열었다.",
+      "label": "neutral",
+      "context_id": 1,
+      "template_id": "neutral-15"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 화면 왼쪽 메뉴에서 설정을 열었다.",
+      "label": "neutral",
+      "context_id": 2,
+      "template_id": "neutral-15"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 화면 왼쪽 메뉴에서 설정을 열었다.",
+      "label": "neutral",
+      "context_id": 3,
+      "template_id": "neutral-15"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 화면 왼쪽 메뉴에서 설정을 열었다.",
+      "label": "neutral",
+      "context_id": 4,
+      "template_id": "neutral-15"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 화면 왼쪽 메뉴에서 설정을 열었다.",
+      "label": "neutral",
+      "context_id": 5,
+      "template_id": "neutral-15"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 화면 왼쪽 메뉴에서 설정을 열었다.",
+      "label": "neutral",
+      "context_id": 6,
+      "template_id": "neutral-15"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 화면 왼쪽 메뉴에서 설정을 열었다.",
+      "label": "neutral",
+      "context_id": 7,
+      "template_id": "neutral-15"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 화면 왼쪽 메뉴에서 설정을 열었다.",
+      "label": "neutral",
+      "context_id": 8,
+      "template_id": "neutral-15"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 화면 왼쪽 메뉴에서 설정을 열었다.",
+      "label": "neutral",
+      "context_id": 9,
+      "template_id": "neutral-15"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 화면 왼쪽 메뉴에서 설정을 열었다.",
+      "label": "neutral",
+      "context_id": 10,
+      "template_id": "neutral-15"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 화면 왼쪽 메뉴에서 설정을 열었다.",
+      "label": "neutral",
+      "context_id": 11,
+      "template_id": "neutral-15"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 화면 왼쪽 메뉴에서 설정을 열었다.",
+      "label": "neutral",
+      "context_id": 12,
+      "template_id": "neutral-15"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 화면 왼쪽 메뉴에서 설정을 열었다.",
+      "label": "neutral",
+      "context_id": 13,
+      "template_id": "neutral-15"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 화면 왼쪽 메뉴에서 설정을 열었다.",
+      "label": "neutral",
+      "context_id": 14,
+      "template_id": "neutral-15"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 화면 왼쪽 메뉴에서 설정을 열었다.",
+      "label": "neutral",
+      "context_id": 15,
+      "template_id": "neutral-15"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 발송 여부를 확인하려고 상담을 신청했다.",
+      "label": "neutral",
+      "context_id": 0,
+      "template_id": "neutral-16"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 발송 여부를 확인하려고 상담을 신청했다.",
+      "label": "neutral",
+      "context_id": 1,
+      "template_id": "neutral-16"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 발송 여부를 확인하려고 상담을 신청했다.",
+      "label": "neutral",
+      "context_id": 2,
+      "template_id": "neutral-16"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 발송 여부를 확인하려고 상담을 신청했다.",
+      "label": "neutral",
+      "context_id": 3,
+      "template_id": "neutral-16"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 발송 여부를 확인하려고 상담을 신청했다.",
+      "label": "neutral",
+      "context_id": 4,
+      "template_id": "neutral-16"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 발송 여부를 확인하려고 상담을 신청했다.",
+      "label": "neutral",
+      "context_id": 5,
+      "template_id": "neutral-16"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 발송 여부를 확인하려고 상담을 신청했다.",
+      "label": "neutral",
+      "context_id": 6,
+      "template_id": "neutral-16"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 발송 여부를 확인하려고 상담을 신청했다.",
+      "label": "neutral",
+      "context_id": 7,
+      "template_id": "neutral-16"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 발송 여부를 확인하려고 상담을 신청했다.",
+      "label": "neutral",
+      "context_id": 8,
+      "template_id": "neutral-16"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 발송 여부를 확인하려고 상담을 신청했다.",
+      "label": "neutral",
+      "context_id": 9,
+      "template_id": "neutral-16"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 발송 여부를 확인하려고 상담을 신청했다.",
+      "label": "neutral",
+      "context_id": 10,
+      "template_id": "neutral-16"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 발송 여부를 확인하려고 상담을 신청했다.",
+      "label": "neutral",
+      "context_id": 11,
+      "template_id": "neutral-16"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 발송 여부를 확인하려고 상담을 신청했다.",
+      "label": "neutral",
+      "context_id": 12,
+      "template_id": "neutral-16"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 발송 여부를 확인하려고 상담을 신청했다.",
+      "label": "neutral",
+      "context_id": 13,
+      "template_id": "neutral-16"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 발송 여부를 확인하려고 상담을 신청했다.",
+      "label": "neutral",
+      "context_id": 14,
+      "template_id": "neutral-16"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 발송 여부를 확인하려고 상담을 신청했다.",
+      "label": "neutral",
+      "context_id": 15,
+      "template_id": "neutral-16"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 안내된 순서에 따라 신청 절차를 진행했다.",
+      "label": "neutral",
+      "context_id": 0,
+      "template_id": "neutral-17"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 안내된 순서에 따라 신청 절차를 진행했다.",
+      "label": "neutral",
+      "context_id": 1,
+      "template_id": "neutral-17"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 안내된 순서에 따라 신청 절차를 진행했다.",
+      "label": "neutral",
+      "context_id": 2,
+      "template_id": "neutral-17"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 안내된 순서에 따라 신청 절차를 진행했다.",
+      "label": "neutral",
+      "context_id": 3,
+      "template_id": "neutral-17"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 안내된 순서에 따라 신청 절차를 진행했다.",
+      "label": "neutral",
+      "context_id": 4,
+      "template_id": "neutral-17"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 안내된 순서에 따라 신청 절차를 진행했다.",
+      "label": "neutral",
+      "context_id": 5,
+      "template_id": "neutral-17"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 안내된 순서에 따라 신청 절차를 진행했다.",
+      "label": "neutral",
+      "context_id": 6,
+      "template_id": "neutral-17"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 안내된 순서에 따라 신청 절차를 진행했다.",
+      "label": "neutral",
+      "context_id": 7,
+      "template_id": "neutral-17"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 안내된 순서에 따라 신청 절차를 진행했다.",
+      "label": "neutral",
+      "context_id": 8,
+      "template_id": "neutral-17"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 안내된 순서에 따라 신청 절차를 진행했다.",
+      "label": "neutral",
+      "context_id": 9,
+      "template_id": "neutral-17"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 안내된 순서에 따라 신청 절차를 진행했다.",
+      "label": "neutral",
+      "context_id": 10,
+      "template_id": "neutral-17"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 안내된 순서에 따라 신청 절차를 진행했다.",
+      "label": "neutral",
+      "context_id": 11,
+      "template_id": "neutral-17"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 안내된 순서에 따라 신청 절차를 진행했다.",
+      "label": "neutral",
+      "context_id": 12,
+      "template_id": "neutral-17"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 안내된 순서에 따라 신청 절차를 진행했다.",
+      "label": "neutral",
+      "context_id": 13,
+      "template_id": "neutral-17"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 안내된 순서에 따라 신청 절차를 진행했다.",
+      "label": "neutral",
+      "context_id": 14,
+      "template_id": "neutral-17"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 안내된 순서에 따라 신청 절차를 진행했다.",
+      "label": "neutral",
+      "context_id": 15,
+      "template_id": "neutral-17"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 구독 기간은 다음 달 말까지로 되어 있다.",
+      "label": "neutral",
+      "context_id": 0,
+      "template_id": "neutral-18"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 구독 기간은 다음 달 말까지로 되어 있다.",
+      "label": "neutral",
+      "context_id": 1,
+      "template_id": "neutral-18"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 구독 기간은 다음 달 말까지로 되어 있다.",
+      "label": "neutral",
+      "context_id": 2,
+      "template_id": "neutral-18"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 구독 기간은 다음 달 말까지로 되어 있다.",
+      "label": "neutral",
+      "context_id": 3,
+      "template_id": "neutral-18"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 구독 기간은 다음 달 말까지로 되어 있다.",
+      "label": "neutral",
+      "context_id": 4,
+      "template_id": "neutral-18"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 구독 기간은 다음 달 말까지로 되어 있다.",
+      "label": "neutral",
+      "context_id": 5,
+      "template_id": "neutral-18"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 구독 기간은 다음 달 말까지로 되어 있다.",
+      "label": "neutral",
+      "context_id": 6,
+      "template_id": "neutral-18"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 구독 기간은 다음 달 말까지로 되어 있다.",
+      "label": "neutral",
+      "context_id": 7,
+      "template_id": "neutral-18"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 구독 기간은 다음 달 말까지로 되어 있다.",
+      "label": "neutral",
+      "context_id": 8,
+      "template_id": "neutral-18"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 구독 기간은 다음 달 말까지로 되어 있다.",
+      "label": "neutral",
+      "context_id": 9,
+      "template_id": "neutral-18"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 구독 기간은 다음 달 말까지로 되어 있다.",
+      "label": "neutral",
+      "context_id": 10,
+      "template_id": "neutral-18"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 구독 기간은 다음 달 말까지로 되어 있다.",
+      "label": "neutral",
+      "context_id": 11,
+      "template_id": "neutral-18"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 구독 기간은 다음 달 말까지로 되어 있다.",
+      "label": "neutral",
+      "context_id": 12,
+      "template_id": "neutral-18"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 구독 기간은 다음 달 말까지로 되어 있다.",
+      "label": "neutral",
+      "context_id": 13,
+      "template_id": "neutral-18"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 구독 기간은 다음 달 말까지로 되어 있다.",
+      "label": "neutral",
+      "context_id": 14,
+      "template_id": "neutral-18"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 구독 기간은 다음 달 말까지로 되어 있다.",
+      "label": "neutral",
+      "context_id": 15,
+      "template_id": "neutral-18"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 동일한 계정으로 다른 기기에 접속했다.",
+      "label": "neutral",
+      "context_id": 0,
+      "template_id": "neutral-19"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 동일한 계정으로 다른 기기에 접속했다.",
+      "label": "neutral",
+      "context_id": 1,
+      "template_id": "neutral-19"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 동일한 계정으로 다른 기기에 접속했다.",
+      "label": "neutral",
+      "context_id": 2,
+      "template_id": "neutral-19"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 동일한 계정으로 다른 기기에 접속했다.",
+      "label": "neutral",
+      "context_id": 3,
+      "template_id": "neutral-19"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 동일한 계정으로 다른 기기에 접속했다.",
+      "label": "neutral",
+      "context_id": 4,
+      "template_id": "neutral-19"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 동일한 계정으로 다른 기기에 접속했다.",
+      "label": "neutral",
+      "context_id": 5,
+      "template_id": "neutral-19"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 동일한 계정으로 다른 기기에 접속했다.",
+      "label": "neutral",
+      "context_id": 6,
+      "template_id": "neutral-19"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 동일한 계정으로 다른 기기에 접속했다.",
+      "label": "neutral",
+      "context_id": 7,
+      "template_id": "neutral-19"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 동일한 계정으로 다른 기기에 접속했다.",
+      "label": "neutral",
+      "context_id": 8,
+      "template_id": "neutral-19"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 동일한 계정으로 다른 기기에 접속했다.",
+      "label": "neutral",
+      "context_id": 9,
+      "template_id": "neutral-19"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 동일한 계정으로 다른 기기에 접속했다.",
+      "label": "neutral",
+      "context_id": 10,
+      "template_id": "neutral-19"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 동일한 계정으로 다른 기기에 접속했다.",
+      "label": "neutral",
+      "context_id": 11,
+      "template_id": "neutral-19"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 동일한 계정으로 다른 기기에 접속했다.",
+      "label": "neutral",
+      "context_id": 12,
+      "template_id": "neutral-19"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 동일한 계정으로 다른 기기에 접속했다.",
+      "label": "neutral",
+      "context_id": 13,
+      "template_id": "neutral-19"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 동일한 계정으로 다른 기기에 접속했다.",
+      "label": "neutral",
+      "context_id": 14,
+      "template_id": "neutral-19"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 동일한 계정으로 다른 기기에 접속했다.",
+      "label": "neutral",
+      "context_id": 15,
+      "template_id": "neutral-19"
+    },
+    {
+      "text": "온라인 매장을 이용하고 경험을 기록한다. 제품의 색상은 회색으로 선택했다.",
+      "label": "neutral",
+      "context_id": 0,
+      "template_id": "neutral-20"
+    },
+    {
+      "text": "동네 상점에서 물건을 산 뒤 후기를 남긴다. 제품의 색상은 회색으로 선택했다.",
+      "label": "neutral",
+      "context_id": 1,
+      "template_id": "neutral-20"
+    },
+    {
+      "text": "모바일 앱으로 신청한 서비스에 관해 적는다. 제품의 색상은 회색으로 선택했다.",
+      "label": "neutral",
+      "context_id": 2,
+      "template_id": "neutral-20"
+    },
+    {
+      "text": "전화 상담을 마친 뒤 이용 과정을 돌아본다. 제품의 색상은 회색으로 선택했다.",
+      "label": "neutral",
+      "context_id": 3,
+      "template_id": "neutral-20"
+    },
+    {
+      "text": "공식 홈페이지에서 주문한 경험을 정리한다. 제품의 색상은 회색으로 선택했다.",
+      "label": "neutral",
+      "context_id": 4,
+      "template_id": "neutral-20"
+    },
+    {
+      "text": "처음 방문한 지점에서 겪은 일을 기록한다. 제품의 색상은 회색으로 선택했다.",
+      "label": "neutral",
+      "context_id": 5,
+      "template_id": "neutral-20"
+    },
+    {
+      "text": "정기 구독 서비스를 이용한 소감을 남긴다. 제품의 색상은 회색으로 선택했다.",
+      "label": "neutral",
+      "context_id": 6,
+      "template_id": "neutral-20"
+    },
+    {
+      "text": "가족의 부탁으로 구매를 진행한 경험을 적는다. 제품의 색상은 회색으로 선택했다.",
+      "label": "neutral",
+      "context_id": 7,
+      "template_id": "neutral-20"
+    },
+    {
+      "text": "업무용 제품을 주문한 뒤 이용 기록을 남긴다. 제품의 색상은 회색으로 선택했다.",
+      "label": "neutral",
+      "context_id": 8,
+      "template_id": "neutral-20"
+    },
+    {
+      "text": "친구에게 소개받은 업체를 이용하고 후기를 적는다. 제품의 색상은 회색으로 선택했다.",
+      "label": "neutral",
+      "context_id": 9,
+      "template_id": "neutral-20"
+    },
+    {
+      "text": "예약한 서비스를 이용한 뒤 과정을 정리한다. 제품의 색상은 회색으로 선택했다.",
+      "label": "neutral",
+      "context_id": 10,
+      "template_id": "neutral-20"
+    },
+    {
+      "text": "주말에 새로 가입한 서비스에 관해 기록한다. 제품의 색상은 회색으로 선택했다.",
+      "label": "neutral",
+      "context_id": 11,
+      "template_id": "neutral-20"
+    },
+    {
+      "text": "여행 준비 중 이용한 업체에 대한 후기를 남긴다. 제품의 색상은 회색으로 선택했다.",
+      "label": "neutral",
+      "context_id": 12,
+      "template_id": "neutral-20"
+    },
+    {
+      "text": "평일 오후에 진행한 주문 경험을 적는다. 제품의 색상은 회색으로 선택했다.",
+      "label": "neutral",
+      "context_id": 13,
+      "template_id": "neutral-20"
+    },
+    {
+      "text": "지난달부터 이용한 서비스의 상황을 정리한다. 제품의 색상은 회색으로 선택했다.",
+      "label": "neutral",
+      "context_id": 14,
+      "template_id": "neutral-20"
+    },
+    {
+      "text": "새 계정으로 첫 거래를 마친 뒤 기록을 남긴다. 제품의 색상은 회색으로 선택했다.",
+      "label": "neutral",
+      "context_id": 15,
+      "template_id": "neutral-20"
+    }
+  ]
+}
