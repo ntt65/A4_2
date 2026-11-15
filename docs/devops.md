@@ -44,12 +44,12 @@ uv run --python .venv python -B -X utf8 main.py --evaluate-all
 
 ## CI
 
-`.github/workflows/ci.yml`은 `main`/`develop` 대상 PR, 두 브랜치의 push, 수동 실행을 지원한다.
+`.github/workflows/ci.yml`은 `main`/`develop` 대상 PR, 두 브랜치와 `feature/agents-layout-experiment`의 push, 수동 실행을 지원한다. 검증은 GitHub Actions에 위임하고 작업자는 실행 완료 시 결과를 확인한다.
 
 - OS: `macos-latest`. GitHub가 제공하는 macOS runner에서 실행한다.
 - Python: `.python-version`의 3.11. CI 실행당 job은 1개다.
 - PR과 머지 후 `develop` push에서 각각 단일 job이 실행된다.
-- 단계: 체크아웃 → Python/uv 준비 → `.venv` 생성 → requirements 동기화 → unittest.
+- 단계: 체크아웃 → Python 준비 → 단일 루트 지침·필수 절 확인 및 UTF-8 바이트 수 기록 → uv 준비 → `.venv` 생성 → requirements 동기화 → unittest.
 - `contents: read` 권한, 체크아웃 자격 증명 저장 해제, 액션 커밋 SHA 고정.
 - uv 캐시와 Python 자동 다운로드를 끄고, 각 job 제한 시간은 10분이다.
 - 동일 PR/브랜치의 새 실행이 이전 실행을 대체한다.
@@ -64,7 +64,7 @@ runner의 현재 OS·CPU 사양은 [GitHub 공식 문서](https://docs.github.co
 
 평가 환경에 맞춘 CI 축소는 [#7](https://github.com/ntt65/A4_2/issues/7)의 `feature/7-macos-python311-ci`에서 진행하며, 기준은 `develop`의 `30f5591`이다.
 
-승인된 작업 단위마다 검증하고 관련 문서를 동기화한다. 담당 파일을 명시해 스테이징한 후 `git diff --cached`와 `git diff --cached --check`를 확인한다. 이슈 번호를 연결한 Conventional Commit으로 로컬 커밋하고 SHA·포함 파일·검증 결과·남은 작업을 보고한다.
+승인된 작업 단위마다 관련 문서를 동기화하고 담당 파일만 스테이징한다. Conventional Commit으로 커밋·push해 GitHub Actions에 검증을 맡기고 SHA·포함 파일·CI 결과·남은 작업을 보고한다.
 
 ## 기능 기준선과 후속 작업
 

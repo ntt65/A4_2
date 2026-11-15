@@ -93,6 +93,8 @@
 
 유효 비교는 한 쌍이다. 분산 실행은 지침을 읽은 뒤 UTF-8을 명시해 다시 읽었고 도구 호출 5회, 통합 실행은 4회였다. 각 도구 명령의 종료 코드는 0이었다. 실행별 조회 선택, 인코딩 재조회, 캐시 상태와 서버 지연의 기여도를 분리 측정하지 않았으므로 25.44%는 이번 한 쌍의 관측값이다. 구성 배치만의 일반적인 절감률과 구현 작업 전체의 속도 차이는 미확인이다.
 
+후속 요청에서는 통합 지침의 중복 표현을 줄이고 목적·완료 조건 확인, 승인 범위 내 작업 지속, 지침 재조회·재출력 억제를 명시했다. 검증은 GitHub Actions에 위임했다. 위 25.44%는 축약 전 통합 지침 `894e9ae`의 관측값이며, 축약 후 모델 토큰 절감률은 미측정이다. 축약한 파일의 UTF-8 바이트 수와 단일 지침·필수 절 확인은 CI 실행 요약에 기록한다.
+
 실행 조건과 파일 해시는 [manifest.json](results/agents-layout/manifest.json), 완료 원자료는 [runs.jsonl](results/agents-layout/runs.jsonl), 시도 횟수는 [attempts.jsonl](results/agents-layout/attempts.jsonl), 중단 근거는 [interrupted.json](results/agents-layout/interrupted.json), 집계값은 [summary.json](results/agents-layout/summary.json)에 보관했다. CLI 원문과 세션 확인값은 `results/agents-layout/raw/`에 있다. [수집 스크립트](results/agents-layout/measure.py)는 시작 전에 시도를 기록하고 최대 시도 한도를 확인한다.
 
 ### CLI 사전 점검
