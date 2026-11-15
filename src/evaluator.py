@@ -23,13 +23,18 @@ def evaluate_information_extraction(path: Path = IE_DATA_PATH) -> tuple[dict, st
         cases = json.load(f)
 
     patterns = ["emails", "phones", "dates", "amounts", "urls"]
+    include_addresses = any("addresses" in case["labels"] for case in cases)
+    if include_addresses:
+        patterns.append("addresses")
     counts = {p: {"tp": 0, "fp": 0, "fn": 0} for p in patterns}
 
     for case in cases:
-        predicted = extract_information(case["text"])
+        predicted = extract_information(case["text"], include_addresses=include_addresses)
         expected = case["labels"]
 
         for p in patterns:
+            if p == "addresses" and p not in expected:
+                continue
             pred_set = set(predicted.get(p, []))
             exp_set = set(expected.get(p, []))
             counts[p]["tp"] += len(pred_set & exp_set)

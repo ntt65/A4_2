@@ -37,6 +37,19 @@ class CliExtractionTests(unittest.TestCase):
         self.assertNotIn("010.1234.5678", output)
         self.assertIn("판정: positive", output)
 
+    def test_address_extraction_and_masked_display(self) -> None:
+        address = "경기도 성남시 분당구 판교역로 166 101동 1203호"
+        text = f"배송지는 {address}입니다. 서비스는 정말 좋다. 연락처 02-123-4567"
+        extracted, _ = self._analyze(text)
+        self.assertEqual(extracted["addresses"], [address])
+        masked, output = self._analyze(text, mask=True)
+        self.assertEqual(masked["addresses"], ["경기도 성남시 분당구 ***"])
+        self.assertEqual(masked["phones"], ["02-***-4567"])
+        for detail in ("판교역로", "166", "101동", "1203호", "02-123-4567"):
+            with self.subTest(detail=detail):
+                self.assertNotIn(detail, output)
+        self.assertIn("판정: positive", output)
+
 
 if __name__ == "__main__":
     unittest.main()

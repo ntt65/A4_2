@@ -1,8 +1,10 @@
 import json
+import tempfile
 import unittest
 from pathlib import Path
 
-from src.extractor import extract_information
+from src.evaluator import evaluate_information_extraction
+from src.extractor import extract_addresses, extract_information
 
 
 class ExtractorTests(unittest.TestCase):
@@ -64,6 +66,76 @@ class ExtractorTests(unittest.TestCase):
         result = extract_information("참고 (HTTPS://EXAMPLE.COM/a(b)).")
         self.assertEqual(result["urls"], ["https://example.com/a(b)"])
         self.assertEqual(extract_information("http://example.com:999999/test")["urls"], [])
+
+    def test_road_and_lot_addresses_with_details(self) -> None:
+        addresses = (
+            "서울특별시 강남구 테헤란로 123",
+            "경기도 성남시 분당구 판교역로 166 101동 1203호",
+            "세종특별자치시 한누리대로 2130 3층",
+            "제주특별자치도 제주시 첨단로 242 301호",
+            "강원특별자치도 평창군 봉평면 태기로 174 2층",
+            "전북특별자치도 전주시 완산구 효자로 225",
+            "경북 안동시 풍천면 갈전리 123-4 201호",
+            "부산 해운대구 우동 1408",
+            "서울 중구 을지로1가 10",
+            "경기도 가평군 가평읍 읍내리 산 12-3",
+            "대전 유성구 대학로 99 지하 1층 101호",
+            "인천 연수구 센트럴로 100 101동202호",
+        )
+        for address in addresses:
+            with self.subTest(address=address):
+                self.assertEqual(extract_addresses(f"주소는 {address}입니다."), [address])
+                self.assertEqual(extract_information(address, include_addresses=True)["addresses"], [address])
+
+    def test_address_normalization_duplicates_and_particles(self) -> None:
+        text = (
+            "서울  강남구\t테헤란로 123, 101동 202호와 "
+            "부산 해운대구 우동 456-7에서 만나요. "
+            "서울 강남구 테헤란로 123 101동 202호"
+        )
+        self.assertEqual(extract_addresses(text), sorted([
+            "서울 강남구 테헤란로 123 101동 202호", "부산 해운대구 우동 456-7",
+        ]))
+        self.assertEqual(
+            extract_addresses("배송지는 서울 강남구 테헤란로 123으로 정했다."),
+            ["서울 강남구 테헤란로 123"],
+        )
+        self.assertEqual(
+            extract_addresses("서울 강남구 테헤란로 123, 101동, 12층, 1203호"),
+            ["서울 강남구 테헤란로 123 101동 12층 1203호"],
+        )
+
+    def test_address_boundaries_reject_incomplete_and_embedded_values(self) -> None:
+        for text in (
+            "", "서울 강남구 테헤란로에서 만나요", "부산 해운대구입니다",
+            "강남구 테헤란로 123", "key_서울 강남구 테헤란로 123",
+            "가짜서울 강남구 테헤란로 123", "서울 강남구 테헤란로 123ABC",
+            "서울 강남구 테헤란로 12.5", "서울 강남구 테헤란로 123-45-6",
+            "서울 강남구 테헤란로 123원", "서울 강남구 테헤란로 123/45",
+            "https://example.com/서울 강남구 테헤란로 123",
+            "https://example.com/?address=서울 강남구 테헤란로 123",
+            "서울 강남구 테헤란로\n123",
+        ):
+            with self.subTest(text=text):
+                self.assertEqual(extract_addresses(text), [])
+        self.assertEqual(extract_information("일정 확인", include_addresses=True)["addresses"], [])
+
+    def test_address_evaluation_counts_only_annotated_cases(self) -> None:
+        correct = "서울 강남구 테헤란로 123"
+        wrong = "부산 해운대구 우동 456-7"
+        cases = [
+            {"text": correct, "labels": {"addresses": [correct]}},
+            {"text": wrong, "labels": {"addresses": [correct]}},
+            {"text": wrong, "labels": {"addresses": []}},
+            {"text": correct, "labels": {"emails": []}},
+        ]
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "addresses.json"
+            path.write_text(json.dumps(cases, ensure_ascii=False), encoding="utf-8")
+            metrics, report = evaluate_information_extraction(path)
+        self.assertAlmostEqual(metrics["addresses"]["precision"], 1 / 3)
+        self.assertAlmostEqual(metrics["addresses"]["recall"], 1 / 2)
+        self.assertIn("addresses", report)
 
 
 if __name__ == "__main__":

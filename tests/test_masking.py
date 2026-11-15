@@ -1,6 +1,6 @@
 import unittest
 
-from src.masking import mask_card_number, mask_personal_info, mask_phone_number, mask_resident_id
+from src.masking import mask_address, mask_card_number, mask_personal_info, mask_phone_number, mask_resident_id
 
 
 class MaskingTests(unittest.TestCase):
@@ -31,6 +31,29 @@ class MaskingTests(unittest.TestCase):
             self.assertNotIn(raw, masked)
         self.assertIn("02-***-4567", masked)
         self.assertEqual(mask_personal_info(""), "")
+
+    def test_address_mask_retains_only_city_and_district(self) -> None:
+        for text, expected in (
+            ("서울 강남구 테헤란로 123으로 정했다.", "서울 강남구 ***으로 정했다."),
+            ("경기도 성남시 분당구 판교역로 166 101동 1203호입니다.", "경기도 성남시 분당구 ***입니다."),
+            ("세종특별자치시 한누리대로 2130 3층", "세종특별자치시 ***"),
+            ("제주특별자치도 제주시 첨단로 242 301호", "제주특별자치도 제주시 ***"),
+            ("강원특별자치도 평창군 봉평면 태기로 174 2층", "강원특별자치도 평창군 ***"),
+            ("경북 안동시 풍천면 갈전리 123-4 201호에서 만나요.", "경북 안동시 ***에서 만나요."),
+            ("서울 강남구 역삼동 123-4와 부산 해운대구 우동 456-7", "서울 강남구 ***와 부산 해운대구 ***"),
+            ("서울 강남구 테헤란로 123, 101동, 12층, 1203호", "서울 강남구 ***"),
+        ):
+            with self.subTest(text=text):
+                self.assertEqual(mask_address(text), expected)
+
+    def test_combined_mask_removes_address_before_numeric_patterns(self) -> None:
+        text = "서울 강남구 테헤란로 123 101동 202호, 연락처 010-1234-5678, 900101-1234567"
+        self.assertEqual(
+            mask_personal_info(text),
+            "서울 강남구 ***, 연락처 010-****-5678, 900101-1******",
+        )
+        self.assertEqual(mask_address("서울 강남구 테헤란로"), "서울 강남구 테헤란로")
+        self.assertEqual(mask_address(""), "")
 
 
 if __name__ == "__main__":

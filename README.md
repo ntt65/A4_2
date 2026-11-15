@@ -10,7 +10,7 @@ Python 3.11과 uv가 필요합니다. 평가 대상은 iMac의 macOS·Python 3.1
 uv venv --no-python-downloads .venv
 uv pip sync --python .venv --allow-empty-requirements requirements.txt
 uv run --python .venv python -B -X utf8 main.py --text "문의는 USER@EXAMPLE.COM, 연락처 010 1234 5678, 서비스는 정말 좋다"
-uv run --python .venv python -B -X utf8 main.py --text "연락처 02-123-4567, 주민번호 900101-1234567, 카드 1234-5678-9012-3456" --mask
+uv run --python .venv python -B -X utf8 main.py --text "주소 서울 강남구 테헤란로 123 101동 202호, 연락처 02-123-4567, 주민번호 900101-1234567, 카드 1234-5678-9012-3456" --mask
 uv run --python .venv python -B -X utf8 main.py --evaluate-all
 uv run --python .venv python -B -X utf8 -m unittest discover -s tests -v
 ```
@@ -21,8 +21,8 @@ uv run --python .venv python -B -X utf8 -m unittest discover -s tests -v
 
 ```text
 main.py                         # 분석·마스킹·평가 CLI
-src/extractor.py                # 내장 re 기반 5종 정보 추출·정규화
-src/masking.py                  # 추출 후 전화·주민번호·카드 표시 마스킹
+src/extractor.py                # 내장 re 기반 5종 정보·국내 주소 추출·정규화
+src/masking.py                  # 추출 후 전화·주민번호·카드·주소 표시 마스킹
 src/sentiment.py                # 사전·표면형·부정·강조·이중부정
 src/evaluator.py                # Precision / Recall / Accuracy / Macro F1
 data/ie_test_cases.json         # 기존 정답 50문장, 패턴별 10문장
@@ -40,7 +40,8 @@ docs/report.md                 # 요구사항별 완료·검증 보고서
 ## 데이터와 규칙
 
 - 정보 추출: 이메일·전화·날짜·금액·URL마다 3가지 이상 표기를 처리합니다. 날짜는 ISO 8601, 전화는 하이픈 형식, 금액은 정수로 정규화하고 정렬·중복 제거합니다. `$49.9`는 기존 정답과 같이 49로 변환하며 환율 변환은 하지 않습니다. `1억 2천만원`과 `3천5백만원`, 복수 금액을 지원합니다. 일반 숫자·수량·URL 속 숫자의 금액 오탐을 막고 URL 쿼리·fragment를 보존합니다.
-- 마스킹: 원문에서 추출한 뒤 표시할 추출값과 분석 문장을 가립니다. 서울 9자리 번호도 처리합니다. 주민번호·카드의 실제 유효성은 판정하지 않습니다.
+- 주소 추출은 시·도부터 표기한 국내 도로명·지번 주소와 숫자 동·층·호를 처리합니다. 예를 들어 `경기도 성남시 분당구 판교역로 166 101동 1203호`를 인식합니다. CLI 결과에는 `addresses` 목록이 포함됩니다. Python에서는 `extract_addresses(text)` 또는 `extract_information(text, include_addresses=True)`로 호출합니다.
+- 마스킹은 원문에서 추출한 뒤 표시할 추출값과 분석 문장을 가립니다. 주소는 시·도와 시·군·구까지만 남겨 `경기도 성남시 분당구 ***`로 표시하며 읍·면도 가립니다. 서울 9자리 번호와 주민번호·카드 모양도 처리합니다. 주소의 실제 존재 여부와 주민번호·카드의 실제 유효성은 판정하지 않습니다. 지원 주소 형식과 검증 근거는 [추출 문서](docs/extraction.md#주소-추출마스킹)에 있습니다.
 - 감성 사전: 일반 207개, 도메인 36개를 사용합니다. 의미 없는 임시 표제어 12개를 교체했습니다. 기존 프로젝트 자체 목록을 검토·보완했으며 외부 사전은 다운로드하지 않았습니다. 출처·라이선스 관련 설명과 원본 해시는 [감성 문서](docs/sentiment.md)에 있습니다.
 - 감성 규칙: 내장 `re` 토큰화 후 대소문자·제한된 한국어 표면형을 맞추고 점수를 합산합니다. 부정어는 ×−1, 강조어는 ×1.5이며 문장부호·절 경계를 넘지 않습니다. `좋지 않다`, `정말 맛있지 않았어요`, `나쁘지 않다`를 처리합니다. 매칭 토큰·기본 점수·가중치·적용 규칙·최종 점수와 판정을 반환합니다.
 - 감성 평가: 고유 160문장(긍정 55 / 부정 70 / 중립 35)입니다. 문장과 라벨을 먼저 고정한 뒤 분류기를 실행했으며 예측 결과에 맞춰 라벨을 바꾸지 않았습니다. 기존 116행·고유 31문장은 archive에 보존했습니다.
@@ -72,4 +73,4 @@ Windows·CPython 3.11.4, 2026-11-15 측정입니다. F1은 긍정·부정·중�
 
 이 데이터는 자체 작성한 개발용 평가 자료입니다. 독립 평가자·블라인드 검증셋을 사용하지 않았으므로 실제 고객 문장의 일반화 성능으로 해석할 수 없습니다. 형태소 분석 없는 제한된 활용 규칙은 신조어·띄어쓰기·문맥·인용·반어를 놓칠 수 있습니다. 국제화 주소·국제 전화·한글 숫자·음수 금액·환율 변환은 지원 범위 밖입니다. 선택 과제인 TF-IDF 비교와 Aspect별 분류는 구현 범위에 포함하지 않습니다.
 
-통합 테스트 **35개가 통과**했습니다. 기준 커밋·데이터 해시·전체 요구사항 점검은 [최종 보고서](docs/report.md), 문장별 결과는 [최종 원자료](docs/results/final.json)에서 확인할 수 있습니다.
+주소 보너스 구현 후 Windows·CPython 3.11.4에서 통합 테스트 **42개가 2.346초에 통과**했습니다. 기존 50문장의 추출 지표와 160문장의 감성 지표는 위 표와 같습니다. 기준 커밋·데이터 해시·전체 요구사항 점검과 주소 검증은 [최종 보고서](docs/report.md), 기존 문장별 측정 원자료는 [final.json](docs/results/final.json)에서 확인할 수 있습니다.

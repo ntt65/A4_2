@@ -10,14 +10,14 @@ from src.sentiment import analyze_sentiment, format_analysis
 def main() -> None:
     parser = argparse.ArgumentParser(description="규칙 기반 정보 추출 및 감성 분석 파이프라인")
     parser.add_argument("--text", type=str, help="단일 문장 분석")
-    parser.add_argument("--mask", action="store_true", help="입력 문장 개인정보 마스킹")
+    parser.add_argument("--mask", action="store_true", help="전화·주민번호·카드·주소 마스킹")
     parser.add_argument("--evaluate-ie", action="store_true", help="정보 추출 평가 실행")
     parser.add_argument("--evaluate-sentiment", action="store_true", help="감성 분석 평가 실행")
     parser.add_argument("--evaluate-all", action="store_true", help="전체 평가 실행")
     args = parser.parse_args()
 
     if args.text:
-        extracted = extract_information(args.text)
+        extracted = extract_information(args.text, include_addresses=True)
         text = mask_personal_info(args.text) if args.mask else args.text
         if args.mask:
             extracted = {

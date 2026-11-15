@@ -80,6 +80,44 @@ URL_PATTERN = re.compile(
     re.IGNORECASE,
 )
 
+# 국내 주소의 시·도: 정식 명칭과 일상 약칭을 허용하며 긴 명칭부터 소비한다.
+# 실제 행정구역 존재 여부는 검사하지 않고 아래 완성 패턴에서 공백 경계를 요구한다.
+_ADDRESS_REGION = (
+    r"(?:서울(?:특별시|시)?|(?:부산|대구|인천|광주|대전|울산)(?:광역시|시)?"
+    r"|세종(?:특별자치시|시)?|경기(?:도)?|강원(?:특별자치도|도)?"
+    r"|충청북도|충북|충청남도|충남|전북특별자치도|전라북도|전북"
+    r"|전라남도|전남|경상북도|경북|경상남도|경남|제주(?:특별자치도|도)?)"
+)
+
+# 건물번호·지번: 본번과 선택적 부번. 숫자 중간에서 끝나는 매칭을 막는다.
+_ADDRESS_NUMBER = r"[0-9]+(?:-[0-9]+)?(?![0-9])"
+
+# 상세주소: 숫자 동·층·호와 지하 층. 각 묶음 사이 공백·쉼표를 허용한다.
+# 첫 상세주소는 건물번호와 분리하며 동/층 뒤의 붙여 쓴 호수도 소비한다.
+_ADDRESS_DETAIL = (
+    r"(?:(?:[ \t]+|,[ \t]*)(?:"
+    r"[0-9]+동(?:(?:[ \t]*,[ \t]*|[ \t]*)(?:지하[ \t]*)?[0-9]+층)?"
+    r"(?:(?:[ \t]*,[ \t]*|[ \t]*)[0-9]+호)?"
+    r"|(?:지하[ \t]*)?[0-9]+층(?:(?:[ \t]*,[ \t]*|[ \t]*)[0-9]+호)?|[0-9]+호))?"
+)
+
+# 주소: 시·도 + 선택 시/군/구·읍/면 + 도로명/동·리·가 + 필수 건물번호/지번.
+# 시작 lookbehind는 한글/ASCII 식별자와 URL 경로·쿼리 내부의 부분 주소를 막는다.
+# 끝 lookahead는 문장부호·공백·문장 끝 또는 독립 조사만 허용해 숫자/단위의 잘림을 막는다.
+# administrative는 마스킹 후 남길 시·도/시·군·구이며 읍·면과 상세주소는 그 뒤에 포함한다.
+ADDRESS_PATTERN = re.compile(
+    rf"(?<![A-Za-z0-9_가-힣/@?&=.%+#-])"
+    rf"(?P<administrative>{_ADDRESS_REGION}"
+    r"(?:[ \t]+[가-힣]{1,12}(?:시|군|구)){0,2})"
+    r"(?:[ \t]+[가-힣]{1,12}(?:읍|면))?[ \t]+"
+    r"(?:[가-힣0-9·.]{1,30}(?:대로|로|길)[ \t]+"
+    rf"|[가-힣0-9·]{{1,20}}(?:동|리|가)[ \t]+(?:산[ \t]*)?)"
+    rf"{_ADDRESS_NUMBER}{_ADDRESS_DETAIL}"
+    r"(?=$|[\s,.;:!?()\[\]{}\"'<>]"
+    r"|(?:입니다|에서는|에서|으로|에는|에|은|는|이|가|을|를|도|와|과|로)(?![가-힣]))"
+    r"(?![./][0-9])"
+)
+
 # 전화번호 정규화용: 숫자가 아닌 구분자만 제거한다. 추출 경계는 PHONE_PATTERN이 검사한다.
 _NON_DIGIT_PATTERN = re.compile(r"\D")
 
@@ -165,7 +203,14 @@ def _overlaps(span: tuple[int, int], protected: list[tuple[int, int]]) -> bool:
     return any(span[0] < end and start < span[1] for start, end in protected)
 
 
-def extract_information(text: str) -> dict[str, list]:
+def extract_addresses(text: str) -> list[str]:
+    return sorted({
+        " ".join(match.group(0).replace(",", " ").split())
+        for match in ADDRESS_PATTERN.finditer(text)
+    })
+
+
+def extract_information(text: str, *, include_addresses: bool = False) -> dict[str, list]:
     emails = sorted({match.group(0).lower() for match in EMAIL_PATTERN.finditer(text)})
     phones = sorted({_normalize_phone(match.group(0)) for match in PHONE_PATTERN.finditer(text)})
     dates: set[str] = set()
@@ -191,7 +236,10 @@ def extract_information(text: str) -> dict[str, list]:
             value = _normalize_amount(match.group(0))
             if value is not None:
                 amounts.add(value)
-    return {
+    extracted = {
         "emails": emails, "phones": phones, "dates": sorted(dates),
         "amounts": sorted(amounts), "urls": sorted(urls),
     }
+    if include_addresses:
+        extracted["addresses"] = extract_addresses(text)
+    return extracted

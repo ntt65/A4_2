@@ -1,6 +1,6 @@
 import re
 
-from src.extractor import PHONE_PATTERN
+from src.extractor import ADDRESS_PATTERN, PHONE_PATTERN
 
 
 # 주민번호 모양 6+7자리. 더 긴 숫자 내부는 제외하고 한국어에 바로 붙은 번호는 가린다.
@@ -31,5 +31,12 @@ def mask_phone_number(text: str) -> str:
     return PHONE_PATTERN.sub(repl, text)
 
 
+def mask_address(text: str) -> str:
+    def repl(match: re.Match[str]) -> str:
+        return f"{' '.join(match['administrative'].split())} ***"
+
+    return ADDRESS_PATTERN.sub(repl, text)
+
+
 def mask_personal_info(text: str) -> str:
-    return mask_phone_number(mask_card_number(mask_resident_id(text)))
+    return mask_phone_number(mask_card_number(mask_resident_id(mask_address(text))))
