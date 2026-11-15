@@ -90,6 +90,9 @@ def session_evidence(thread_id: str, root_instructions: str) -> dict:
 def summarize(records: list[dict]) -> dict:
     metrics = ("cached_input_tokens", "uncached_input_tokens", "output_tokens", "total_tokens", "elapsed_seconds")
     variants = sorted({row["variant"] for row in records})
+    if "ORGINAL" in variants:
+        variants.remove("ORGINAL")
+        variants.insert(0, "ORGINAL")
     summary = {"run_count": len(records), "passed": sum(row["passed"] for row in records), "tasks": {}}
     for task in TASKS:
         rows = [row for row in records if row["task"] == task]
@@ -142,6 +145,7 @@ def main() -> None:
     parser.add_argument("--codex", type=Path, required=True)
     parser.add_argument("--fixture-b", required=True)
     parser.add_argument("--fixture-c")
+    parser.add_argument("--fixture-original")
     parser.add_argument("--max-attempts", type=int, default=3)
     args = parser.parse_args()
     repository = args.repository.resolve()
@@ -152,6 +156,9 @@ def main() -> None:
     if args.fixture_c:
         commits["C"] = args.fixture_c
         pairs.append(("code", 1, "C"))
+    if args.fixture_original:
+        commits["ORGINAL"] = args.fixture_original
+        pairs.append(("code", 1, ["ORGINAL"]))
     assert not git(repository, "status", "--porcelain"), "Comparison worktree has existing changes"
     tracked = git(repository, "ls-tree", "-r", "--name-only", BASE).splitlines()
     fixed_paths = [path for path in tracked if Path(path).name != "AGENTS.md"]
@@ -192,6 +199,24 @@ def main() -> None:
             manifest["initial_max_attempts"] = 3
             manifest["max_attempts"] = args.max_attempts
             manifest["followup_scope"] = "One additional optimized C run requested for the three-configuration comparison."
+            save_json(manifest_path, manifest)
+        if args.fixture_original:
+            git(repository, "switch", "--detach", args.fixture_original)
+            manifest["fixture_commits"]["ORGINAL"] = args.fixture_original
+            manifest["variants"]["ORGINAL"] = {"AGENTS.md": {
+                "sha256": sha256(repository / "AGENTS.md"),
+                "bytes": (repository / "AGENTS.md").stat().st_size,
+            }}
+            manifest["original_source"] = "ORGINAL.md"
+            manifest["original_substitutions"] = {
+                "project_path": repository.as_posix(),
+                "mission": "규칙 기반 정보 추출·감성 분석 / docs/A4_2_mission.md",
+                "repository": "https://github.com/ntt65/A4_2",
+                "environment": "Python 3.11 + uv 0.13.7",
+            }
+            manifest["pairs"] = pairs
+            manifest["max_attempts"] = args.max_attempts
+            manifest["followup_scope"] = "One additional user-provided ORGINAL instruction run requested for the four-configuration comparison."
             save_json(manifest_path, manifest)
     records_path = output / "runs.jsonl"
     attempts_path = output / "attempts.jsonl"

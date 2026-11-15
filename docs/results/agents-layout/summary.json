@@ -1,6 +1,6 @@
 {
-  "run_count": 3,
-  "passed": 3,
+  "run_count": 4,
+  "passed": 4,
   "tasks": {
     "code": {
       "A": {
@@ -98,6 +98,40 @@
           }
         }
       ],
+      "ORGINAL": {
+        "passed": 1,
+        "runs": 1,
+        "cached_input_tokens": {
+          "values": [
+            52608
+          ],
+          "median": 52608
+        },
+        "uncached_input_tokens": {
+          "values": [
+            12466
+          ],
+          "median": 12466
+        },
+        "output_tokens": {
+          "values": [
+            753
+          ],
+          "median": 753
+        },
+        "total_tokens": {
+          "values": [
+            65827
+          ],
+          "median": 65827
+        },
+        "elapsed_seconds": {
+          "values": [
+            22.247931799996877
+          ],
+          "median": 22.247931799996877
+        }
+      },
       "C": {
         "passed": 1,
         "runs": 1,
@@ -135,6 +169,13 @@
     }
   },
   "totals": {
+    "ORGINAL": {
+      "cached_input_tokens": 52608,
+      "uncached_input_tokens": 12466,
+      "output_tokens": 753,
+      "total_tokens": 65827,
+      "elapsed_seconds": 22.247931799996877
+    },
     "A": {
       "cached_input_tokens": 105472,
       "uncached_input_tokens": 14580,
@@ -165,6 +206,27 @@
     "elapsed_seconds": -3.5202182962399693
   },
   "comparison_reduction_percent": {
+    "ORGINAL_to_A": {
+      "cached_input_tokens": -100.48661800486617,
+      "uncached_input_tokens": -16.95812610300016,
+      "output_tokens": 18.725099601593627,
+      "total_tokens": -83.30472298600878,
+      "elapsed_seconds": -28.092204058249276
+    },
+    "ORGINAL_to_B": {
+      "cached_input_tokens": -48.175182481751825,
+      "uncached_input_tokens": 11.727899887694528,
+      "output_tokens": -35.059760956175296,
+      "total_tokens": -36.68099715922038,
+      "elapsed_seconds": -32.60132926156481
+    },
+    "ORGINAL_to_C": {
+      "cached_input_tokens": 15.085158150851582,
+      "uncached_input_tokens": 0.5936146317984919,
+      "output_tokens": -7.436918990703851,
+      "total_tokens": 12.083187749707566,
+      "elapsed_seconds": -20.79208009802839
+    },
     "A_to_B": {
       "cached_input_tokens": 26.09223300970874,
       "uncached_input_tokens": 24.526748971193417,
@@ -187,6 +249,6 @@
       "elapsed_seconds": 8.905830152156243
     }
   },
-  "attempt_count": 4,
+  "attempt_count": 5,
   "incomplete_attempts": 1
 }
