@@ -58,7 +58,7 @@
 - [x] 최종 macOS·Python 3.11 GitHub Actions 통과. 구현 기준 커밋: `324dd7fdc85e2e1b5ef8e01ee1e854247a67892c`, [CI 실행](https://github.com/ntt65/A4_2/actions/runs/43698806054).
 - [x] 최종 코드 push·PR 생성·develop 병합 완료. [구현 통합 PR](https://github.com/ntt65/A4_2/pull/9).
 - [x] 검증된 최종 구현 main 반영 완료. [main 통합 PR](https://github.com/ntt65/A4_2/pull/10), [기준 커밋](https://github.com/ntt65/A4_2/commit/324dd7fdc85e2e1b5ef8e01ee1e854247a67892c).
-- [ ] GitHub 저장소 URL 제출. [제출할 저장소](https://github.com/ntt65/A4_2)를 준비했다. 제출처·외부 제출 완료 근거가 지정되지 않아 외부 제출은 확인하지 않았다.
+- [x] GitHub 저장소 URL 제출 완료. 코디세이 동료평가 플랫폼에 등록한 [공개 저장소](https://github.com/ntt65/A4_2)를 제출했다.
 
 ### 선택·보너스 과제
 
