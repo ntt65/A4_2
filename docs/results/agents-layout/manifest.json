@@ -1,0 +1,160 @@
+{
+  "created_utc": "2026-11-15T03:09:16.385506+00:00",
+  "code_base": "0f03aeca843d3350f172f91fbd19c073f462e752",
+  "unified_source": "894e9aec5e40a81bd0b69368a8ec96f16cb6eac1",
+  "fixture_commits": {
+    "A": "0f03aeca843d3350f172f91fbd19c073f462e752",
+    "B": "26efe803876a10729d78b712109474562ba177ed"
+  },
+  "repository": "C:\\Users\\4cat1\\AppData\\Local\\Temp\\a4_2_agents_layout_trials_20261115",
+  "model": "gpt-6.1-sol",
+  "effort": "ultra",
+  "cli": "C:\\Users\\4cat1\\AppData\\Roaming\\npm\\node_modules\\@openai\\codex\\node_modules\\@openai\\codex-win32-x64\\vendor\\x86_64-pc-windows-msvc\\bin\\codex.exe",
+  "cli_sha256": "9d563ee4e0441ff9d59d612013e0460ddf8e5709735c2d9f6b98b7ef8ca4eb42",
+  "cli_version": "codex-cli 0.166.0",
+  "python": "3.11.4",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "global_guidance_sha256": "5f318445c7234f1d7e6521ef22d6292921a98bb1072bebd3b4b90d929d10a31f",
+  "config_sha256": "e3ce69b935b6c3f9c23f6a79f54f5bbdb00f172c071fcdec5741a8e5385d2d45",
+  "fixed_file_sha256": {
+    ".github/workflows/ci.yml": "1827415916b73ba5b5796ea7c3cb86cd814d3e76dafb36461acb1c61a6b14984",
+    ".gitignore": "b732f48c8c522ef421905ffa25c9d6710323fd5628d05191bad74a5ef27fd37c",
+    ".python-version": "ceba8fa5c10f40fbed8feb7eb5238b63dda568908acfd874ee413747b29936c8",
+    "README.md": "ff6acac14ce89484a1779c190245816577545c9bfd90392add7fea8efcd4eeb5",
+    "data/archive/sentiment_lexicon.json": "76ebcd0528283684aad787efc0f7fe9ccd1c8213ffc5c51cc4bb1176094b7184",
+    "data/archive/sentiment_test_cases.json": "fb2da83c6f55b6d04ad4355a05d854df10d26bc69b461ca521449802ff48a2ef",
+    "data/ie_test_cases.json": "bbe7a1c4326927e6d831ec4fa6afe9483018a35416fff8f4e68a48820905af75",
+    "data/sentiment_lexicon.json": "581f065ade1b7502a87f23b1377dfbd04b9f18df76ab971141823267900fb33b",
+    "data/sentiment_test_cases.json": "995eb848614476b8a6846660584abe5631a8c5d395876a0c8a7c63970c1bc806",
+    "docs/A4_2_mission.md": "baebf540f307949be7148f4f1df4dde3d79c4e08e0a132d4383fd29abfece98f",
+    "docs/A4_2_mission.pdf": "877a75f61993931f405bf1f25f62a31e778ed531da9e63f2d9902f9474ec5660",
+    "docs/A4_2_mission_assets/cover.jpg": "9411b68256d50911fe4767c473920ecffc88535041a9fdca0f52b8f201117691",
+    "docs/CACHE_HANDOFF.md": "ef147990b8505735162416a579085ea97e5a861781762e59126cabc2e34d563c",
+    "docs/cache-usage-analysis.md": "3e3dd993849340a7e5e8ba8b3934395450d93a133e42db0d4d58912159d61e27",
+    "docs/devops.md": "b7ff3259aed9f6762056fbcbb2fb26768b6de919b8d55d6b047824b47b5a1c7d",
+    "docs/extraction.md": "5335a2724d276e8b21468a89fc97c3fc515ead097c184f938d35cf3cb176b643",
+    "docs/meeting-notes/2026-11-15-a4-2-agentic-engineering.md": "de4998ae04632dbfe3202f42c5ab147221a3a744b97ce0aded8cbe710892baeb",
+    "docs/meeting-notes/2026-11-15-a4-2-resume-prompt.md": "63c3b48f3409084b8f2acd04124204c09c51392dd4013f9239c6ca438dcccd09",
+    "docs/report.md": "2951ccdd7d628ebdd0d0c3970464cc1fc96f0772c406d8eeca5a14038091868b",
+    "docs/results/baseline.json": "dd69aff611e9444ea21e33cf7e4c5f2cf470c07f548c0518fe71f714b86b10b8",
+    "docs/results/final.json": "7ff150a0b39b89ffb4e375d5c84302a7b3fce940082f7f766c04bed6f0221190",
+    "docs/sentiment.md": "6fae36bd4f79dd968caddadd37acd470305f24af2f3d0d08511d0041b894d344",
+    "main.py": "b7ca4c596ca51eb614cc31a82ef9c788720aa2245eaf6e4d5d5328e822b50a10",
+    "requirements.txt": "1055d36a81696b8fa0a4279856ee28a8625f9e10d42412d5a622c25812a5665d",
+    "src/evaluator.py": "15759c1fbb5300101c9d3d0a02997438811366c20b4cd9d285bd90b4a442e8cc",
+    "src/extractor.py": "fba5ae8a550d87e8301f2eee50e724ec3ab2ab817897d55514e470f5b59243a8",
+    "src/masking.py": "9fdec4a58abc20231b0188e413ffee906a0a5fb404bd731f7f24c0a6c3b7c642",
+    "src/sentiment.py": "53d210ec3a53dfe61d23fae03ff3063908b2c114e08300436a928d481b7771f5",
+    "tests/test_cli.py": "564e28b81d1dfb2bdd3bfd0ea10b840c10deb2a76a730581e0b5158142855fd0",
+    "tests/test_extractor.py": "90d167bde8febef6b2cf4dde873b90b3380ee1c176b67825d89f02f790684f5d",
+    "tests/test_masking.py": "00b7025ad19a46e91baf3307263b00b2697038b3a6797008793f65b694cc73b6",
+    "tests/test_pipeline_smoke.py": "e0044787050f500ac4afd94a60d395948e95d750186dfdd6a39bf1d3eef6ce6f",
+    "tests/test_sentiment.py": "d850322b417fc9e5acc6d032e8147f72f3c23ff74a809a5aa5ab56c101ef1263"
+  },
+  "tasks": {
+    "code": {
+      "prompt": "src/extractor.py에서 한글 단위 금액을 정규화하는 함수의 이름과 정의 행 번호를 찾고, tests/test_extractor.py에서 '1억 2천만원'을 검사하는 test_at_least_three_variants_per_pattern의 기대 금액을 확인하라. 키는 function, line, expected_amount다.",
+      "expected": {
+        "function": "_normalize_korean_amount",
+        "line": 118,
+        "expected_amount": 120000000
+      }
+    },
+    "docs": {
+      "prompt": "docs/devops.md의 환경 계약에서 프로젝트 Python 버전, uv 버전, 평가 OS, 테스트 러너를 확인하라. 키는 python, uv, evaluation_os, test_runner다.",
+      "expected": {
+        "python": "3.11",
+        "uv": "0.13.7",
+        "evaluation_os": "macOS",
+        "test_runner": "unittest"
+      }
+    },
+    "mixed": {
+      "prompt": "main.py와 docs/extraction.md를 대조해 --mask 사용 시 원문 정보 추출과 분석 문장 마스킹의 순서를 확인하라. 키는 first_call, second_call, documented_order다. documented_order에는 문서와 코드가 일치하면 extract_then_mask를 넣어라.",
+      "expected": {
+        "first_call": "extract_information",
+        "second_call": "mask_personal_info",
+        "documented_order": "extract_then_mask"
+      }
+    }
+  },
+  "common_prompt": "읽기 전용으로 작업하고 관련 AGENTS 지침을 확인하라. 파일 수정과 보조 에이전트 사용 없이 요청한 파일의 근거를 확인하라. 최종 답변은 요청한 키만 가진 JSON 객체로 반환하라.\n",
+  "pairs": [
+    [
+      "code",
+      1,
+      "AB"
+    ]
+  ],
+  "variants": {
+    "A": {
+      "AGENTS.md": {
+        "sha256": "54aa5abec6f073e4fe0cb3b5b0c5402bcb383caf0b53a882eb7b797ce8f48533",
+        "bytes": 2913
+      },
+      "docs/AGENTS.md": {
+        "sha256": "aa52dd269a5229f620d53171aa3ebecc718004c40c7df38fc681591e11f4da73",
+        "bytes": 526
+      },
+      "src/AGENTS.md": {
+        "sha256": "df43f58a6ee731f49f87b75f6e354d9714ca4014bd20a648353ee3830cfb6a55",
+        "bytes": 647
+      }
+    },
+    "B": {
+      "AGENTS.md": {
+        "sha256": "a9918a10c25abd24492e31bd98631362521190deebb160d287aa6603394c11e3",
+        "bytes": 4107
+      }
+    }
+  },
+  "original_pairs": [
+    [
+      "code",
+      1,
+      "AB"
+    ],
+    [
+      "docs",
+      1,
+      "BA"
+    ],
+    [
+      "mixed",
+      1,
+      "AB"
+    ],
+    [
+      "code",
+      2,
+      "BA"
+    ],
+    [
+      "docs",
+      2,
+      "AB"
+    ],
+    [
+      "mixed",
+      2,
+      "BA"
+    ],
+    [
+      "code",
+      3,
+      "AB"
+    ],
+    [
+      "docs",
+      3,
+      "BA"
+    ],
+    [
+      "mixed",
+      3,
+      "AB"
+    ]
+  ],
+  "max_attempts": 3,
+  "scope_change": "User reduced the experiment to three total attempts during the second invocation."
+}
