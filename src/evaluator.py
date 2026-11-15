@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 
+from src.aspect_sentiment import analyze_aspects
 from src.extractor import extract_information
 from src.sentiment import analyze_sentiment, load_lexicon
 
@@ -8,6 +9,7 @@ from src.sentiment import analyze_sentiment, load_lexicon
 BASE_DIR = Path(__file__).resolve().parent.parent
 IE_DATA_PATH = BASE_DIR / "data" / "ie_test_cases.json"
 SENTIMENT_DATA_PATH = BASE_DIR / "data" / "sentiment_test_cases.json"
+ASPECT_DATA_PATH = BASE_DIR / "data" / "aspect_sentiment_test_cases.json"
 
 
 def _safe_div(num: float, den: float) -> float:
@@ -110,3 +112,63 @@ def run_all_evaluations() -> str:
     _, ie_report = evaluate_information_extraction()
     _, sentiment_report = evaluate_sentiment()
     return f"{ie_report}\n{sentiment_report}"
+
+
+def evaluate_aspect_sentiment(path: Path = ASPECT_DATA_PATH) -> tuple[dict, str]:
+    """Evaluate detection and (aspect, polarity) pairs, retaining every prediction.
+
+    Macro F1 counts missing/extra aspects as false negatives/positives for the
+    three sentiment labels. Accuracy on matched aspects is conditional on detection.
+    """
+    cases = json.loads(path.read_text(encoding="utf-8"))
+    lexicon = load_lexicon()
+    counts = {"aspect_tp": 0, "pair_tp": 0, "gold": 0, "predicted": 0, "exact": 0}
+    y_true: list[str] = []
+    y_pred: list[str] = []
+    predictions: list[dict] = []
+    for case in cases:
+        analysis = analyze_aspects(case["text"], lexicon)
+        expected = case["aspects"]
+        predicted = {item["aspect"]: item["label"] for item in analysis["aspects"]}
+        expected_pairs = set(expected.items())
+        predicted_pairs = set(predicted.items())
+        counts["aspect_tp"] += len(set(expected) & set(predicted))
+        counts["pair_tp"] += len(expected_pairs & predicted_pairs)
+        counts["gold"] += len(expected)
+        counts["predicted"] += len(predicted)
+        counts["exact"] += expected == predicted
+        for aspect in sorted(set(expected) | set(predicted)):
+            y_true.append(expected.get(aspect, "missing"))
+            y_pred.append(predicted.get(aspect, "missing"))
+        predictions.append({
+            "text": case["text"], "category": case.get("category", "unspecified"),
+            "expected": expected, "predicted": predicted, "exact_match": expected == predicted,
+            "analysis": analysis,
+        })
+
+    def metrics(tp: int) -> dict[str, float]:
+        precision = _safe_div(tp, counts["predicted"])
+        recall = _safe_div(tp, counts["gold"])
+        return {"precision": precision, "recall": recall, "f1": _safe_div(2 * precision * recall, precision + recall)}
+
+    result = {
+        "case_count": len(cases), "counts": counts,
+        "aspect_detection": metrics(counts["aspect_tp"]),
+        "aspect_sentiment": metrics(counts["pair_tp"]),
+        "exact_match_accuracy": _safe_div(counts["exact"], len(cases)),
+        "sentiment_accuracy_on_detected": _safe_div(counts["pair_tp"], counts["aspect_tp"]),
+        "sentiment_macro_f1": _macro_f1(y_true, y_pred, ["positive", "negative", "neutral"]),
+        "predictions": predictions,
+    }
+    detection = result["aspect_detection"]
+    pairs = result["aspect_sentiment"]
+    report = "\n".join([
+        "\n[Aspect 감성 평가]",
+        f"문장 {len(cases)}개 | 정답 측면 {counts['gold']}개 | 예측 측면 {counts['predicted']}개",
+        f"측면 탐지 Precision/Recall/F1: {detection['precision']:.6f}/{detection['recall']:.6f}/{detection['f1']:.6f}",
+        f"측면·극성 Precision/Recall/F1: {pairs['precision']:.6f}/{pairs['recall']:.6f}/{pairs['f1']:.6f}",
+        f"문장 완전 일치율: {result['exact_match_accuracy']:.6f}",
+        f"탐지된 정답 측면의 감성 Accuracy: {result['sentiment_accuracy_on_detected']:.6f}",
+        f"누락·오탐 포함 감성 Macro F1: {result['sentiment_macro_f1']:.6f}",
+    ])
+    return result, report

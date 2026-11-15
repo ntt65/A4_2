@@ -13,10 +13,14 @@ uv run --python .venv python -B -X utf8 main.py --text "문의는 USER@EXAMPLE.C
 uv run --python .venv python -B -X utf8 main.py --text "주소 서울 강남구 테헤란로 123 101동 202호, 연락처 02-123-4567, 주민번호 900101-1234567, 카드 1234-5678-9012-3456" --mask
 uv run --python .venv python -B -X utf8 main.py --evaluate-all
 uv run --python .venv python -B -X utf8 main.py --compare-sentiment
+uv run --python .venv python -B -X utf8 main.py --text "음식은 맛있는데 가격이 비싸요" --aspect
+uv run --python .venv python -B -X utf8 main.py --evaluate-aspect
 uv run --python .venv python -B -X utf8 -m unittest discover -s tests -v
 ```
 
 가상환경 활성화는 필요하지 않습니다. `requirements.txt`는 외부 의존성이 없는 빈 목록이며 미션 제출물로 유지합니다. `.python-version`은 3.11입니다. 캐시 접근이 제한된 환경에서는 위 uv 명령에 `--no-cache`를 추가합니다. 평가를 나누려면 `--evaluate-ie` 또는 `--evaluate-sentiment`를 사용합니다.
+
+`--aspect`는 `--text`의 기존 분석 뒤에 측면별 결과를 추가합니다. `--mask`와 함께 쓰면 가려진 문장을 분석합니다. `--evaluate-all`은 기존 정보 추출·문장 감성 평가이며, 별도 측면 자료는 `--evaluate-aspect`로 평가합니다.
 
 ## 프로젝트 구조
 
@@ -25,6 +29,7 @@ main.py                         # 분석·마스킹·평가 CLI
 src/extractor.py                # 내장 re 기반 5종 정보·국내 주소 추출·정규화
 src/masking.py                  # 추출 후 전화·주민번호·카드·주소 표시 마스킹
 src/sentiment.py                # 사전·표면형·부정·강조·이중부정
+src/aspect_sentiment.py         # 명시적 측면·절별 감성·근거·원문 구간
 src/evaluator.py                # Precision / Recall / Accuracy / Macro F1
 src/tfidf.py                    # 학습 자료만으로 TF-IDF·코사인 중심 분류
 src/sentiment_experiment.py     # 10·100·1000개, 5개 시드 비교·원자료 저장
@@ -32,6 +37,7 @@ data/ie_test_cases.json         # 기존 정답 50문장, 패턴별 10문장
 data/sentiment_lexicon.json     # 일반 207개 + 도메인 36개
 data/sentiment_test_cases.json  # 라벨을 고정한 고유 160문장
 data/sentiment_train_cases.json # 별도 합성 학습 1008문장·생성 템플릿
+data/aspect_sentiment_test_cases.json # 측면별 정답 36문장·59개, 도전 사례 포함
 data/archive/                  # 수정 전 두 감성 JSON의 바이트 원본
 tests/                         # CLI·추출·마스킹·감성·평가 회귀 검증
 docs/extraction.md             # 정규식 설계·실제 추출 실패 5건
@@ -39,6 +45,7 @@ docs/sentiment.md              # 출처·구축 기준·실제 오분류 25건
 docs/results/baseline.json     # 구현 전 측정 원자료
 docs/results/final.json        # 최종 문장별 결과·해시·실행 조건
 docs/results/tfidf_comparison.json # TF-IDF 15개 실험·표본·예측·해시
+docs/results/aspect_sentiment_evaluation.json # 측면별 정답·예측·실행 조건·해시
 docs/report.md                 # 요구사항별 완료·검증 보고서
 ```
 
@@ -50,6 +57,7 @@ docs/report.md                 # 요구사항별 완료·검증 보고서
 - 감성 사전: 일반 207개, 도메인 36개를 사용합니다. 의미 없는 임시 표제어 12개를 교체했습니다. 기존 프로젝트 자체 목록을 검토·보완했으며 외부 사전은 다운로드하지 않았습니다. 출처·라이선스 관련 설명과 원본 해시는 [감성 문서](docs/sentiment.md)에 있습니다.
 - 감성 규칙: 내장 `re` 토큰화 후 대소문자·제한된 한국어 표면형을 맞추고 점수를 합산합니다. 부정어는 ×−1, 강조어는 ×1.5이며 문장부호·절 경계를 넘지 않습니다. `좋지 않다`, `정말 맛있지 않았어요`, `나쁘지 않다`를 처리합니다. 매칭 토큰·기본 점수·가중치·적용 규칙·최종 점수와 판정을 반환합니다.
 - 감성 평가: 고유 160문장(긍정 55 / 부정 70 / 중립 35)입니다. 문장과 라벨을 먼저 고정한 뒤 분류기를 실행했으며 예측 결과에 맞춰 라벨을 바꾸지 않았습니다. 기존 116행·고유 31문장은 archive에 보존했습니다.
+- Aspect 감성: 명시적으로 앞에 등장한 음식·가격·서비스·배송·품질을 별도로 판정합니다. `음식은 맛있는데 가격이 비싸요`는 음식 `positive`(+1), 가격 `negative`(−1)입니다. `음식과 서비스가 좋다`는 두 측면에 같은 감성을 연결하며, 같은 측면의 반복은 합산하고 상쇄되면 `neutral`로 표시합니다. 지원 별칭·API·한계는 [측면 분석 설명](docs/sentiment.md#aspect별-감성-분석)에 있습니다.
 
 ## 실제 평가 결과
 
@@ -77,6 +85,8 @@ Windows·CPython 3.11.4, 2026-11-15 측정입니다. F1은 긍정·부정·중�
 `--compare-sentiment`는 `docs/results/tfidf_comparison.json`에 실행 조건, 소스·데이터 해시, 학습 행 번호, 문장별 예측과 지표를 저장합니다. `--experiment-output 경로`로 저장 위치를 지정할 수 있습니다. 동일 자료와 소스에서 표본·예측·지표를 재현하며 실행 시각과 소요 시간은 실행마다 측정합니다.
 
 ## 실패 분석과 한계
+
+Aspect 개발 평가 36문장·59개 정답 측면에서 측면·극성 Precision/Recall/F1은 **0.912281 / 0.881356 / 0.896552**, 문장 완전 일치율은 **30/36 = 0.833333**입니다. 측면 생략·대명사·쉼표 나열·관형어·반어·미등록 주어의 실패 6문장을 포함한 자체 작성 자료입니다. 조건·전체 예측·해시는 [측면 분석 설명](docs/sentiment.md#aspect별-감성-분석)과 [측정 원자료](docs/results/aspect_sentiment_evaluation.json)에 있습니다.
 
 [정보 추출 문서](docs/extraction.md)에 실제 수정 전 실패 5건의 입력·기대값·실제값·원인·수정 후 결과를 기록했습니다. 기존 50문장의 불일치는 22건에서 0건으로 줄었습니다. [감성 문서](docs/sentiment.md)는 최종 오분류 25건(사전 누락 1 / 반어 10 / 인용 6 / 문맥 8)을 모두 기록합니다.
 
