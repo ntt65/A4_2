@@ -15,12 +15,16 @@ uv run --python .venv python -B -X utf8 main.py --evaluate-all
 uv run --python .venv python -B -X utf8 main.py --compare-sentiment
 uv run --python .venv python -B -X utf8 main.py --text "음식은 맛있는데 가격이 비싸요" --aspect
 uv run --python .venv python -B -X utf8 main.py --evaluate-aspect
+uv run --python .venv python -B -X utf8 main.py --text "배송이 늦었는데 참 빠르네요" --contextual
+uv run --python .venv python -B -X utf8 main.py --evaluate-contextual
 uv run --python .venv python -B -X utf8 -m unittest discover -s tests -v
 ```
 
 가상환경 활성화는 필요하지 않습니다. `requirements.txt`는 외부 의존성이 없는 빈 목록이며 미션 제출물로 유지합니다. `.python-version`은 3.11입니다. 캐시 접근이 제한된 환경에서는 위 uv 명령에 `--no-cache`를 추가합니다. 평가를 나누려면 `--evaluate-ie` 또는 `--evaluate-sentiment`를 사용합니다.
 
 `--aspect`는 `--text`의 기존 분석 뒤에 측면별 결과를 추가합니다. `--mask`와 함께 쓰면 가려진 문장을 분석합니다. `--evaluate-all`은 기존 정보 추출·문장 감성 평가이며, 별도 측면 자료는 `--evaluate-aspect`로 평가합니다.
+
+`--contextual`은 기존 분석 뒤에 명시적 반어·인용·최종 의사 규칙의 결과를 추가합니다. `--mask` 적용 문장을 사용합니다. `--evaluate-contextual`은 기존 160문장과 별도 도전 자료 36문장에서 기존 규칙과 문맥 규칙을 비교합니다. 기존 분석과 Aspect의 동작은 유지합니다.
 
 ## 프로젝트 구조
 
@@ -30,6 +34,7 @@ src/extractor.py                # 내장 re 기반 5종 정보·국내 주소 �
 src/masking.py                  # 추출 후 전화·주민번호·카드·주소 표시 마스킹
 src/sentiment.py                # 사전·표면형·부정·강조·이중부정
 src/aspect_sentiment.py         # 명시적 측면·절별 감성·근거·원문 구간
+src/contextual_sentiment.py     # 선택 반어·인용 제외·최종 의사/결과
 src/evaluator.py                # Precision / Recall / Accuracy / Macro F1
 src/tfidf.py                    # 학습 자료만으로 TF-IDF·코사인 중심 분류
 src/sentiment_experiment.py     # 10·100·1000개, 5개 시드 비교·원자료 저장
@@ -38,6 +43,7 @@ data/sentiment_lexicon.json     # 일반 207개 + 도메인 36개
 data/sentiment_test_cases.json  # 라벨을 고정한 고유 160문장
 data/sentiment_train_cases.json # 별도 합성 학습 1008문장·생성 템플릿
 data/aspect_sentiment_test_cases.json # 측면별 정답 36문장·59개, 도전 사례 포함
+data/contextual_sentiment_test_cases.json # 문맥 개발 평가 36문장·정상 대조군·알려진 한계
 data/archive/                  # 수정 전 두 감성 JSON의 바이트 원본
 tests/                         # CLI·추출·마스킹·감성·평가 회귀 검증
 docs/extraction.md             # 정규식 설계·실제 추출 실패 5건
@@ -46,6 +52,7 @@ docs/results/baseline.json     # 구현 전 측정 원자료
 docs/results/final.json        # 최종 문장별 결과·해시·실행 조건
 docs/results/tfidf_comparison.json # TF-IDF 15개 실험·표본·예측·해시
 docs/results/aspect_sentiment_evaluation.json # 측면별 정답·예측·실행 조건·해시
+docs/results/contextual_sentiment_evaluation.json # 문맥 규칙 전후 예측·실행 조건·해시
 docs/report.md                 # 요구사항별 완료·검증 보고서
 ```
 
@@ -58,6 +65,7 @@ docs/report.md                 # 요구사항별 완료·검증 보고서
 - 감성 규칙: 내장 `re` 토큰화 후 대소문자·제한된 한국어 표면형을 맞추고 점수를 합산합니다. 부정어는 ×−1, 강조어는 ×1.5이며 문장부호·절 경계를 넘지 않습니다. `좋지 않다`, `정말 맛있지 않았어요`, `나쁘지 않다`를 처리합니다. 매칭 토큰·기본 점수·가중치·적용 규칙·최종 점수와 판정을 반환합니다.
 - 감성 평가: 고유 160문장(긍정 55 / 부정 70 / 중립 35)입니다. 문장과 라벨을 먼저 고정한 뒤 분류기를 실행했으며 예측 결과에 맞춰 라벨을 바꾸지 않았습니다. 기존 116행·고유 31문장은 archive에 보존했습니다.
 - Aspect 감성: 명시적으로 앞에 등장한 음식·가격·서비스·배송·품질을 별도로 판정합니다. `음식은 맛있는데 가격이 비싸요`는 음식 `positive`(+1), 가격 `negative`(−1)입니다. `음식과 서비스가 좋다`는 두 측면에 같은 감성을 연결하며, 같은 측면의 반복은 합산하고 상쇄되면 `neutral`로 표시합니다. 지원 별칭·API·한계는 [측면 분석 설명](docs/sentiment.md#aspect별-감성-분석)에 있습니다.
+- 문맥 감성: 명시적 언급 단서가 있는 인용을 제외하고, 문장 끝의 직접적인 의사·결과와 불만 사건 뒤 긍정 감탄의 일부 반어를 처리합니다. 근거 토큰·가중치·규칙·구간을 반환합니다. 지원 범위와 실패는 [문맥 분석 설명](docs/sentiment.md#반어인용문맥-선택-분석)에 있습니다.
 
 ## 실제 평가 결과
 
@@ -88,7 +96,9 @@ Windows·CPython 3.11.4, 2026-11-15 측정입니다. F1은 긍정·부정·중�
 
 Aspect 개발 평가 36문장·59개 정답 측면에서 측면·극성 Precision/Recall/F1은 **0.912281 / 0.881356 / 0.896552**, 문장 완전 일치율은 **30/36 = 0.833333**입니다. 측면 생략·대명사·쉼표 나열·관형어·반어·미등록 주어의 실패 6문장을 포함한 자체 작성 자료입니다. 조건·전체 예측·해시는 [측면 분석 설명](docs/sentiment.md#aspect별-감성-분석)과 [측정 원자료](docs/results/aspect_sentiment_evaluation.json)에 있습니다.
 
-[정보 추출 문서](docs/extraction.md)에 실제 수정 전 실패 5건의 입력·기대값·실제값·원인·수정 후 결과를 기록했습니다. 기존 50문장의 불일치는 22건에서 0건으로 줄었습니다. [감성 문서](docs/sentiment.md)는 최종 오분류 25건(사전 누락 1 / 반어 10 / 인용 6 / 문맥 8)을 모두 기록합니다.
+[정보 추출 문서](docs/extraction.md)에 실제 수정 전 실패 5건의 입력·기대값·실제값·원인·수정 후 결과를 기록했습니다. 기존 50문장의 불일치는 22건에서 0건으로 줄었습니다. [감성 문서](docs/sentiment.md)는 기존 문장 분석의 오분류 25건(사전 누락 1 / 반어 10 / 인용 6 / 문맥 8)을 모두 기록합니다.
+
+선택 문맥 규칙 적용 전후 Accuracy/Macro F1은 기존 160문장에서 **0.843750/0.841337 → 0.975000/0.972941**, 별도 36문장에서 **0.305556/0.277606 → 0.888889/0.880330**입니다. 두 자료에서 정답→오답 회귀는 0건이며 적용 후 실패는 각각 4건입니다. 자체 작성 개발 자료에 맞춰 작성한 제한된 규칙의 관측값이며 독립 자료의 일반화 성능은 미확인입니다. [측정 조건·실패 분석](docs/sentiment.md#반어인용문맥-선택-분석) · [원자료](docs/results/contextual_sentiment_evaluation.json)
 
 이 데이터는 자체 작성한 개발용 평가 자료입니다. 독립 평가자·블라인드 검증셋을 사용하지 않았으므로 실제 고객 문장의 일반화 성능으로 해석할 수 없습니다. 형태소 분석 없는 제한된 활용 규칙은 신조어·띄어쓰기·문맥·인용·반어를 놓칠 수 있습니다. 국제화 주소·국제 전화·한글 숫자·음수 금액·환율 변환은 지원 범위 밖입니다. 선택 과제인 Aspect별 분류는 구현 범위에 포함하지 않습니다.
 

@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 
 from src.aspect_sentiment import analyze_aspects
+from src.contextual_sentiment import analyze_contextual_sentiment
 from src.extractor import extract_information
 from src.sentiment import analyze_sentiment, load_lexicon
 
@@ -10,6 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 IE_DATA_PATH = BASE_DIR / "data" / "ie_test_cases.json"
 SENTIMENT_DATA_PATH = BASE_DIR / "data" / "sentiment_test_cases.json"
 ASPECT_DATA_PATH = BASE_DIR / "data" / "aspect_sentiment_test_cases.json"
+CONTEXTUAL_DATA_PATH = BASE_DIR / "data" / "contextual_sentiment_test_cases.json"
 
 
 def _safe_div(num: float, den: float) -> float:
@@ -112,6 +114,41 @@ def run_all_evaluations() -> str:
     _, ie_report = evaluate_information_extraction()
     _, sentiment_report = evaluate_sentiment()
     return f"{ie_report}\n{sentiment_report}"
+
+
+def evaluate_contextual_sentiment(
+    paths: tuple[Path, ...] = (SENTIMENT_DATA_PATH, CONTEXTUAL_DATA_PATH),
+) -> tuple[dict, str]:
+    """라벨을 유지한 각 자료에서 기존 규칙과 선택 문맥 규칙을 비교한다."""
+    lexicon = load_lexicon()
+    datasets = []
+    lines = ["[문맥 감성 평가]", "dataset | phase | count | accuracy | macro F1"]
+    labels = ["positive", "negative", "neutral"]
+    for path in paths:
+        cases = json.loads(path.read_text(encoding="utf-8"))
+        predictions = []
+        for index, case in enumerate(cases, 1):
+            if case["label"] not in labels:
+                raise ValueError(f"{path.name}:{index}: unsupported sentiment label")
+            analysis = analyze_contextual_sentiment(case["text"], lexicon=lexicon)
+            predictions.append({"row": index, "text": case["text"], "expected": case["label"],
+                                "category": case.get("category", "unspecified"),
+                                "baseline_label": analysis["baseline"]["label"], "analysis": analysis})
+        metrics = {}
+        expected = [case["label"] for case in cases]
+        for phase in ("baseline", "contextual"):
+            predicted = [row["baseline_label"] if phase == "baseline" else row["analysis"]["label"]
+                         for row in predictions]
+            correct = sum(truth == prediction for truth, prediction in zip(expected, predicted))
+            metrics[phase] = {"correct": correct, "accuracy": _safe_div(correct, len(cases)),
+                              "macro_f1": _macro_f1(expected, predicted, labels)}
+            lines.append(f"{path.name} | {phase} | {len(cases)} | {metrics[phase]['accuracy']:.6f}"
+                         f" | {metrics[phase]['macro_f1']:.6f}")
+        regressions = [row["row"] for row in predictions if row["baseline_label"] == row["expected"]
+                       and row["analysis"]["label"] != row["expected"]]
+        datasets.append({"name": path.name, "case_count": len(cases), "metrics": metrics,
+                         "regression_rows": regressions, "predictions": predictions})
+    return {"datasets": datasets}, "\n".join(lines)
 
 
 def evaluate_aspect_sentiment(path: Path = ASPECT_DATA_PATH) -> tuple[dict, str]:
