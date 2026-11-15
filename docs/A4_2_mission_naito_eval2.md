@@ -175,4 +175,4 @@
 
 - [x] 이슈 [#19](https://github.com/ntt65/A4_2/issues/19)의 코드·fixture·문서 범위를 반영했다.
 - [x] 기존 50문장 정보 추출·160문장 감성 원자료를 변경하지 않았다.
-- [ ] GitHub Actions 성공 확인 및 실행 링크 기록
+- [x] GitHub Actions 성공 확인 및 실행 링크 기록 https://github.com/ntt65/A4_2/actions/runs/43712108357
