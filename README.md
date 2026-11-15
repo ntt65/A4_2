@@ -12,6 +12,7 @@ uv pip sync --python .venv --allow-empty-requirements requirements.txt
 uv run --python .venv python -B -X utf8 main.py --text "문의는 USER@EXAMPLE.COM, 연락처 010 1234 5678, 서비스는 정말 좋다"
 uv run --python .venv python -B -X utf8 main.py --text "주소 서울 강남구 테헤란로 123 101동 202호, 연락처 02-123-4567, 주민번호 900101-1234567, 카드 1234-5678-9012-3456" --mask
 uv run --python .venv python -B -X utf8 main.py --evaluate-all
+uv run --python .venv python -B -X utf8 main.py --compare-sentiment
 uv run --python .venv python -B -X utf8 -m unittest discover -s tests -v
 ```
 
@@ -25,15 +26,19 @@ src/extractor.py                # 내장 re 기반 5종 정보·국내 주소 �
 src/masking.py                  # 추출 후 전화·주민번호·카드·주소 표시 마스킹
 src/sentiment.py                # 사전·표면형·부정·강조·이중부정
 src/evaluator.py                # Precision / Recall / Accuracy / Macro F1
+src/tfidf.py                    # 학습 자료만으로 TF-IDF·코사인 중심 분류
+src/sentiment_experiment.py     # 10·100·1000개, 5개 시드 비교·원자료 저장
 data/ie_test_cases.json         # 기존 정답 50문장, 패턴별 10문장
 data/sentiment_lexicon.json     # 일반 207개 + 도메인 36개
 data/sentiment_test_cases.json  # 라벨을 고정한 고유 160문장
+data/sentiment_train_cases.json # 별도 합성 학습 1008문장·생성 템플릿
 data/archive/                  # 수정 전 두 감성 JSON의 바이트 원본
 tests/                         # CLI·추출·마스킹·감성·평가 회귀 검증
 docs/extraction.md             # 정규식 설계·실제 추출 실패 5건
 docs/sentiment.md              # 출처·구축 기준·실제 오분류 25건
 docs/results/baseline.json     # 구현 전 측정 원자료
 docs/results/final.json        # 최종 문장별 결과·해시·실행 조건
+docs/results/tfidf_comparison.json # TF-IDF 15개 실험·표본·예측·해시
 docs/report.md                 # 요구사항별 완료·검증 보고서
 ```
 
@@ -67,10 +72,16 @@ Windows·CPython 3.11.4, 2026-11-15 측정입니다. F1은 긍정·부정·중�
 
 규칙만의 효과는 개선 사전을 고정한 마지막 두 행에서 비교합니다. 기존/개선 파이프라인 비교에는 코드와 사전 변경이 모두 포함됩니다. 기존 116행의 점수와 새 160문장의 점수를 직접 비교하지 않습니다.
 
+별도 합성 학습 1008문장을 추가해 같은 평가 160문장에서 TF-IDF·코사인 중심 분류기를 비교했습니다. 학습 10·100·1000개와 고정 시드 5개의 평균 Accuracy는 **0.267500 / 0.391250 / 0.433750**, 평균 Macro F1은 **0.223231 / 0.383890 / 0.433892**입니다. 비교한 규칙 기반 Accuracy/Macro F1은 **0.843750 / 0.841337**입니다. 이 결과는 63개 템플릿을 조합한 학습 자료와 기존 개발 평가셋의 관측값입니다. 데이터 구성·표준편차·오분류·해시는 [감성 실험 문서](docs/sentiment.md#tf-idf-비교와-학습-규모별-실험)에 기록했습니다.
+
+`--compare-sentiment`는 `docs/results/tfidf_comparison.json`에 실행 조건, 소스·데이터 해시, 학습 행 번호, 문장별 예측과 지표를 저장합니다. `--experiment-output 경로`로 저장 위치를 지정할 수 있습니다. 동일 자료와 소스에서 표본·예측·지표를 재현하며 실행 시각과 소요 시간은 실행마다 측정합니다.
+
 ## 실패 분석과 한계
 
 [정보 추출 문서](docs/extraction.md)에 실제 수정 전 실패 5건의 입력·기대값·실제값·원인·수정 후 결과를 기록했습니다. 기존 50문장의 불일치는 22건에서 0건으로 줄었습니다. [감성 문서](docs/sentiment.md)는 최종 오분류 25건(사전 누락 1 / 반어 10 / 인용 6 / 문맥 8)을 모두 기록합니다.
 
-이 데이터는 자체 작성한 개발용 평가 자료입니다. 독립 평가자·블라인드 검증셋을 사용하지 않았으므로 실제 고객 문장의 일반화 성능으로 해석할 수 없습니다. 형태소 분석 없는 제한된 활용 규칙은 신조어·띄어쓰기·문맥·인용·반어를 놓칠 수 있습니다. 국제화 주소·국제 전화·한글 숫자·음수 금액·환율 변환은 지원 범위 밖입니다. 선택 과제인 TF-IDF 비교와 Aspect별 분류는 구현 범위에 포함하지 않습니다.
+이 데이터는 자체 작성한 개발용 평가 자료입니다. 독립 평가자·블라인드 검증셋을 사용하지 않았으므로 실제 고객 문장의 일반화 성능으로 해석할 수 없습니다. 형태소 분석 없는 제한된 활용 규칙은 신조어·띄어쓰기·문맥·인용·반어를 놓칠 수 있습니다. 국제화 주소·국제 전화·한글 숫자·음수 금액·환율 변환은 지원 범위 밖입니다. 선택 과제인 Aspect별 분류는 구현 범위에 포함하지 않습니다.
 
 주소 보너스 구현 후 Windows·CPython 3.11.4에서 통합 테스트 **42개가 2.346초에 통과**했습니다. 기존 50문장의 추출 지표와 160문장의 감성 지표는 위 표와 같습니다. 기준 커밋·데이터 해시·전체 요구사항 점검과 주소 검증은 [최종 보고서](docs/report.md), 기존 문장별 측정 원자료는 [final.json](docs/results/final.json)에서 확인할 수 있습니다.
+
+TF-IDF 추가 후 전체 **50개 테스트가 2.505초에 통과**했습니다. 원자료 저장 보완 후 관련 **9개가 0.245초에 통과**했으며 새 저장 실패 회귀 1개를 포함합니다. 현재 테스트 정의는 총 51개입니다.

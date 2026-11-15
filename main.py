@@ -1,5 +1,6 @@
 import argparse
 import json
+from pathlib import Path
 
 from src.evaluator import evaluate_information_extraction, evaluate_sentiment, run_all_evaluations
 from src.extractor import extract_information
@@ -14,7 +15,11 @@ def main() -> None:
     parser.add_argument("--evaluate-ie", action="store_true", help="정보 추출 평가 실행")
     parser.add_argument("--evaluate-sentiment", action="store_true", help="감성 분석 평가 실행")
     parser.add_argument("--evaluate-all", action="store_true", help="전체 평가 실행")
+    parser.add_argument("--compare-sentiment", action="store_true", help="고정 평가셋에서 규칙·TF-IDF와 학습 규모 비교")
+    parser.add_argument("--experiment-output", type=Path, help="TF-IDF 실험 원자료 JSON 저장 경로")
     args = parser.parse_args()
+    if args.experiment_output and not args.compare_sentiment:
+        parser.error("--experiment-output requires --compare-sentiment")
 
     if args.text:
         extracted = extract_information(args.text, include_addresses=True)
@@ -43,7 +48,19 @@ def main() -> None:
     if args.evaluate_all:
         print(run_all_evaluations())
 
-    if not any([args.text, args.evaluate_ie, args.evaluate_sentiment, args.evaluate_all]):
+    if args.compare_sentiment:
+        from src.sentiment_experiment import RESULT_PATH, format_experiment, run_experiment, save_experiment
+
+        try:
+            result = run_experiment()
+            output_path = args.experiment_output or RESULT_PATH
+            save_experiment(result, output_path)
+        except (ValueError, OSError) as error:
+            parser.error(str(error))
+        print(format_experiment(result))
+        print(f"원자료 JSON: {output_path}")
+
+    if not any([args.text, args.evaluate_ie, args.evaluate_sentiment, args.evaluate_all, args.compare_sentiment]):
         parser.print_help()
 
 
