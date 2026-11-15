@@ -55,10 +55,10 @@
 
 ### 최종 검증·통합·제출
 
-- [ ] 최종 미션 코드의 macOS·Python 3.11 Actions 검증. 마지막 인계 기록상 미완료. 기존 CI 설정 PR #8의 성공은 이전 코드 기준이다. [인계 기록](CACHE_HANDOFF.md#프로젝트-상태)
-- [ ] 최종 미션 코드의 원격 push·PR 및 `develop` 통합. 마지막 인계 기록상 미완료. 원격 최신 상태는 이번 문서 작성에서 조회하지 않았다. [인계 기록](CACHE_HANDOFF.md#프로젝트-상태)
-- [ ] 최종 `main` 반영. 기존 계획과 인계 기록에서 남은 통합 단계다. [기존 계획](meeting-notes/2026-11-15-a4-2-agentic-engineering.md#2-미션-계획과-구현-결과)
-- [ ] GitHub 저장소 URL 제출. 미션의 최종 제출 요구사항이며 제출 완료를 확인한 기록이 없다. [제출 요구사항](A4_2_mission.md#2-최종-결과물)
+- [x] 최종 macOS·Python 3.11 GitHub Actions 통과. 구현 기준 커밋: `324dd7fdc85e2e1b5ef8e01ee1e854247a67892c`, [CI 실행](https://github.com/ntt65/A4_2/actions/runs/43698806054).
+- [x] 최종 코드 push·PR 생성·develop 병합 완료. [구현 통합 PR](https://github.com/ntt65/A4_2/pull/9).
+- [x] 검증된 최종 구현 main 반영 완료. [main 통합 PR](https://github.com/ntt65/A4_2/pull/10), [기준 커밋](https://github.com/ntt65/A4_2/commit/324dd7fdc85e2e1b5ef8e01ee1e854247a67892c).
+- [ ] GitHub 저장소 URL 제출. [제출할 저장소](https://github.com/ntt65/A4_2)를 준비했다. 제출처·외부 제출 완료 근거가 지정되지 않아 외부 제출은 확인하지 않았다.
 
 ### 선택·보너스 과제
 
